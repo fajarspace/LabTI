@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const FormTambahUser = () => {
-  const [name, setName] = useState("");
+  const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
+  const [konfirmPassword, setkonfirmPassword] = useState("");
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
@@ -15,10 +15,10 @@ const FormTambahUser = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:4000/users", {
-        name: name,
+        nama: nama,
         email: email,
         password: password,
-        confPassword: confPassword,
+        konfirmPassword: konfirmPassword,
         role: role,
       });
       navigate("/users");
@@ -43,8 +43,8 @@ const FormTambahUser = () => {
                   <input
                     type="text"
                     className="input"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={nama}
+                    onChange={(e) => setNama(e.target.value)}
                     placeholder="Name"
                   />
                 </div>
@@ -79,8 +79,8 @@ const FormTambahUser = () => {
                   <input
                     type="password"
                     className="input"
-                    value={confPassword}
-                    onChange={(e) => setConfPassword(e.target.value)}
+                    value={konfirmPassword}
+                    onChange={(e) => setkonfirmPassword(e.target.value)}
                     placeholder="******"
                   />
                 </div>

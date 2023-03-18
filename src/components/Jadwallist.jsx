@@ -25,7 +25,7 @@ const Jadwallist = () => {
         <h2 className="subtitle">List of Jadwal</h2>
       </hgroup>
       <Link to="/jadwal/tambah" role='button' className="button is-primary mb-2">
-        Add New
+        Tambah Baru
       </Link>
       <table className="table is-striped is-fullwidth">
         <thead>

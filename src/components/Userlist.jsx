@@ -24,7 +24,7 @@ const Userlist = () => {
         <h1 className="title">Users</h1>
         <h2 className="subtitle">List of Users</h2>
       </hgroup>
-      <Link to="/users/tambah" className="button is-primary mb-2">
+      <Link role='button' to="/users/tambah" className="button is-primary mb-2">
         Tambah baru
       </Link>
       <table className="table is-striped is-fullwidth">
