@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const FormTambahJadwal = () => {
   const [dosen, setDosen] = useState("");
+  const [asisten1, setAsisten1] = useState("");
+  const [asisten2, setAsisten2] = useState("");
   const [tanggal, setTanggal] = useState("");
   const [waktu, setWaktu] = useState("");
   const [praktikum, setPraktikum] = useState("");
@@ -15,6 +17,8 @@ const FormTambahJadwal = () => {
     try {
       await axios.post("http://localhost:4000/jadwal", {
         dosen: dosen,
+        asisten1: asisten1,
+        asisten2: asisten2,
         tanggal: tanggal,
         waktu: waktu,
         praktikum: praktikum
@@ -44,7 +48,31 @@ const FormTambahJadwal = () => {
                     className="input"
                     value={dosen}
                     onChange={(e) => setDosen(e.target.value)}
-                    placeholder="Jadwal Dosen"
+                    placeholder="Nama Dosen"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Asisten 1</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={asisten1}
+                    onChange={(e) => setAsisten1(e.target.value)}
+                    placeholder="asisten 1"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Asisten 2</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={asisten2}
+                    onChange={(e) => setAsisten2(e.target.value)}
+                    placeholder="asisten 1"
                   />
                 </div>
               </div>

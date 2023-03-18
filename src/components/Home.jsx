@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const Jadwallist = () => {
+const Home = () => {
   const [jadwal, setJadwal] = useState([]);
 
   useEffect(() => {
@@ -14,27 +14,20 @@ const Jadwallist = () => {
     setJadwal(response.data);
   };
 
-  const deleteJadwal = async (jadwalId) => {
-    await axios.delete(`http://localhost:4000/jadwal/${jadwalId}`);
-    getJadwal();
-  };
   return (
     <div>
-      <h1 className="title">Jadwal</h1>
       <h2 className="subtitle">List of Jadwal</h2>
-      <Link to="/jadwal/tambah" className="button is-primary mb-2">
-        Add New
-      </Link>
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
             <th>No</th>
             <th>Dosen</th>
+            <th>Asisten 1</th>
+            <th>Asisten 2</th>
             <th>Tanggal</th>
             <th>Waktu</th>
             <th>Praktikum</th>
             <th>Created By</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -42,11 +35,13 @@ const Jadwallist = () => {
             <tr key={jadwal.uuid}>
               <td>{index + 1}</td>
               <td>{jadwal.dosen}</td>
+              <td>{jadwal.asisten1}</td>
+              <td>{jadwal.asisten2}</td>
               <td>{jadwal.tanggal}</td>
               <td>{jadwal.waktu}</td>
               <td>{jadwal.praktikum}</td>
               <td>{jadwal.user.nama}</td>
-              <td>
+              {/* <td>
                 <Link
                   to={`/jadwal/edit/${jadwal.uuid}`}
                   className="button is-small is-info"
@@ -59,7 +54,7 @@ const Jadwallist = () => {
                 >
                   Delete
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
@@ -68,4 +63,4 @@ const Jadwallist = () => {
   )
 }
 
-export default Jadwallist
+export default Home

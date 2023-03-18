@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const FormEditJadwal = () => {
   const [dosen, setDosen] = useState("");
+  const [asisten1, setAsisten1] = useState("");
+  const [asisten2, setAsisten2] = useState("");
   const [tanggal, setTanggal] = useState("");
   const [waktu, setWaktu] = useState("");
   const [praktikum, setPraktikum] = useState("");
@@ -18,6 +20,8 @@ const FormEditJadwal = () => {
           `http://localhost:4000/jadwal/${id}`
         );
         setDosen(response.data.dosen);
+        setAsisten1(response.data.asisten1);
+        setAsisten2(response.data.asisten2);
         setTanggal(response.data.tanggal);
         setWaktu(response.data.waktu);
         setPraktikum(response.data.praktikum);
@@ -35,6 +39,8 @@ const FormEditJadwal = () => {
     try {
       await axios.patch(`http://localhost:4000/jadwal/${id}`, {
         dosen: dosen,
+        asisten1: asisten1,
+        asisten2: asisten2,
         tanggal: tanggal,
         waktu: waktu,
         praktikum: praktikum
@@ -64,7 +70,31 @@ const FormEditJadwal = () => {
                     className="input"
                     value={dosen}
                     onChange={(e) => setDosen(e.target.value)}
-                    placeholder="Jadwal Dosen"
+                    placeholder="dosen"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Asisten 1</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={asisten1}
+                    onChange={(e) => setAsisten1(e.target.value)}
+                    placeholder="asisten 1"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Asisten 2</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={asisten2}
+                    onChange={(e) => setAsisten2(e.target.value)}
+                    placeholder="asisten 1"
                   />
                 </div>
               </div>
