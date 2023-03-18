@@ -15,8 +15,8 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/products"}>
-                <IoPricetag /> Products
+              <NavLink to={"/jadwal"}>
+                <IoPricetag /> jadwal
               </NavLink>
             </li>
           </ul>
