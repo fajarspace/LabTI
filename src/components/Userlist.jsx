@@ -21,13 +21,13 @@ const Userlist = () => {
   return (
     <div>
       <hgroup>
-        <h1 className="title">Users</h1>
-        <h2 className="subtitle">List of Users</h2>
+        <h1 className="title">User</h1>
+        <h2 className="subtitle">Admin dapat merubah, menambah dan menghapus user</h2>
       </hgroup>
       <Link role='button' to="/users/tambah" className="button is-primary mb-2">
         Tambah baru
       </Link>
-      <table className="table is-striped is-fullwidth">
+      <table role='grid'>
         <thead>
           <tr>
             <th>No</th>

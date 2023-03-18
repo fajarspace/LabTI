@@ -27,53 +27,57 @@ const Login = () => {
   };
 
   return (
-    <section className="hero is-fullheight is-fullwidth">
-      <NavHome />
-      <div className="hero-body">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-4">
-              <form onSubmit={Auth} className="box">
-                {isError && <p className="has-text-centered">{message}</p>}
-                <h1 className="title is-2">Sign In</h1>
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input
-                      type="text"
-                      className="input"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input
-                      type="password"
-                      className="input"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="******"
-                    />
-                  </div>
-                </div>
-                <div className="field mt-5">
+    <>
+      <section className="hero is-fullheight is-fullwidth">
+        <NavHome />
+
+        <article>
+          <main className="container">
+            <article className="grid">
+              <div>
+                <hgroup>
+                  <h1>Sign in</h1>
+                  <h2>A minimalist layout for Login pages</h2>
+                </hgroup>
+                <form onSubmit={Auth} className="box">
+                  {isError && <p className="has-text-centered">{message}</p>}
+                  <input
+                    type="text"
+                    className="input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                  />
+                  <input
+                    type="password"
+                    className="input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="******"
+                  />
+                  <fieldset>
+                    <label for="remember">
+                      <input type="checkbox" role="switch" id="remember" name="remember" />
+                      Remember me
+                    </label>
+                  </fieldset>
                   <button
                     type="submit"
                     className="button is-success is-fullwidth"
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                </form>
+              </div>
+              <div></div>
+            </article>
+          </main></article>
+
+
+
+
+      </section>
+    </>
   );
 };
 

@@ -22,12 +22,12 @@ const Jadwallist = () => {
     <div>
       <hgroup>
         <h1 className="title">Jadwal</h1>
-        <h2 className="subtitle">List of Jadwal</h2>
+        <h2 className="subtitle">Admin dapat merubah, menambah dan menghapus jadwal</h2>
       </hgroup>
       <Link to="/jadwal/tambah" role='button' className="button is-primary mb-2">
         Tambah baru
       </Link>
-      <table className="table is-striped is-fullwidth">
+      <table role='grid' >
         <thead>
           <tr>
             <th>No</th>
