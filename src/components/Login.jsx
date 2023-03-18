@@ -36,8 +36,8 @@ const Login = () => {
             <article className="grid">
               <div>
                 <hgroup>
-                  <h1>Sign in</h1>
-                  <h2>A minimalist layout for Login pages</h2>
+                  <h1>Log In</h1>
+                  <h2>Khusus Asisten</h2>
                 </hgroup>
                 <form onSubmit={Auth} className="box">
                   {isError && <p className="has-text-centered">{message}</p>}
@@ -69,13 +69,15 @@ const Login = () => {
                   </button>
                 </form>
               </div>
-              <div></div>
+              <div>
+                {/* ISI BEBAS */}
+              </div>
             </article>
-          </main></article>
-
-
-
-
+          </main>
+        </article>
+        <footer className="container-fluid">
+          <small>Built with <a href="https://stuffcss.netlify.app" className="secondary">Stuff CSS</a></small>
+        </footer>
       </section>
     </>
   );
