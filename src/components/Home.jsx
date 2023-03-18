@@ -15,8 +15,10 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h2 className="subtitle">List of Jadwal</h2>
+    <div className="container-fluid">
+      <hgroup>
+        <h2 className="subtitle">Jadwal</h2>
+      </hgroup>
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -25,9 +27,10 @@ const Home = () => {
             <th>Asisten 1</th>
             <th>Asisten 2</th>
             <th>Tanggal</th>
-            <th>Waktu</th>
+            <th>Jam</th>
+            <th>Kelas</th>
             <th>Praktikum</th>
-            <th>Created By</th>
+            {/* <th>Created By</th> */}
           </tr>
         </thead>
         <tbody>
@@ -38,9 +41,10 @@ const Home = () => {
               <td>{jadwal.asisten1}</td>
               <td>{jadwal.asisten2}</td>
               <td>{jadwal.tanggal}</td>
-              <td>{jadwal.waktu}</td>
+              <td>{jadwal.jam}</td>
+              <td>{jadwal.kelas}</td>
               <td>{jadwal.praktikum}</td>
-              <td>{jadwal.user.nama}</td>
+              {/* <td>{jadwal.user.nama}</td> */}
               {/* <td>
                 <Link
                   to={`/jadwal/edit/${jadwal.uuid}`}

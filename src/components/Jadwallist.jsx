@@ -20,9 +20,11 @@ const Jadwallist = () => {
   };
   return (
     <div>
-      <h1 className="title">Jadwal</h1>
-      <h2 className="subtitle">List of Jadwal</h2>
-      <Link to="/jadwal/tambah" className="button is-primary mb-2">
+      <hgroup>
+        <h1 className="title">Jadwal</h1>
+        <h2 className="subtitle">List of Jadwal</h2>
+      </hgroup>
+      <Link to="/jadwal/tambah" role='button' className="button is-primary mb-2">
         Add New
       </Link>
       <table className="table is-striped is-fullwidth">
@@ -33,7 +35,8 @@ const Jadwallist = () => {
             <th>Asisten 1</th>
             <th>Asisten 2</th>
             <th>Tanggal</th>
-            <th>Waktu</th>
+            <th>Jam</th>
+            <th>Kelas</th>
             <th>Praktikum</th>
             <th>Created By</th>
             <th>Actions</th>
@@ -47,7 +50,8 @@ const Jadwallist = () => {
               <td>{jadwal.asisten1}</td>
               <td>{jadwal.asisten2}</td>
               <td>{jadwal.tanggal}</td>
-              <td>{jadwal.waktu}</td>
+              <td>{jadwal.jam}</td>
+              <td>{jadwal.kelas}</td>
               <td>{jadwal.praktikum}</td>
               <td>{jadwal.user.nama}</td>
               <td>
@@ -55,14 +59,15 @@ const Jadwallist = () => {
                   to={`/jadwal/edit/${jadwal.uuid}`}
                   className="button is-small is-info"
                 >
-                  Edit
+                  <kbd>Edit</kbd>
                 </Link>
-                <button
+                <br />
+                <Link
                   onClick={() => deleteJadwal(jadwal.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
-                </button>
+                  <kbd>Hapus</kbd>
+                </Link>
               </td>
             </tr>
           ))}

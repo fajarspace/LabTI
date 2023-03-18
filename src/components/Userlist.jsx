@@ -20,8 +20,10 @@ const Userlist = () => {
   };
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">List of Users</h2>
+      <hgroup>
+        <h1 className="title">Users</h1>
+        <h2 className="subtitle">List of Users</h2>
+      </hgroup>
       <Link to="/users/tambah" className="button is-primary mb-2">
         Tambah baru
       </Link>
@@ -47,14 +49,15 @@ const Userlist = () => {
                   to={`/users/edit/${user.uuid}`}
                   className="button is-small is-info"
                 >
-                  Edit
+                  <kbd>Edit</kbd>
                 </Link>
-                <button
+                <br />
+                <Link
                   onClick={() => deleteUser(user.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
-                </button>
+                  <kbd>Hapus</kbd>
+                </Link>
               </td>
             </tr>
           ))}

@@ -5,10 +5,12 @@ const Halo = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <div>
-      <h1 className="title">Dashboard</h1>
-      <h2 className="subtitle">
-        Halo Back <strong>{user && user.nama}</strong>
-      </h2>
+      <hgroup>
+        <h1 className="title">Dashboard</h1>
+        <h2 className="subtitle">
+          Welcome Back <strong>{user && user.nama}</strong>
+        </h2>
+      </hgroup>
     </div>
   );
 };

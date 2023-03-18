@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import ReactDatetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css'; // import the styles
 
 const FormEditJadwal = () => {
@@ -20,7 +19,8 @@ const FormEditJadwal = () => {
     setTanggal(value);
     console.log(getHari(value)); // tampilkan hari pada console
   };
-  const [waktu, setWaktu] = useState("");
+  const [jam, setJam] = useState("");
+  const [kelas, setKelas] = useState("");
   const [praktikum, setPraktikum] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
@@ -36,7 +36,8 @@ const FormEditJadwal = () => {
         setAsisten1(response.data.asisten1);
         setAsisten2(response.data.asisten2);
         setTanggal(response.data.tanggal);
-        setWaktu(response.data.waktu);
+        setJam(response.data.jam);
+        setKelas(response.data.kelas);
         setPraktikum(response.data.praktikum);
       } catch (error) {
         if (error.response) {
@@ -55,7 +56,8 @@ const FormEditJadwal = () => {
         asisten1: asisten1,
         asisten2: asisten2,
         tanggal: tanggal,
-        waktu: waktu,
+        jam: jam,
+        kelas: kelas,
         praktikum: praktikum
       });
       navigate("/jadwal");
@@ -131,15 +133,28 @@ const FormEditJadwal = () => {
                 </div>
               </div>
               <div className="field">
-                <label className="label">Waktu</label>
+                <label className="label">Jam</label>
                 <div className="control">
                   <input
                     type="time"
                     className="input"
-                    value={waktu}
-                    onChange={(e) => setWaktu(e.target.value)}
-                    placeholder="waktu"
+                    value={jam}
+                    onChange={(e) => setJam(e.target.value)}
+                    placeholder="jam"
                   />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Kelas</label>
+                <div className="control">
+                  <div className="select">
+                    <select value={kelas} onChange={(e) => setKelas(e.target.value)}>
+                      <option value="">Pilih Kelas</option>
+                      <option value="TI.20.A.1">TI.20.A.1</option>
+                      <option value="TI.20.A.3">TI.20.A.3</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
