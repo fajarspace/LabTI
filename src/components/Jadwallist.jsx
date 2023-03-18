@@ -3,6 +3,21 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Jadwallist = () => {
+  const [jadwal, setJadwal] = useState([]);
+
+  useEffect(() => {
+    getJadwal();
+  }, []);
+
+  const getJadwal = async () => {
+    const response = await axios.get("http://localhost:4000/jadwal");
+    setJadwal(response.data);
+  };
+
+  const deleteJadwal = async (jadwalId) => {
+    await axios.delete(`http://localhost:4000/jadwal/${jadwalId}`);
+    getJadwal();
+  };
   return (
     <div>
       <h1 className="title">Jadwal</h1>
@@ -23,28 +38,30 @@ const Jadwallist = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {users.map((user, index) => (
-            <tr key={user.uuid}>
+          {jadwal.map((jadwal, index) => (
+            <tr key={jadwal.uuid}>
               <td>{index + 1}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
+              <td>{jadwal.dosen}</td>
+              <td>{jadwal.tanggal}</td>
+              <td>{jadwal.waktu}</td>
+              <td>{jadwal.praktikum}</td>
+              <td>{jadwal.user.nama}</td>
               <td>
                 <Link
-                  to={`/users/edit/${user.uuid}`}
+                  to={`/jadwals/edit/${jadwal.uuid}`}
                   className="button is-small is-info"
                 >
                   Edit
                 </Link>
                 <button
-                  onClick={() => deleteUser(user.uuid)}
+                  onClick={() => deleteJadwal(jadwal.uuid)}
                   className="button is-small is-danger"
                 >
                   Delete
                 </button>
               </td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

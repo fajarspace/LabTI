@@ -12,7 +12,7 @@ const Sidebar = () => {
   const logout = () => {
     dispatch(LogOut());
     dispatch(reset());
-    navigate("/login");
+    navigate("/");
   };
   return (
     <div>
@@ -31,18 +31,18 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
-          {/* {user && user.role === "admin" && ( */}
-          <div>
-            <p className="menu-label">Admin</p>
-            <ul className="menu-list">
-              <li>
-                <NavLink to={"/users"}>
-                  <IoPerson /> Users
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-          {/* )} */}
+          {user && user.role === "admin" && (
+            <div>
+              <p className="menu-label">Admin</p>
+              <ul className="menu-list">
+                <li>
+                  <NavLink to={"/users"}>
+                    <IoPerson /> Users
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          )}
 
           <p className="menu-label">Settings</p>
           <ul className="menu-list">

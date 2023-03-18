@@ -16,9 +16,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/login");
+      navigate("/");
     }
   }, [isError, navigate]);
+
   return (
     <Layout>
       <Halo />

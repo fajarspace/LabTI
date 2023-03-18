@@ -3,6 +3,21 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Userlist = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    const response = await axios.get("http://localhost:4000/users");
+    setUsers(response.data);
+  };
+
+  const deleteUser = async (userId) => {
+    await axios.delete(`http://localhost:4000/users/${userId}`);
+    getUsers();
+  };
   return (
     <div>
       <h1 className="title">Users</h1>
@@ -21,10 +36,10 @@ const Userlist = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {users.map((user, index) => (
+          {users.map((user, index) => (
             <tr key={user.uuid}>
               <td>{index + 1}</td>
-              <td>{user.name}</td>
+              <td>{user.nama}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
@@ -42,7 +57,7 @@ const Userlist = () => {
                 </button>
               </td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

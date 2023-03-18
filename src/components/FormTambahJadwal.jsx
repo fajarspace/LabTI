@@ -3,56 +3,84 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const FormTambahJadwal = () => {
-  // const [name, setName] = useState("");
-  // const [price, setPrice] = useState("");
-  // const [msg, setMsg] = useState("");
-  // const navigate = useNavigate();
+  const [dosen, setDosen] = useState("");
+  const [tanggal, setTanggal] = useState("");
+  const [waktu, setWaktu] = useState("");
+  const [praktikum, setPraktikum] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
 
-  // const saveProduct = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("http://localhost:5000/jadwal", {
-  //       name: name,
-  //       price: price,
-  //     });
-  //     navigate("/jadwal");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       setMsg(error.response.data.msg);
-  //     }
-  //   }
-  // };
+  const saveJadwal = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:4000/jadwal", {
+        dosen: dosen,
+        tanggal: tanggal,
+        waktu: waktu,
+        praktikum: praktikum
+      });
+      navigate("/jadwal");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
 
   return (
     <div>
       <h1 className="title">jadwal</h1>
-      <h2 className="subtitle">Add New Product</h2>
+      <h2 className="subtitle">Add New Jadwal</h2>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit='{ }'>
-              <p className="has-text-centered">{ }</p>
+            <form onSubmit={saveJadwal}>
+              <p className="has-text-centered">{msg}</p>
               <div className="field">
-                <label className="label">Name</label>
+                <label className="label">Dosen</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    // value={name}
-                    // onChange={(e) => setName(e.target.value)}
-                    placeholder="Product Name"
+                    value={dosen}
+                    onChange={(e) => setDosen(e.target.value)}
+                    placeholder="Jadwal Dosen"
                   />
                 </div>
               </div>
               <div className="field">
-                <label className="label">Price</label>
+                <label className="label">Tanggal</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    // value={price}
-                    // onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Price"
+                    value={tanggal}
+                    onChange={(e) => setTanggal(e.target.value)}
+                    placeholder="tanggal"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Waktu</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={waktu}
+                    onChange={(e) => setWaktu(e.target.value)}
+                    placeholder="waktu"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Praktikum</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={praktikum}
+                    onChange={(e) => setPraktikum(e.target.value)}
+                    placeholder="praktikum"
                   />
                 </div>
               </div>

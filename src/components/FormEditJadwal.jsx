@@ -3,74 +3,104 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const FormEditJadwal = () => {
-  // const [name, setName] = useState("");
-  // const [price, setPrice] = useState("");
-  // const [msg, setMsg] = useState("");
-  // const navigate = useNavigate();
-  // const { id } = useParams();
+  const [dosen, setDosen] = useState("");
+  const [tanggal, setTanggal] = useState("");
+  const [waktu, setWaktu] = useState("");
+  const [praktikum, setPraktikum] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  // useEffect(() => {
-  //   const getProductById = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:5000/jadwal/${id}`
-  //       );
-  //       setName(response.data.name);
-  //       setPrice(response.data.price);
-  //     } catch (error) {
-  //       if (error.response) {
-  //         setMsg(error.response.data.msg);
-  //       }
-  //     }
-  //   };
-  //   getProductById();
-  // }, [id]);
+  useEffect(() => {
+    const getJadwalById = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/jadwal/${id}`
+        );
+        setDosen(response.data.dosen);
+        setTanggal(response.data.tanggal);
+        setWaktu(response.data.waktu);
+        setPraktikum(response.data.praktikum);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getJadwalById();
+  }, [id]);
 
-  // const updateProduct = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.patch(`http://localhost:5000/jadwal/${id}`, {
-  //       name: name,
-  //       price: price,
-  //     });
-  //     navigate("/jadwal");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       setMsg(error.response.data.msg);
-  //     }
-  //   }
-  // };
+  const updateJadwal = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.patch(`http://localhost:4000/jadwal/${id}`, {
+        dosen: dosen,
+        tanggal: tanggal,
+        waktu: waktu,
+        praktikum: praktikum
+      });
+      navigate("/jadwal");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
 
   return (
     <div>
       <h1 className="title">jadwal</h1>
-      <h2 className="subtitle">Edit Product</h2>
+      <h2 className="subtitle">Edit Jadwal</h2>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit='{updateProduct}'>
-              <p className="has-text-centered">{ }</p>
+            <form onSubmit={updateJadwal}>
+              <p className="has-text-centered">{msg}</p>
               <div className="field">
-                <label className="label">Name</label>
+                <label className="label">Dosen</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    // value={name}
-                    // onChange={(e) => setName(e.target.value)}
-                    placeholder="Product Name"
+                    value={dosen}
+                    onChange={(e) => setDosen(e.target.value)}
+                    placeholder="Jadwal Dosen"
                   />
                 </div>
               </div>
               <div className="field">
-                <label className="label">Price</label>
+                <label className="label">Tanggal</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    // value={price}
-                    // onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Price"
+                    value={tanggal}
+                    onChange={(e) => setTanggal(e.target.value)}
+                    placeholder="tanggal"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Waktu</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={waktu}
+                    onChange={(e) => setWaktu(e.target.value)}
+                    placeholder="waktu"
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Praktikum</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input"
+                    value={praktikum}
+                    onChange={(e) => setPraktikum(e.target.value)}
+                    placeholder="praktikum"
                   />
                 </div>
               </div>

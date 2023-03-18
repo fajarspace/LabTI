@@ -3,48 +3,48 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const FormEditUser = () => {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confPassword, setConfPassword] = useState("");
-  // const [role, setRole] = useState("");
-  // const [msg, setMsg] = useState("");
-  // const navigate = useNavigate();
-  // const { id } = useParams();
+  const [nama, setNama] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [konfirmPassword, setkonfirmPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  // useEffect(() => {
-  //   const getUserById = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:5000/users/${id}`);
-  //       setName(response.data.name);
-  //       setEmail(response.data.email);
-  //       setRole(response.data.role);
-  //     } catch (error) {
-  //       if (error.response) {
-  //         setMsg(error.response.data.msg);
-  //       }
-  //     }
-  //   };
-  //   getUserById();
-  // }, [id]);
+  useEffect(() => {
+    const getUserById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/users/${id}`);
+        setNama(response.data.nama);
+        setEmail(response.data.email);
+        setRole(response.data.role);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getUserById();
+  }, [id]);
 
-  // const updateUser = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.patch(`http://localhost:5000/users/${id}`, {
-  //       name: name,
-  //       email: email,
-  //       password: password,
-  //       confPassword: confPassword,
-  //       role: role,
-  //     });
-  //     navigate("/users");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       setMsg(error.response.data.msg);
-  //     }
-  //   }
-  // };
+  const updateUser = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.patch(`http://localhost:4000/users/${id}`, {
+        nama: nama,
+        email: email,
+        password: password,
+        konfirmPassword: konfirmPassword,
+        role: role,
+      });
+      navigate("/users");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
   return (
     <div>
       <h1 className="title">Users</h1>
@@ -52,16 +52,16 @@ const FormEditUser = () => {
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit='{updateUser}'>
-              <p className="has-text-centered">{ }</p>
+            <form onSubmit={updateUser}>
+              <p className="has-text-centered">{msg}</p>
               <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
-                    // value={name}
-                    // onChange={(e) => setName(e.target.value)}
+                    value={nama}
+                    onChange={(e) => setNama(e.target.value)}
                     placeholder="Name"
                   />
                 </div>
@@ -72,8 +72,8 @@ const FormEditUser = () => {
                   <input
                     type="text"
                     className="input"
-                    // value={email}
-                    // onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
                   />
                 </div>
@@ -84,8 +84,8 @@ const FormEditUser = () => {
                   <input
                     type="password"
                     className="input"
-                    // value={password}
-                    // onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="******"
                   />
                 </div>
@@ -96,8 +96,8 @@ const FormEditUser = () => {
                   <input
                     type="password"
                     className="input"
-                    // value={confPassword}
-                    // onChange={(e) => setConfPassword(e.target.value)}
+                    value={konfirmPassword}
+                    onChange={(e) => setkonfirmPassword(e.target.value)}
                     placeholder="******"
                   />
                 </div>
@@ -107,8 +107,8 @@ const FormEditUser = () => {
                 <div className="control">
                   <div className="select is-fullwidth">
                     <select
-                    // value={role}
-                    // onChange={(e) => setRole(e.target.value)}
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
                     >
                       <option value="admin">Admin</option>
                       <option value="user">User</option>
