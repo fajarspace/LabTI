@@ -7,7 +7,7 @@ const Jadwallist = () => {
     <div>
       <h1 className="title">Jadwal</h1>
       <h2 className="subtitle">List of Jadwal</h2>
-      <Link to="/jadwal/add" className="button is-primary mb-2">
+      <Link to="/jadwal/tambah" className="button is-primary mb-2">
         Add New
       </Link>
       <table className="table is-striped is-fullwidth">

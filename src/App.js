@@ -4,9 +4,9 @@ import Login from "./components/Login";
 import Users from "./pages/Users";
 import Jadwal from "./pages/Jadwal";
 import TambahUser from "./pages/TambahUser";
-// import EditUser from "./pages/EditUser";
-// import AddProduct from "./pages/AddProduct";
-// import EditProduct from "./pages/EditProduct";
+import EditUser from "./pages/EditUser";
+import TambahJadwal from "./pages/TambahJadwal";
+import EditJadwal from "./pages/EditJadwal";
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/tambah" element={<TambahUser />} />
-          {/* <Route path="/users/edit/:id" element={<EditUser />} /> */}
+          <Route path="/users/edit/:id" element={<EditUser />} />
           <Route path="/jadwal" element={<Jadwal />} />
-          {/* <Route path="/products/add" element={<AddProduct />} />
-          <Route path="/products/edit/:id" element={<EditProduct />} /> */}
+          <Route path="/jadwal/tambah" element={<TambahJadwal />} />
+          <Route path="/jadwal/edit/:id" element={<EditJadwal />} />
         </Routes>
       </BrowserRouter>
     </div>
