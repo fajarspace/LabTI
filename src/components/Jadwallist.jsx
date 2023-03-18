@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Userlist = () => {
+const Jadwallist = () => {
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">List of Users</h2>
-      <Link to="/users/tambah" className="button is-primary mb-2">
-        Tambah baru
+      <h1 className="title">Jadwal</h1>
+      <h2 className="subtitle">List of Jadwal</h2>
+      <Link to="/jadwal/add" className="button is-primary mb-2">
+        Add New
       </Link>
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th>Dosen</th>
+            <th>Tanggal</th>
+            <th>Waktu</th>
+            <th>Praktikum</th>
+            <th>Created By</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -49,4 +51,4 @@ const Userlist = () => {
   )
 }
 
-export default Userlist
+export default Jadwallist
