@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
-import { IoPerson, IoPricetag, IoHome, IoLogOut } from "react-icons/io5";
+import { IoPerson, IoTime, IoHome, IoLogOut } from "react-icons/io5";
 
 const Sidebar = () => {
   return (
@@ -16,7 +16,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink to={"/jadwal"}>
-                <IoPricetag /> jadwal
+                <IoTime /> jadwal
               </NavLink>
             </li>
           </ul>
@@ -36,9 +36,9 @@ const Sidebar = () => {
           <p className="menu-label">Settings</p>
           <ul className="menu-list">
             <li>
-              {/* <button onClick={logout} className="button is-white">
+              <button className="button is-white">
                 <IoLogOut /> Logout
-              </button> */}
+              </button>
             </li>
           </ul>
         </aside>
