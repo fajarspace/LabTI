@@ -30,6 +30,8 @@ const Jadwallist = () => {
           <tr>
             <th>No</th>
             <th>Dosen</th>
+            <th>Asisten 1</th>
+            <th>Asisten 2</th>
             <th>Tanggal</th>
             <th>Waktu</th>
             <th>Praktikum</th>
@@ -42,6 +44,8 @@ const Jadwallist = () => {
             <tr key={jadwal.uuid}>
               <td>{index + 1}</td>
               <td>{jadwal.dosen}</td>
+              <td>{jadwal.asisten1}</td>
+              <td>{jadwal.asisten2}</td>
               <td>{jadwal.tanggal}</td>
               <td>{jadwal.waktu}</td>
               <td>{jadwal.praktikum}</td>

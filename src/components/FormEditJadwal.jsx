@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import ReactDatetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css'; // import the styles
 
 const FormEditJadwal = () => {
   const [dosen, setDosen] = useState("");
   const [asisten1, setAsisten1] = useState("");
   const [asisten2, setAsisten2] = useState("");
   const [tanggal, setTanggal] = useState("");
+  const getHari = (dateStr) => {
+    const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const date = new Date(dateStr);
+    return days[date.getDay()];
+  };
+
+  const handleChangeTanggal = (event) => {
+    const value = event.target.value;
+    setTanggal(value);
+    console.log(getHari(value)); // tampilkan hari pada console
+  };
   const [waktu, setWaktu] = useState("");
   const [praktikum, setPraktikum] = useState("");
   const [msg, setMsg] = useState("");
@@ -65,48 +78,55 @@ const FormEditJadwal = () => {
               <div className="field">
                 <label className="label">Dosen</label>
                 <div className="control">
-                  <input
-                    type="text"
-                    className="input"
-                    value={dosen}
-                    onChange={(e) => setDosen(e.target.value)}
-                    placeholder="dosen"
-                  />
+                  <div className="select">
+                    <select value={dosen} onChange={(e) => setDosen(e.target.value)}>
+                      <option value="">Pilih dosen</option>
+                      <option value="Najamuddin dwi, S.Kom, M.Kom">Najamuddin dwi, S.Kom, M.Kom</option>
+                      <option value="Alfiyan, S.Kom">Alfiyan, S.Kom</option>
+                      <option value="Agung Nugroho, S.Kom, M.Kom">Agung Nugroho, S.Kom, M.Kom</option>
+                    </select>
+                  </div>
                 </div>
               </div>
+
               <div className="field">
                 <label className="label">Asisten 1</label>
                 <div className="control">
-                  <input
-                    type="text"
-                    className="input"
-                    value={asisten1}
-                    onChange={(e) => setAsisten1(e.target.value)}
-                    placeholder="asisten 1"
-                  />
+                  <div className="select">
+                    <select value={asisten1} onChange={(e) => setAsisten1(e.target.value)}>
+                      <option value="">Pilih Asisten 1</option>
+                      <option value="Veno Setyoaji">Veno Setyoaji</option>
+                      <option value="Fajar Agung">Fajar Agung</option>
+                      <option value="Maulana Muhammad">Maulana Muhammad</option>
+                      <option value="M. Romdon">M. Romdon</option>
+                      <option value="Sultan Aditya">Sultan Aditya</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="field">
                 <label className="label">Asisten 2</label>
                 <div className="control">
-                  <input
-                    type="text"
-                    className="input"
-                    value={asisten2}
-                    onChange={(e) => setAsisten2(e.target.value)}
-                    placeholder="asisten 1"
-                  />
+                  <div className="select">
+                    <select value={asisten2} onChange={(e) => setAsisten2(e.target.value)}>
+                      <option value="">Pilih Asisten 2</option>
+                      <option value="Veno Setyoaji">Veno Setyoaji</option>
+                      <option value="Fajar Agung">Fajar Agung</option>
+                      <option value="Maulana Muhammad">Maulana Muhammad</option>
+                      <option value="M. Romdon">M. Romdon</option>
+                      <option value="Sultan Aditya">Sultan Aditya</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="field">
                 <label className="label">Tanggal</label>
                 <div className="control">
                   <input
-                    type="text"
+                    type="date"
                     className="input"
                     value={tanggal}
-                    onChange={(e) => setTanggal(e.target.value)}
-                    placeholder="tanggal"
+                    onChange={handleChangeTanggal}
                   />
                 </div>
               </div>
@@ -114,7 +134,7 @@ const FormEditJadwal = () => {
                 <label className="label">Waktu</label>
                 <div className="control">
                   <input
-                    type="text"
+                    type="time"
                     className="input"
                     value={waktu}
                     onChange={(e) => setWaktu(e.target.value)}
@@ -122,16 +142,17 @@ const FormEditJadwal = () => {
                   />
                 </div>
               </div>
+
               <div className="field">
                 <label className="label">Praktikum</label>
                 <div className="control">
-                  <input
-                    type="text"
-                    className="input"
-                    value={praktikum}
-                    onChange={(e) => setPraktikum(e.target.value)}
-                    placeholder="praktikum"
-                  />
+                  <div className="select">
+                    <select value={praktikum} onChange={(e) => setPraktikum(e.target.value)}>
+                      <option value="">Pilih praktikum</option>
+                      <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
+                      <option value="Data Mining">Data Mining</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
