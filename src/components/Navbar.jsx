@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { IoPerson, IoTime, IoHome, IoLogOut } from "react-icons/io5";
+// import { IoPerson, IoTime, IoHome, IoLogOut } from "react-icons/io5";
 import { LogOut, reset } from "../features/authSlice";
 
 const Navbar = () => {
@@ -23,9 +23,9 @@ const Navbar = () => {
             <NavLink to="/dashboard" className="navbar-item">
               eLab
             </NavLink></strong></li>
-          <li><NavLink to={"/dashboard"}>
-            {/* <IoHome />*/} Dashboard
-          </NavLink></li>
+          {/* <li><NavLink to={"/dashboard"}>
+          Dashboard
+          </NavLink></li> */}
           <li>
             <NavLink to={"/jadwal"}>
               {/* <IoTime /> */} Jadwal

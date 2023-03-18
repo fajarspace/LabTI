@@ -6,7 +6,7 @@ const Halo = () => {
   return (
     <div>
       <hgroup>
-        <h1 className="title">Dashboard</h1>
+        {/* <h1 className="title">Dashboard</h1> */}
         <h2 className="subtitle">
           Welcome Back <strong>{user && user.nama}</strong>
         </h2>
