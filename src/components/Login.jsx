@@ -58,7 +58,6 @@ const Login = () => {
 
                   <button
                     type="submit"
-                    onClick={Login}
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
