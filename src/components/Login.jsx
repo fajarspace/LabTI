@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 
-import NavHome from "./NavHome";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user || isSuccess) {
-      navigate("/dashboard");
+      navigate("/login");
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
@@ -29,8 +27,6 @@ const Login = () => {
   return (
     <>
       <section className="hero is-fullheight is-fullwidth">
-        <NavHome />
-
         <article>
           <main className="container">
             <article className="grid">
