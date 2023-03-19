@@ -63,7 +63,6 @@ const Login = () => {
                   </fieldset>
                   <button
                     type="submit"
-                    className="button is-success is-fullwidth"
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
