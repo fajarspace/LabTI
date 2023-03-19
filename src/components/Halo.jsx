@@ -1,14 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Halo = () => {
-  const { user } = useSelector((state) => state.auth);
+  // const { user } = useSelector((state) => state.auth);
   return (
     <div>
       <hgroup>
         {/* <h1 className="title">Dashboard</h1> */}
         <h2 className="subtitle">
-          Welcome Back <strong>{user && user.nama}</strong>
+          {/* Welcome Back <strong>{user && user.nama}</strong> */}
         </h2>
       </hgroup>
     </div>
