@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/dashboard");
+      navigate("/login");
     }
   }, [isError, navigate]);
 
