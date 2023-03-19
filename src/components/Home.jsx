@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
 
   const getJadwal = async () => {
-    const response = await axios.get("https://jealous-baseball-cap.cyclic.app/jadwal");
+    const response = await axios.get("https://elab-restfulapi-production.up.railway.app/jadwal");
     setJadwal(response.data);
   };
 

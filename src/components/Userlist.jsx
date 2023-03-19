@@ -10,12 +10,12 @@ const Userlist = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://jealous-baseball-cap.cyclic.app/users");
+    const response = await axios.get("https://elab-restfulapi-production.up.railway.app/users");
     setUsers(response.data);
   };
 
   const deleteUser = async (userId) => {
-    await axios.delete(`https://jealous-baseball-cap.cyclic.app/users/${userId}`);
+    await axios.delete(`https://elab-restfulapi-production.up.railway.app/users/${userId}`);
     getUsers();
   };
   return (

@@ -27,7 +27,7 @@ const FormTambahJadwal = () => {
   const saveJadwal = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://jealous-baseball-cap.cyclic.app/jadwal", {
+      await axios.post("https://elab-restfulapi-production.up.railway.app/jadwal", {
         dosen: dosen,
         asisten1: asisten1,
         asisten2: asisten2,
