@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from "../components/Home";
-import NavHome from "../components/NavHome";
+// import NavHome from "../components/NavHome";
 
 const Homepage = () => {
   return (
