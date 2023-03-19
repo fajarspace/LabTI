@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 
+import NavHome from "./NavHome";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +28,9 @@ const Login = () => {
 
   return (
     <>
-      <section className="hero is-fullheight is-fullwidth">
+      <section className="">
         <article>
+          <NavHome />
           <main className="container">
             <article className="grid">
               <div>

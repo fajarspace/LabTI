@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -19,9 +19,6 @@ const Home = () => {
     <div className="container-fluid">
       <hgroup>
         <h2 className="subtitle">Jadwal</h2>
-        <NavLink to="/login" className="navbar-item">
-          login
-        </NavLink>
       </hgroup>
       <table className="table is-striped is-fullwidth">
         <thead>
