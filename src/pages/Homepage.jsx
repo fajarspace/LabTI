@@ -6,7 +6,6 @@ const Homepage = () => {
   return (
     <>
       <main>
-        <NavHome />
         <Home />
       </main>
     </>

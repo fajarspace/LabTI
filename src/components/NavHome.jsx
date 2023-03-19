@@ -1,12 +1,7 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+// import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const login = () => {
-    navigate("/login");
-  };
 
   return (
     <div>
@@ -18,10 +13,9 @@ const Navbar = () => {
           </NavLink></strong></li>
         </ul>
         <ul>
-
-          <li><button onClick={login} className="button is-light">
-            Login
-          </button></li>
+          <li><strong><NavLink to="/" className="navbar-item">
+            eLab
+          </NavLink></strong></li>
         </ul>
       </nav>
 
