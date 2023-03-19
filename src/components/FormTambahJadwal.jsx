@@ -6,7 +6,7 @@ const FormTambahJadwal = () => {
   const [dosen, setDosen] = useState("");
   const [asisten1, setAsisten1] = useState("");
   const [asisten2, setAsisten2] = useState("");
-  const [tanggal, setTanggal] = useState("");
+  const [hari, setHari] = useState("");
   const getHari = (dateStr) => {
     const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
     const date = new Date(dateStr);
@@ -15,7 +15,7 @@ const FormTambahJadwal = () => {
 
   const handleChangeTanggal = (event) => {
     const value = event.target.value;
-    setTanggal(value);
+    setHari(value);
     console.log(getHari(value)); // tampilkan hari pada console
   };
   const [jam, setJam] = useState("");
@@ -31,7 +31,7 @@ const FormTambahJadwal = () => {
         dosen: dosen,
         asisten1: asisten1,
         asisten2: asisten2,
-        tanggal: tanggal,
+        hari: hari,
         jam: jam,
         kelas: kelas,
         praktikum: praktikum
@@ -103,7 +103,7 @@ const FormTambahJadwal = () => {
                   <input
                     type="date"
                     className="input"
-                    value={tanggal}
+                    value={hari}
                     onChange={handleChangeTanggal}
                   />
                 </div>

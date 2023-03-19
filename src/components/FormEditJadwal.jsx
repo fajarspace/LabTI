@@ -7,16 +7,16 @@ const FormEditJadwal = () => {
   const [dosen, setDosen] = useState("");
   const [asisten1, setAsisten1] = useState("");
   const [asisten2, setAsisten2] = useState("");
-  const [tanggal, setTanggal] = useState("");
+  const [hari, setHari] = useState("");
   const getHari = (dateStr) => {
     const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
     const date = new Date(dateStr);
     return days[date.getDay()];
   };
 
-  const handleChangeTanggal = (event) => {
+  const handleChangehari = (event) => {
     const value = event.target.value;
-    setTanggal(value);
+    setHari(value);
     console.log(getHari(value)); // tampilkan hari pada console
   };
   const [jam, setJam] = useState("");
@@ -35,7 +35,7 @@ const FormEditJadwal = () => {
         setDosen(response.data.dosen);
         setAsisten1(response.data.asisten1);
         setAsisten2(response.data.asisten2);
-        setTanggal(response.data.tanggal);
+        setHari(response.data.hari);
         setJam(response.data.jam);
         setKelas(response.data.kelas);
         setPraktikum(response.data.praktikum);
@@ -55,7 +55,7 @@ const FormEditJadwal = () => {
         dosen: dosen,
         asisten1: asisten1,
         asisten2: asisten2,
-        tanggal: tanggal,
+        hari: hari,
         jam: jam,
         kelas: kelas,
         praktikum: praktikum
@@ -122,13 +122,13 @@ const FormEditJadwal = () => {
                 </div>
               </div>
               <div className="field">
-                <label className="label">Tanggal</label>
+                <label className="label">hari</label>
                 <div className="control">
                   <input
                     type="date"
                     className="input"
-                    value={tanggal}
-                    onChange={handleChangeTanggal}
+                    value={hari}
+                    onChange={handleChangehari}
                   />
                 </div>
               </div>

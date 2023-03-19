@@ -34,7 +34,7 @@ const Jadwallist = () => {
             <th>Dosen</th>
             <th>Asisten 1</th>
             <th>Asisten 2</th>
-            <th>Tanggal</th>
+            <th>Hari</th>
             <th>Jam</th>
             <th>Kelas</th>
             <th>Praktikum</th>
@@ -49,7 +49,7 @@ const Jadwallist = () => {
               <td>{jadwal.dosen}</td>
               <td>{jadwal.asisten1}</td>
               <td>{jadwal.asisten2}</td>
-              <td>{jadwal.tanggal}</td>
+              <td>{jadwal.hari}</td>
               <td>{jadwal.jam}</td>
               <td>{jadwal.kelas}</td>
               <td>{jadwal.praktikum}</td>
