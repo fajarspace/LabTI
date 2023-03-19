@@ -10,7 +10,7 @@ const Home = () => {
   }, []);
 
   const getJadwal = async () => {
-    const response = await axios.get("http://jealous-baseball-cap.cyclic.app/jadwal");
+    const response = await axios.get("https://jealous-baseball-cap.cyclic.app/jadwal");
     setJadwal(response.data);
   };
 
