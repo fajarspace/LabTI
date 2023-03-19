@@ -55,14 +55,10 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="******"
                   />
-                  <fieldset>
-                    <label for="remember">
-                      <input type="checkbox" role="switch" id="remember" name="remember" />
-                      Remember me
-                    </label>
-                  </fieldset>
+
                   <button
                     type="submit"
+                    onClick={Login}
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
