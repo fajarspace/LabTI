@@ -1,12 +1,12 @@
 import React from 'react'
 import Home from "../components/Home";
-import Navbar from "../components/Navbar";
+import NavHome from "../components/NavHome";
 
 const Homepage = () => {
   return (
     <>
       <main>
-        <Navbar />
+        <NavHome />
         <Home />
       </main>
     </>
