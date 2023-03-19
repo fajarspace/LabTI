@@ -14,7 +14,7 @@ const FormTambahUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/users", {
+      await axios.post("https://jealous-baseball-cap.cyclic.app/users", {
         nama: nama,
         email: email,
         password: password,

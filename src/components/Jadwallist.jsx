@@ -10,12 +10,12 @@ const Jadwallist = () => {
   }, []);
 
   const getJadwal = async () => {
-    const response = await axios.get("http://localhost:4000/jadwal");
+    const response = await axios.get("https://jealous-baseball-cap.cyclic.app/jadwal");
     setJadwal(response.data);
   };
 
   const deleteJadwal = async (jadwalId) => {
-    await axios.delete(`http://localhost:4000/jadwal/${jadwalId}`);
+    await axios.delete(`https://jealous-baseball-cap.cyclic.app/jadwal/${jadwalId}`);
     getJadwal();
   };
   return (

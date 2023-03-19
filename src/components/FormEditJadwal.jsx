@@ -30,7 +30,7 @@ const FormEditJadwal = () => {
     const getJadwalById = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/jadwal/${id}`
+          `https://jealous-baseball-cap.cyclic.app/jadwal/${id}`
         );
         setDosen(response.data.dosen);
         setAsisten1(response.data.asisten1);
@@ -51,7 +51,7 @@ const FormEditJadwal = () => {
   const updateJadwal = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:4000/jadwal/${id}`, {
+      await axios.patch(`https://jealous-baseball-cap.cyclic.app/jadwal/${id}`, {
         dosen: dosen,
         asisten1: asisten1,
         asisten2: asisten2,

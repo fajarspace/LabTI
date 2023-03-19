@@ -11,7 +11,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAPI) => {
   try {
-    const response = await axios.post('http://localhost:4000/login', {
+    const response = await axios.post('https://jealous-baseball-cap.cyclic.app/login', {
       email: user.email,
       password: user.password
     });
@@ -26,7 +26,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAP
 
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get('http://localhost:4000/profile');
+    const response = await axios.get('https://jealous-baseball-cap.cyclic.app/profile');
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -37,7 +37,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete('http://localhost:4000/logout');
+  await axios.delete('https://jealous-baseball-cap.cyclic.app/logout');
 });
 
 export const authSlice = createSlice({
