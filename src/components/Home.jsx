@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { NavLink } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [jadwal, setJadwal] = useState([]);
@@ -15,12 +14,20 @@ const Home = () => {
     setJadwal(response.data);
   };
 
+  const deleteJadwal = async (jadwalId) => {
+    await axios.delete(`https://elab-restfulapi-production.up.railway.app/jadwal/${jadwalId}`);
+    getJadwal();
+  };
   return (
-    <div className="container-fluid">
+    <div>
       <hgroup>
-        <h2 className="subtitle">Jadwal</h2>
+        <h1 className="title">Jadwal</h1>
+        <h2 className="subtitle">Admin dapat merubah, menambah dan menghapus jadwal</h2>
       </hgroup>
-      <table className="table is-striped is-fullwidth">
+      <Link to="/jadwal/tambah" role='button' className="button is-primary mb-2">
+        Tambah baru
+      </Link>
+      <table role='grid' >
         <thead>
           <tr>
             <th>No</th>
@@ -31,7 +38,8 @@ const Home = () => {
             <th>Jam</th>
             <th>Kelas</th>
             <th>Praktikum</th>
-            {/* <th>Created By</th> */}
+            <th>Created By</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -45,21 +53,22 @@ const Home = () => {
               <td>{jadwal.jam}</td>
               <td>{jadwal.kelas}</td>
               <td>{jadwal.praktikum}</td>
-              {/* <td>{jadwal.user.nama}</td> */}
-              {/* <td>
+              <td>{jadwal.user.nama}</td>
+              <td>
                 <Link
                   to={`/jadwal/edit/${jadwal.uuid}`}
                   className="button is-small is-info"
                 >
-                  Edit
+                  <kbd>Edit</kbd>
                 </Link>
-                <button
+                <br />
+                <Link
                   onClick={() => deleteJadwal(jadwal.uuid)}
                   className="button is-small is-danger"
                 >
-                  Delete
-                </button>
-              </td> */}
+                  <kbd>Hapus</kbd>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
