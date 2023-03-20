@@ -8,11 +8,13 @@ const Navbar = () => {
 
       <nav className="container-fluid">
         <ul>
+          <li><strong><NavLink to="/" className="navbar-item">
+            eLab
+          </NavLink></strong></li>
           <li><strong><NavLink to="/dashboard" className="navbar-item">
             eLab
           </NavLink></strong></li>
         </ul>
-       
       </nav>
 
 
