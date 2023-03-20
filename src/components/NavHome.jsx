@@ -12,11 +12,7 @@ const Navbar = () => {
             eLab
           </NavLink></strong></li>
         </ul>
-        <ul>
-          <li><NavLink to="/login" className="navbar-item">
-            Login
-          </NavLink></li>
-        </ul>
+       
       </nav>
 
 
