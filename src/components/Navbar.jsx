@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav className="container-fluid">
         <ul>
           <li><strong>
-            <NavLink to="/dashboard" className="navbar-item">
+            <NavLink to="/" className="navbar-item">
               eLab
             </NavLink></strong></li>
           {/* <li><NavLink to={"/dashboard"}>
