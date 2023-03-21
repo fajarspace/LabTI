@@ -10,12 +10,12 @@ const Userlist = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://elab-restfulapi-production.up.railway.app/users");
+    const response = await axios.get("https://easy-pear-crayfish-yoke.cyclic.app/users");
     setUsers(response.data);
   };
 
   const deleteUser = async (userId) => {
-    await axios.delete(`https://elab-restfulapi-production.up.railway.app/users/${userId}`);
+    await axios.delete(`https://easy-pear-crayfish-yoke.cyclic.app/users/${userId}`);
     getUsers();
   };
   return (

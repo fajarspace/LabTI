@@ -10,12 +10,12 @@ const Home = () => {
   }, []);
 
   const getJadwal = async () => {
-    const response = await axios.get("https://elab-restfulapi-production.up.railway.app/jadwal");
+    const response = await axios.get("https://easy-pear-crayfish-yoke.cyclic.app/jadwal");
     setJadwal(response.data);
   };
 
   const deleteJadwal = async (jadwalId) => {
-    await axios.delete(`https://elab-restfulapi-production.up.railway.app/jadwal/${jadwalId}`);
+    await axios.delete(`https://easy-pear-crayfish-yoke.cyclic.app/jadwal/${jadwalId}`);
     getJadwal();
   };
   return (

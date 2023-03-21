@@ -14,7 +14,7 @@ const FormTambahUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://elab-restfulapi-production.up.railway.app/users", {
+      await axios.post("https://easy-pear-crayfish-yoke.cyclic.app/users", {
         nama: nama,
         email: email,
         password: password,

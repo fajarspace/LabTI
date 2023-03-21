@@ -11,7 +11,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAPI) => {
   try {
-    const response = await axios.post('https://elab-restfulapi-production.up.railway.app/login', {
+    const response = await axios.post('https://easy-pear-crayfish-yoke.cyclic.app/login', {
       email: user.email,
       password: user.password
     });
@@ -26,7 +26,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAP
 
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get('https://elab-restfulapi-production.up.railway.app/profile');
+    const response = await axios.get('https://easy-pear-crayfish-yoke.cyclic.app/profile');
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -37,7 +37,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete('https://elab-restfulapi-production.up.railway.app/logout');
+  await axios.delete('https://easy-pear-crayfish-yoke.cyclic.app/logout');
 });
 
 export const authSlice = createSlice({

@@ -11,8 +11,8 @@ const Navbar = () => {
           <li><strong><NavLink to="/" className="navbar-item">
             eLab
           </NavLink></strong></li>
-          <li><strong><NavLink to="/dashboard" className="navbar-item">
-            eLab
+          <li><strong><NavLink to="/login" className="navbar-item">
+            login
           </NavLink></strong></li>
         </ul>
       </nav>
