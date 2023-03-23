@@ -18,7 +18,7 @@ const EditUser = () => {
   useEffect(() => {
     const getUserById = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/users/${id}`);
+        const response = await axios.get(urlById);
         setNama(response.data.nama);
         setEmail(response.data.email);
         setRole(response.data.role);
@@ -34,7 +34,7 @@ const EditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:4000/users/${id}`, {
+      await axios.patch(urlById, {
         nama: nama,
         email: email,
         password: password,
