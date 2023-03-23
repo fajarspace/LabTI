@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import NavAdmin from "../components/NavAdmin";
 
-const EditUser = () => {
+const FormEditUser = () => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +12,7 @@ const EditUser = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+
   
   const userUrl = process.env.REACT_APP_USERS_URL;
   const urlById = `${userUrl}/${id}`;
@@ -55,14 +57,14 @@ const EditUser = () => {
             <form onSubmit={updateUser}>
               <p className="has-text-centered">{msg}</p>
               <div className="field">
-                <label className="label">Name</label>
+                <label className="label">Nama</label>
                 <div className="control">
                   <input
                     type="text"
                     className="input"
                     value={nama}
                     onChange={(e) => setNama(e.target.value)}
-                    placeholder="Name"
+                    placeholder="Nama"
                   />
                 </div>
               </div>
@@ -125,8 +127,8 @@ const EditUser = () => {
               </div>
             </form>
         </section>
-    </>
+      </>
   );
 };
 
-export default EditUser;
+export default FormEditUser;
