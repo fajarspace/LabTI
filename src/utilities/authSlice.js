@@ -9,24 +9,34 @@ const initialState = {
   message: ""
 }
 
-export const LoginUser = createAsyncThunk("user/LoginUser", async (user, thunkAPI) => {
-  try {
-    const response = await axios.post('https://easy-pear-crayfish-yoke.cyclic.app/login', {
-      email: user.email,
-      password: user.password
-    });
-    return response.data;
-  } catch (error) {
-    if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+// const baseUrl = process.env.REACT_APP_LOGIN_URL;
+// const profileUrl = process.env.REACT_APP_PROFILE_URL;
+// const logoutUrl = process.env.REACT_APP_LOGOUT_URL;
+// const urlById = `${baseUrl}/${id}`;
+
+export const LoginUser = createAsyncThunk(
+  'user/loginUser',
+  async (user, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(process.env.REACT_APP_LOGIN_URL, {
+        email: user.email,
+        password: user.password
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        const message = error.response.data.msg;
+        return rejectWithValue(message);
+      } else {
+        throw error;
+      }
     }
   }
-});
+);
 
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get('https://easy-pear-crayfish-yoke.cyclic.app/profile');
+    const response = await axios.get(process.env.REACT_APP_PROFILE_URL);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -37,7 +47,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete('https://easy-pear-crayfish-yoke.cyclic.app/logout');
+  await axios.delete(process.env.REACT_APP_LOGOUT_URL);
 });
 
 export const authSlice = createSlice({

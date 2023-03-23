@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import Layout from "./Layout";
-import Halo from "../components/Halo";
+import DashboardPage from "../components/DashboardPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getMe } from "../features/authSlice";
+import { getMe } from "../utilities/authSlice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -21,9 +20,7 @@ const Dashboard = () => {
   }, [isError, navigate]);
 
   return (
-    <Layout>
-      <Halo />
-    </Layout>
+      <DashboardPage />
   );
 };
 

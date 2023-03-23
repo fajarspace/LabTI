@@ -1,52 +1,32 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-// import { IoPerson, IoTime, IoHome, IoLogOut } from "react-icons/io5";
-import { LogOut, reset } from "../features/authSlice";
+import React from 'react'
+import { Link } from "react-router-dom";
+// import { BiAddToQueue } from 'react-icons/bi';
+// import { RiLogoutBoxRLine } from "react-icons/ri";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
-
-  const logout = () => {
-    dispatch(LogOut());
-    dispatch(reset());
-    navigate("/");
-  };
-
   return (
-    <div>
-      <nav className="container-fluid">
+    <>
+        <nav className='container-fluid' style={{'borderBottom':'1px solid lightgrey'}}>
         <ul>
-          <li><strong>
-            <NavLink to="/" className="navbar-item">
-              eLab
-            </NavLink></strong></li>
-          {/* <li><NavLink to={"/dashboard"}>
-          Dashboard
-          </NavLink></li> */}
-          <li>
-            <NavLink to={"/jadwal"}>
-              {/* <IoTime /> */} Jadwal
-            </NavLink>
+            <li><strong><Link to={'/'}>LAB TI</Link></strong></li>
+        </ul>
+        <ul>
+          {/* <li>
+            <Link to={`jadwal/add`}>
+              <BiAddToQueue/>
+            </Link>
           </li>
-          {user && user.role === "admin" && (
-            <li>
-              <NavLink to={"/users"}>
-                {/* <IoPerson /> Users */} User
-              </NavLink>
-            </li>
-          )}
+        <li><Link to={`/`}>
+          <RiLogoutBoxRLine/>
+        </Link></li> */}
+        <li>
+          <Link to={'/login'} >Login</Link>
+        </li>
         </ul>
-        <ul>
-          <li><button onClick={logout} className="">
-            Log out
-          </button></li>
-        </ul>
-      </nav>
-    </div>
-  );
-};
+        </nav>
+        <br />
+    </>
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const FormEditUser = () => {
+const EditUser = () => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,11 +11,14 @@ const FormEditUser = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+  
+  const userUrl = process.env.REACT_APP_USERS_URL;
+  const urlById = `${userUrl}/${id}`;
 
   useEffect(() => {
     const getUserById = async () => {
       try {
-        const response = await axios.get(`https://easy-pear-crayfish-yoke.cyclic.app/users/${id}`);
+        const response = await axios.get(`http://localhost:4000/users/${id}`);
         setNama(response.data.nama);
         setEmail(response.data.email);
         setRole(response.data.role);
@@ -31,7 +34,7 @@ const FormEditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://easy-pear-crayfish-yoke.cyclic.app/users/${id}`, {
+      await axios.patch(`http://localhost:4000/users/${id}`, {
         nama: nama,
         email: email,
         password: password,
@@ -46,12 +49,9 @@ const FormEditUser = () => {
     }
   };
   return (
-    <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Update User</h2>
-      <div className="card is-shadowless">
-        <div className="card-content">
-          <div className="content">
+    <>
+    <section className="container">
+    <NavAdmin/>
             <form onSubmit={updateUser}>
               <p className="has-text-centered">{msg}</p>
               <div className="field">
@@ -124,11 +124,9 @@ const FormEditUser = () => {
                 </div>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
+    </>
   );
 };
 
-export default FormEditUser;
+export default EditUser;

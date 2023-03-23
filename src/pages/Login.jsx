@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { LoginUser, reset } from "../features/authSlice";
+import { LoginUser, reset } from "../utilities/authSlice";
 
-import NavHome from "./NavHome";
+import "../static/css/custom.css";
+
+
+import Navbar from "../components/Navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,11 +31,10 @@ const Login = () => {
 
   return (
     <>
-      <section className="">
+    <Navbar />
         <article>
-          <NavHome />
           <main className="container">
-            <article className="grid">
+            <article className="grid card">
               <div>
                 <hgroup>
                   <h1>Log In</h1>
@@ -52,7 +54,7 @@ const Login = () => {
                     className="input"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="******"
+                    placeholder="Password*"
                   />
 
                   <button
@@ -63,7 +65,6 @@ const Login = () => {
                 </form>
               </div>
               <div>
-                {/* ISI BEBAS */}
               </div>
             </article>
           </main>
@@ -71,7 +72,6 @@ const Login = () => {
         <footer className="container-fluid">
           <small>Built with <a href="https://stuffcss.netlify.app" className="secondary">Stuff CSS</a></small>
         </footer>
-      </section>
     </>
   );
 };

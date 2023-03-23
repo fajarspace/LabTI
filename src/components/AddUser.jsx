@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import NavAdmin from "./NavAdmin";
 
-const FormTambahUser = () => {
+const usersUrl = process.env.REACT_APP_USERS_URL;
+
+const AddUser = () => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +17,7 @@ const FormTambahUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://easy-pear-crayfish-yoke.cyclic.app/users", {
+      await axios.post(usersUrl, {
         nama: nama,
         email: email,
         password: password,
@@ -29,12 +32,10 @@ const FormTambahUser = () => {
     }
   };
   return (
-    <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Add New User</h2>
-      <div className="card is-shadowless">
-        <div className="card-content">
-          <div className="content">
+		<>
+		
+    <section className="container">
+		<NavAdmin/>
             <form onSubmit={saveUser}>
               <p className="has-text-centered">{msg}</p>
               <div className="field">
@@ -69,7 +70,7 @@ const FormTambahUser = () => {
                     className="input"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="******"
+                    placeholder="Password*"
                   />
                 </div>
               </div>
@@ -81,7 +82,7 @@ const FormTambahUser = () => {
                     className="input"
                     value={konfirmPassword}
                     onChange={(e) => setkonfirmPassword(e.target.value)}
-                    placeholder="******"
+                    placeholder="Konfirmasi Password"
                   />
                 </div>
               </div>
@@ -107,11 +108,9 @@ const FormTambahUser = () => {
                 </div>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
+						</section>
+						</>
   );
 };
 
-export default FormTambahUser;
+export default AddUser;

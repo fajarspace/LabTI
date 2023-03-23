@@ -1,27 +1,27 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Login from "./components/Login";
 import Users from "./pages/Users";
 import Jadwal from "./pages/Jadwal";
-import TambahUser from "./pages/TambahUser";
-import EditUser from "./pages/EditUser";
-import TambahJadwal from "./pages/TambahJadwal";
-import EditJadwal from "./pages/EditJadwal";
+import Login from "./pages/Login";
+import AddJadwal from "./components/AddJadwal";
+import EditJadwal from "./components/EditJadwal";
+import AddUser from "./components/AddUser";
+import PatchUser from "./pages/PatchUser";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/users/tambah" element={<TambahUser />} />
-          <Route path="/users/edit/:id" element={<EditUser />} />
+          <Route path="/users/add" element={<AddUser />} />
+          <Route path="/users/edit/:id" element={<PatchUser />} />
           <Route path="/jadwal" element={<Jadwal />} />
-          <Route path="/jadwal/tambah" element={<TambahJadwal />} />
+          <Route path="/jadwal/add" element={<AddJadwal />} />
           <Route path="/jadwal/edit/:id" element={<EditJadwal />} />
         </Routes>
       </BrowserRouter>

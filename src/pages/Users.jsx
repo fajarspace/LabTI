@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import Layout from "./Layout";
-import Userlist from "../components/Userlist";
+import ListUsers from "../components/ListUsers";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getMe } from "../features/authSlice";
+import { getMe } from "../utilities/authSlice";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -23,9 +22,7 @@ const Users = () => {
     }
   }, [isError, user, navigate]);
   return (
-    <Layout>
-      <Userlist />
-    </Layout>
+      <ListUsers/>
   );
 };
 
