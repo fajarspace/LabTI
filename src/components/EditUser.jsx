@@ -120,7 +120,7 @@ const FormEditUser = () => {
                       onChange={(e) => setRole(e.target.value)}
                     >
                       <option value="admin">Admin</option>
-                      <option value="user">User</option>
+                      <option value="user">Praktikan</option>
                     </select>
                   </div>
                 </div>
