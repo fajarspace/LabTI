@@ -38,7 +38,7 @@ const ListJadwalInformatka = () => {
 
   return (
     <>
-    <h2>Jadwal Informatika</h2>
+    <h2>Jadwal Informatika 19 & 20</h2>
     {user && user.role === "admin" && (
         <Link className="outline" to={`/jadwal/tif/add`}>
           <BiAddToQueue/>
