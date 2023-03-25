@@ -84,7 +84,7 @@ const AddJadwalInformatika = () => {
         asisten2,
         praktikum
       });
-      navigate("/jadwal/tif");
+      navigate("/jadwal");
     } catch (error) {
       if (error.response) {
         setPesan('data tidak boleh kosong!');
@@ -93,6 +93,15 @@ const AddJadwalInformatika = () => {
     }
   };
   
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    // Lakukan proses pengiriman data
+    // Setelah proses selesai, panggil setIsLoading(false)
+  };
+
   return (
     <>
     <div className="dashboard">
@@ -288,13 +297,15 @@ const AddJadwalInformatika = () => {
                 <p>{pesan} <br /> {msg}</p>
               </div>
               <main>
-                <button
-                  style={{ width: "200px" }}
-                  role={"button"}
-                  type="submit"
-                >
-                  Tambah
-                </button>
+              <button
+                style={{ width: "200px" }}
+                role={"button"}
+                type="submit"
+                onChange={handleSubmit}
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Tambah"}
+              </button>
               </main>
             </form>
           </section>

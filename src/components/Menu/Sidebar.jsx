@@ -47,10 +47,10 @@ const Sidebar = () => {
         </Link></li> */}
         </ul>
         <ul>
-        <li><Link className="link" onClick={logout} to={`/`}>
+        <li><Link to={`/about`}>
           About
         </Link></li>
-        <li><Link className="link" onClick={logout} to={`/`}>
+        <li><Link onClick={logout} to={`/`}>
           <RiLogoutBoxRLine/>
         </Link></li>
         </ul>

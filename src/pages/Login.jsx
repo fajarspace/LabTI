@@ -5,7 +5,6 @@ import { LoginUser, reset } from "../utilities/authSlice";
 
 import "../static/css/custom.css";
 
-
 import Navbar from "../components/Navbar";
 
 const Login = () => {

@@ -8,6 +8,7 @@ import AddJadwalInformatika from "./components/jadwal/AddJadwalInformatika";
 import EditJadwalInformatika from "./components/jadwal/EditJadwalInformatika";
 import AddUser from "./components/AddUser";
 import PatchUser from "./pages/PatchUser";
+import About from "./components/Menu/About";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/add" element={<AddUser />} />
           <Route path="/users/edit/:id" element={<PatchUser />} />
