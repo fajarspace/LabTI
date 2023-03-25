@@ -72,6 +72,7 @@ const Login = () => {
         <footer className="container-fluid">
           <small>Built with <a href="https://stuffcss.netlify.app" className="secondary">Stuff CSS</a></small>
         </footer>
+        <br />
     </>
   );
 };

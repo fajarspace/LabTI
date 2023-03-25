@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
-import Jadwal from "./pages/Jadwal";
 import Login from "./pages/Login";
-import AddJadwal from "./components/AddJadwal";
-import EditJadwal from "./components/EditJadwal";
+import Jadwal from "./pages/Jadwal";
+import AddJadwalInformatika from "./components/jadwal/AddJadwalInformatika";
+import EditJadwalInformatika from "./components/jadwal/EditJadwalInformatika";
 import AddUser from "./components/AddUser";
 import PatchUser from "./pages/PatchUser";
 
@@ -21,8 +21,8 @@ function App() {
           <Route path="/users/add" element={<AddUser />} />
           <Route path="/users/edit/:id" element={<PatchUser />} />
           <Route path="/jadwal" element={<Jadwal />} />
-          <Route path="/jadwal/add" element={<AddJadwal />} />
-          <Route path="/jadwal/edit/:id" element={<EditJadwal />} />
+          <Route path="/jadwal/tif/add" element={<AddJadwalInformatika />} />
+          <Route path="/jadwal/tif/edit/:id" element={<EditJadwalInformatika />} />
         </Routes>
       </BrowserRouter>
     </div>

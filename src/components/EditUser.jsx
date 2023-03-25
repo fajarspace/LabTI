@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import NavAdmin from "../components/NavAdmin";
+import Sidebar from "./Menu/Sidebar";
 
 const FormEditUser = () => {
   const [nama, setNama] = useState("");
@@ -52,10 +52,17 @@ const FormEditUser = () => {
   };
   return (
     <>
-    <section className="container">
-    <NavAdmin/>
-            <form onSubmit={updateUser}>
-              <p className="has-text-centered">{msg}</p>
+    <div className="dashboard">
+<div className="sidebar">
+      <Sidebar/>
+    </div>
+    <div className="container">
+    <form onSubmit={updateUser}>
+              <div className="card" >
+                <hgroup>
+                  <h1>Edit user</h1>
+                  <h2>Edit</h2>
+                </hgroup>
               <div className="field">
                 <label className="label">Nama</label>
                 <div className="control">
@@ -117,6 +124,7 @@ const FormEditUser = () => {
                     </select>
                   </div>
                 </div>
+                <p className="has-text-centered">{msg}</p>
               </div>
               <div className="field">
                 <div className="control">
@@ -125,8 +133,10 @@ const FormEditUser = () => {
                   </button>
                 </div>
               </div>
+              </div>
             </form>
-        </section>
+    </div>
+    </div>
       </>
   );
 };

@@ -1,4 +1,8 @@
 /* Grid */
+button{
+  background-color: #1e88e5 !important;
+  border: none !important;
+}
 body > main {
     display: flex;
     flex-direction: column;
@@ -81,3 +85,9 @@ body > main {
   body > footer {
     padding: 1rem 0;
   }
+
+
+  /* .field{
+    margin-left: 20px;
+    margin-right: 20px;
+  } */

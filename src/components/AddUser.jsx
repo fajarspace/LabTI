@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavAdmin from "./NavAdmin";
+import Sidebar from "./Menu/Sidebar";
 
 const usersUrl = process.env.REACT_APP_USERS_URL;
 
@@ -33,11 +33,18 @@ const AddUser = () => {
   };
   return (
 		<>
-		
-    <section className="container">
-		<NavAdmin/>
-            <form onSubmit={saveUser}>
-              <p className="has-text-centered">{msg}</p>
+		<div className="dashboard">
+<div className="sidebar">
+      <Sidebar/>
+    </div>
+    <div className="container">
+    <form onSubmit={saveUser}>
+              <div className="card">
+              <hgroup>
+                  <h1>Tambah user</h1>
+                  <h2>Tambah</h2>
+                </hgroup>
+              
               <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
@@ -94,11 +101,13 @@ const AddUser = () => {
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                     >
+                       <option value="admin">-- pilih role --</option>
                       <option value="admin">Admin</option>
-                      <option value="user">User</option>
+                      <option value="user">Praktikan</option>
                     </select>
                   </div>
                 </div>
+                <p className="has-text-centered">{msg}</p>
               </div>
               <div className="field">
                 <div className="control">
@@ -107,9 +116,11 @@ const AddUser = () => {
                   </button>
                 </div>
               </div>
+              </div>
             </form>
-						</section>
-						</>
+    </div>
+    </div>
+		</>
   );
 };
 

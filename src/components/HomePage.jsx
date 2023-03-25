@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
+// import SearchForm from "./SearchForm";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_URL;
 
@@ -28,14 +29,16 @@ const HomePage = () => {
   return (
     <>
     <section>
-      <div className="container-fluid">
+      {/* <SearchForm/> */}
+      <div className="table-container container-fluid">
         {/* <Link to={'/dashboard'}> <u> dashboard</u></Link> */}
         {/* <Link to={'/login'}> <u> login</u></Link>
         <Link to={'/test'}> <u> test</u></Link> */}
-        <table className="table is-striped is-fullwidth">
+        <table>
           <thead>
             <tr>
               <th>No</th>
+              <th>Program Studi</th>
               <th>Kelas</th>
               <th>Hari</th>
               <th>Waktu</th>
@@ -49,6 +52,7 @@ const HomePage = () => {
             {jadwal.map((jadwal, index) => (
               <tr key={jadwal.id}>
                 <td>{index + 1}</td>
+                <td>{jadwal.programStudi}</td>
                 <td>{jadwal.kelas}</td>
                 <td>{jadwal.hari}</td>
                 <td>{jadwal.waktu}</td>

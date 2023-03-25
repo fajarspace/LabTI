@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import NavAdmin from "./NavAdmin";
+import Sidebar from "./Menu/Sidebar";
 import { BiAddToQueue } from 'react-icons/bi';
 import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
@@ -26,11 +26,20 @@ const ListUsers = () => {
     getUsers();
   };
   return (
-    <div className="container-fluid" >
-      <NavAdmin/>
-      <Link role={'button'} className="outline" to={`/users/add`}>
-            <BiAddToQueue />
-        </Link>
+    <>
+
+
+<div className="dashboard">
+<div className="sidebar">
+      <Sidebar/>
+    </div>
+    <div className="container-fluid">
+      <hgroup>
+        <h1>Users</h1>
+        <h2>Admin dapat menambahkan user</h2>
+      </hgroup>
+      <Link to={'/users/add'} ><BiAddToQueue/></Link>
+    <div className="table-container">
       <table role='grid'>
         <thead>
           <tr>
@@ -72,6 +81,9 @@ const ListUsers = () => {
         </tbody>
       </table>
     </div>
+    </div>
+    </div>
+    </>
   )
 }
 

@@ -5,6 +5,8 @@ import { store } from './utilities/store';
 import App from './App';
 // import "bulma/css/bulma.css";
 import "./static/css/stuff.min.css"
+import "./static/css/table.css"
+import "./static/css/dashboard.css"
 // import { } from "../node_modules/stuffcss/dist/css/stuff.min.css";
 // import { } from "https://unpkg.com/stuffcss@1.1.0/dist/js/stuff.min.js";
 import axios from "axios";

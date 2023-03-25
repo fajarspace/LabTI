@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
         <nav className='container-fluid' style={{'borderBottom':'1px solid lightgrey'}}>
         <ul>
-            <li><strong><Link to={'/'}>LAB TI</Link></strong></li>
+            <li><strong><Link to={'/'}>LAB UPB</Link></strong></li>
         </ul>
         <ul>
           {/* <li>

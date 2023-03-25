@@ -1,23 +1,30 @@
 import React from "react";
+// import { Link } from "react-router-dom";
+// import { RiLogoutBoxRLine } from "react-icons/ri";
+// import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import NavAdmin from ".//NavAdmin";
+// import { LogOut, reset } from "../utilities/authSlice";
+import Sidebar from "./Menu/Sidebar";
 
 const DashboardPage = () => {
   const { user } = useSelector((state) => state.auth);
   return (
-    <div className="container-fluid" >
-        <NavAdmin/>
-      <hgroup>
-        {/* <h1 className="title">Dashboard</h1> */}
-        <h2 className="subtitle">
+    <>
+
+<div className="dashboard">
+<div className="sidebar">
+      <Sidebar/>
+    </div>
+    <div className="container-fluid">
+    <hgroup>
+        <h1>Dashboard</h1>
+        <h2>
           Welcome Back <strong>{user && user.nama}</strong>
         </h2>
       </hgroup>
-      {/* <hgroup style={{position:"relative", bottom:"300px", top:"400px"}}>
-        <h1> <Link target={'_blank'} to={'https://github.com/fajarspace/LabTI-RestfulApi'}>Api Documentation</Link></h1>
-      </hgroup> */}
     </div>
+    </div>
+    </>
   );
 };
 

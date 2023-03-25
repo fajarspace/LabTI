@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOut, reset } from "../utilities/authSlice";
+import { LogOut, reset } from "../../utilities/authSlice";
 
-const Navbar = () => {
+const Sidebar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
@@ -18,8 +18,8 @@ const Navbar = () => {
     };
   return (
     <>
-        <div className="menu">
-      <ul>
+        <nav className='container-fluid' style={{'borderBottom':'1px solid lightgrey'}}>
+        <ul>
             <li><strong><Link className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
         {/* <li>
             <Link to={`/jadwal/add`}>
@@ -31,19 +31,12 @@ const Navbar = () => {
           </li>
         
         {user && user.role === "admin" && (
-
-              <details>
-                <summary>Accordion 1</summary>
-                <p><Link className="link" to={"/users"}>
-                {/* <IoPerson /> Users */} User
-              </Link></p>
-              </details>
               
-       
+              <li>
+              <Link className="link" to={'/users'} >User</Link>
+            </li>
           )}
-          <li><Link className="link" onClick={logout} to={`/`}>
-          <RiLogoutBoxRLine/>
-        </Link></li>
+
           {/* <li>
             <Link to={`jadwal/add`}>
               <BiAddToQueue/>
@@ -53,9 +46,18 @@ const Navbar = () => {
           <RiLogoutBoxRLine/>
         </Link></li> */}
         </ul>
-      </div>
+        <ul>
+        <li><Link className="link" onClick={logout} to={`/`}>
+          About
+        </Link></li>
+        <li><Link className="link" onClick={logout} to={`/`}>
+          <RiLogoutBoxRLine/>
+        </Link></li>
+        </ul>
+      </nav>
+      <br />
     </>
   )
 }
 
-export default Navbar
+export default Sidebar

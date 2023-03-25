@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import NavAdmin from "./NavAdmin";
+import NavAdmin from "../NavAdmin";
 
-const EditJadwal = () => {
+const EditJadwalIndustri = () => {
+  const [programStudi, setProgramStudi] = useState("Teknik Industri");
   const [kelas, setKelas] = useState("");
   const [hari, setHari] = useState("");
   const [waktu, setWaktu] = useState("");
+  const [ruang, setRuang] = useState("");
   const [dosen, setDosen] = useState("");
   const [asisten1, setAsisten1] = useState("");
   const [asisten2, setAsisten2] = useState("");
   const [praktikum, setPraktikum] = useState("");
+  const [msg, setMsg] = useState("");
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const jadwalUrl = process.env.REACT_APP_JADWAL_URL;
+  const jadwalUrl = process.env.REACT_APP_JADWAL_TIN_URL;
   const urlById = `${jadwalUrl}/${id}`;
 
   useEffect(() => {
@@ -26,9 +29,11 @@ const EditJadwal = () => {
     e.preventDefault();
     try {
       await axios.patch(urlById, {
+        programStudi,
         kelas,
         hari,
         waktu,
+        ruang,
         dosen,
         asisten1,
         asisten2,
@@ -36,15 +41,19 @@ const EditJadwal = () => {
       });
       navigate("/jadwal");
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
     }
   };
 
   const getJadwalById = async () => {
     const response = await axios.get(urlById);
+    setProgramStudi(response.data.programStudi);
     setKelas(response.data.kelas);
     setHari(response.data.hari);
     setWaktu(response.data.waktu);
+    setRuang(response.data.ruang);
     setDosen(response.data.dosen);
     setAsisten1(response.data.asisten1);
     setAsisten2(response.data.asisten2);
@@ -57,10 +66,20 @@ const EditJadwal = () => {
     <NavAdmin/>
         <form onSubmit={updateJadwal}>
         <div className="card">
-          <hgroup>
-            <h1>Update jadwal</h1>
-            <h2>update</h2>
-          </hgroup>
+      <hgroup>
+        <h1>Tambah jadwal Industri</h1>
+        <h2>tambah</h2>
+        <p>{msg}</p>
+      </hgroup>
+      <div className="field">
+        <label className="label">Program Studi</label>
+        <input
+          type="text"
+          defaultValue={programStudi}
+          onChange={(e) => setProgramStudi(e.target.value)}
+          disabled
+        />
+        </div>
         <div className="field">
             <label className="label">Kelas</label>
             <select value={kelas} onChange={(e) => setKelas(e.target.value)}>
@@ -131,6 +150,16 @@ const EditJadwal = () => {
             </div>
           </div>
           <div className="field">
+            <label className="label">Ruang Lab</label>
+            <div className="control">
+            <select value={ruang} onChange={(e) => setRuang(e.target.value)}>
+              <option value="">Pilih lab</option>
+              <option value="Lab TI">Lab TI</option>
+              <option value="Lab Industri">Lab Industri</option>
+            </select>
+            </div>
+          </div>
+          <div className="field">
             <label className="label">Asisten Lab</label>
             <div className="control">
             <select value={asisten1} onChange={(e) => setAsisten1(e.target.value)}>
@@ -180,4 +209,4 @@ const EditJadwal = () => {
   );
 };
 
-export default EditJadwal;
+export default EditJadwalIndustri;
