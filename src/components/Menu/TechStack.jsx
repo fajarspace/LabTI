@@ -22,6 +22,12 @@ const TechStack = () => {
           <li>Axios</li>
           <li>react-redux</li>
         </ul>
+        <li>Deploy on</li>
+        <ul>
+          <li>Cyclic.sh</li>
+          <li>Netlify</li>
+          <li>Cloud Clever</li>
+        </ul>
       </ul>
     </details>
     </>
