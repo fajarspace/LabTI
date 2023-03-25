@@ -67,7 +67,7 @@ const EditJadwalInformatika = () => {
   ));
 
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(false);
   const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
   const urlById = `${jadwalUrl}/${id}`;
 
@@ -76,6 +76,7 @@ const EditJadwalInformatika = () => {
   }, []);
   const updateJadwal = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await axios.patch(urlById, {
         programStudi,
@@ -305,13 +306,14 @@ const EditJadwalInformatika = () => {
                 <p>{pesan} <br /> {msg}</p>
               </div>
               <main>
-                <button
-                  style={{ width: "200px" }}
-                  role={"button"}
-                  type="submit"
-                >
-                  Update
-                </button>
+              <button
+                style={{ width: "200px" }}
+                role={"button"}
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Update"}
+              </button>
               </main>
             </form>
           </section>

@@ -69,9 +69,10 @@ const AddJadwalInformatika = () => {
   ));
   
   const navigate = useNavigate();
-  
+  const [isLoading, setIsLoading] = useState(false);
   const saveJadwal = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await axios.post(jadwalUrl, {
         programStudi,
@@ -92,15 +93,7 @@ const AddJadwalInformatika = () => {
       }
     }
   };
-  
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    // Lakukan proses pengiriman data
-    // Setelah proses selesai, panggil setIsLoading(false)
-  };
 
   return (
     <>
@@ -301,7 +294,6 @@ const AddJadwalInformatika = () => {
                 style={{ width: "200px" }}
                 role={"button"}
                 type="submit"
-                onChange={handleSubmit}
                 disabled={isLoading}
               >
                 {isLoading ? "Loading..." : "Tambah"}
