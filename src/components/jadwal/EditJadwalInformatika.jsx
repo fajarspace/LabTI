@@ -130,7 +130,6 @@ const EditJadwalInformatika = () => {
                     type="text"
                     defaultValue={programStudi}
                     onChange={(e) => setProgramStudi(e.target.value)}
-                    disabled
                   />
                 </div>
 
