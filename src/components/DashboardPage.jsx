@@ -11,19 +11,19 @@ const DashboardPage = () => {
   return (
     <>
 
-<div className="dashboard">
-<div className="sidebar">
-      <Sidebar/>
-    </div>
-    <div className="container-fluid">
-    <hgroup>
-        <h1>Dashboard</h1>
-        <h2>
-          Welcome Back <strong>{user && user.nama}</strong>
-        </h2>
-      </hgroup>
-    </div>
-    </div>
+      <div className="dashboard">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="container-fluid">
+          <hgroup>
+            <h1>Dashboard</h1>
+            <h2>
+              Welcome Back <strong>{user && user.nama}</strong>
+            </h2>
+          </hgroup>
+        </div>
+      </div>
     </>
   );
 };

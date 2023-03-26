@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from "react-router-dom";
 // import { BiAddToQueue } from 'react-icons/bi';
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import { FiUsers } from "react-icons/fi";
+import { GrSchedule } from "react-icons/gr";
+import { AiOutlineDashboard } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../../utilities/authSlice";
@@ -20,7 +23,7 @@ const Sidebar = () => {
     <>
       <nav className='container-fluid' style={{ 'borderBottom': '1px solid lightgrey' }}>
         <ul>
-          <li><strong><Link style={{ color: "black" }} className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
+          <li><strong><Link style={{ color: "black" }} className="link" to={'/dashboard'}>Dashb<AiOutlineDashboard />ard</Link></strong></li>
           {/* <li>
             <Link to={`/jadwal/add`}>
               <BiAddToQueue/>
@@ -29,26 +32,7 @@ const Sidebar = () => {
           {/* <li>
             <Link className="link" to={'/jadwal'} >Jadwal</Link>
           </li> */}
-          <li>
-            <details role="list" dir="rtl">
-              <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/jadwal'} >Jadwal</Link></summary>
-              <ul role="listbox">
-                <li><Link className="link" to={'/jadwal/tif/add'} >Tambah</Link></li>
-              </ul>
-            </details>
-          </li>
 
-          {user && user.role === "admin" && (
-            <li>
-              <details role="list" dir="rtl">
-                <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/users'} >User</Link></summary>
-                <ul role="listbox">
-                  <li><Link className="link" to={'/users/add'} >Tambah</Link></li>
-                </ul>
-              </details>
-            </li>
-
-          )}
 
           {/* <li>
             <Link to={`jadwal/add`}>
@@ -60,6 +44,26 @@ const Sidebar = () => {
         </Link></li> */}
         </ul>
         <ul>
+          <li>
+            <details role="list" dir="rtl">
+              <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/jadwal'} ><GrSchedule /> Jadwal</Link></summary>
+              <ul role="listbox">
+                <li><Link className="link" to={'/jadwal/tif/add'} >Tambah</Link></li>
+              </ul>
+            </details>
+          </li>
+
+          {user && user.role === "admin" && (
+            <li>
+              <details role="list" dir="rtl">
+                <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/users'} ><FiUsers /> User</Link></summary>
+                <ul role="listbox">
+                  <li><Link className="link" to={'/users/add'} >Tambah</Link></li>
+                </ul>
+              </details>
+            </li>
+
+          )}
           <li><Link className='link' to={`/about`}>
             About
           </Link></li>
