@@ -38,7 +38,11 @@ const ListJadwalInformatika = () => {
 
   return (
     <>
-      <h2>Jadwal Informatika 19 & 20</h2>
+      <hr />
+      <hgroup>
+        <h1>Jadwal Informatika 19 & 20</h1>
+        <h2>jadwal dapat berubah sewaktu waktu, periksa secara berkala</h2>
+      </hgroup>
       {user && user.role === "admin" && (
         <Link className="outline" to={`/jadwal/tif/add`}>
           <BiAddToQueue />

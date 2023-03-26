@@ -42,21 +42,12 @@ function SearchForm() {
       .then((data) => {
         setJadwal(data);
         setIsLoading(false);
-        console.log(data); // Debugging purpose only
-        // render the fetched data
-        const jadwalList = data.map((jadwal, index) => (
-          <li key={index}>
-            {jadwal.hari} - {jadwal.jam}
-          </li>
-        ));
-        // update the UI with the fetched data
-        ReactDOM.render(<ul>{jadwalList}</ul>, document.getElementById("jadwal-list"));
+        console.log(data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
-
 
   return (
     <div>
@@ -146,43 +137,50 @@ function SearchForm() {
         </div>
       </form>
 
-      {jadwal.length > 0 && (
+      {jadwal.length > 0 ? (
         <>
           <hgroup>
             <h1>Hasil pencarian :</h1>
           </hgroup>
-          <table>
-            <thead>
-              <tr>
-                <th>Program Studi</th>
-                <th>Kelas</th>
-                <th>Hari</th>
-                <th>Waktu</th>
-                <th>Ruang</th>
-                <th>Dosen</th>
-                <th>Asisten 1</th>
-                <th>Asisten 2</th>
-                <th>Praktikum</th>
-              </tr>
-            </thead>
-            <tbody>
-              {jadwal.map((jadwalItem) => (
-                <tr key={jadwalItem.uuid}>
-                  <td>{jadwalItem.programStudi}</td>
-                  <td>{jadwalItem.kelas}</td>
-                  <td>{jadwalItem.hari}</td>
-                  <td>{jadwalItem.waktu}</td>
-                  <td>{jadwalItem.ruang}</td>
-                  <td>{jadwalItem.dosen}</td>
-                  <td>{jadwalItem.asisten1}</td>
-                  <td>{jadwalItem.asisten2}</td>
-                  <td>{jadwalItem.praktikum}</td>
+          <div className="table-container">
+            <table className="table" role={'grid'}>
+              <thead>
+                <tr>
+                  <th>Program Studi</th>
+                  <th>Kelas</th>
+                  <th>Hari</th>
+                  <th>Waktu</th>
+                  <th>Ruang</th>
+                  <th>Dosen</th>
+                  <th>Asisten 1</th>
+                  <th>Asisten 2</th>
+                  <th>Praktikum</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {jadwal.map((jadwalItem) => (
+                  <tr key={jadwalItem.uuid}>
+                    <td>{jadwalItem.programStudi}</td>
+                    <td>{jadwalItem.kelas}</td>
+                    <td>{jadwalItem.hari}</td>
+                    <td>{jadwalItem.waktu}</td>
+                    <td>{jadwalItem.ruang}</td>
+                    <td>{jadwalItem.dosen}</td>
+                    <td>{jadwalItem.asisten1}</td>
+                    <td>{jadwalItem.asisten2}</td>
+                    <td>{jadwalItem.praktikum}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
+      ) : (
+        <hgroup>
+          <h2>Tidak ada data yang tersedia.</h2>
+        </hgroup>
       )}
+
 
     </div>
   );
