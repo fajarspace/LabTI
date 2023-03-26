@@ -139,8 +139,13 @@ function SearchForm() {
 
       {jadwal.length > 0 ? (
         <>
+          {/* <hgroup>
+            <h1></h1>
+          </hgroup> */}
           <hgroup>
-            <h1>Hasil pencarian :</h1>
+            <h1>
+              {isLoading ? "Sedang mencari.." : "Hasil pencarian :"}
+            </h1>
           </hgroup>
           <div className="table-container">
             <table className="table" role={'grid'}>
