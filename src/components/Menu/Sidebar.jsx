@@ -64,9 +64,9 @@ const Sidebar = () => {
             </li>
 
           )}
-          <li><Link className='link' to={`/about`}>
+          {/* <li><Link className='link' to={`/about`}>
             About
-          </Link></li>
+          </Link></li> */}
           <li><Link style={{ color: "red" }} onClick={logout} to={`/`}>
             <RiLogoutBoxRLine />
           </Link></li>
