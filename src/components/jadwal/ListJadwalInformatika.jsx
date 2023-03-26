@@ -42,16 +42,16 @@ const ListJadwalInformatika = () => {
         <h1>Jadwal Informatika 19 & 20</h1>
         <h2>jadwal dapat berubah sewaktu waktu</h2>
       </hgroup>
-      {user && user.role === "admin" && (
+      {/* {user && user.role === "admin" && (
         <Link className="outline" to={`/jadwal/tif/add`}>
           <BiAddToQueue />
         </Link>
-      )}
+      )} */}
 
       {jadwalinformatika.length > 0 ? (
         <>
           <div className="table-container">
-            <table className="table" role={'grid'}>
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">No</th>

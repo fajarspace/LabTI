@@ -5,6 +5,7 @@ import { store } from './utilities/store';
 import App from './App';
 // import "bulma/css/bulma.css";
 import "./static/css/stuff.min.css"
+// import "./static/css/pico.min.css"
 import "./static/css/table.css"
 import "./static/css/dashboard.css"
 // import { } from "../node_modules/stuffcss/dist/css/stuff.min.css";

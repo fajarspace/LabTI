@@ -7,34 +7,47 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../../utilities/authSlice";
 
 const Sidebar = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { user } = useSelector((state) => state.auth);
-  
-    const logout = () => {
-      dispatch(LogOut());
-      dispatch(reset());
-      navigate("/");
-    };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+  };
   return (
     <>
-        <nav className='container-fluid' style={{'borderBottom':'1px solid lightgrey'}}>
+      <nav className='container-fluid' style={{ 'borderBottom': '1px solid lightgrey' }}>
         <ul>
-            <li><strong><Link className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
-        {/* <li>
+          <li><strong><Link style={{ color: "black" }} className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
+          {/* <li>
             <Link to={`/jadwal/add`}>
               <BiAddToQueue/>
             </Link>
           </li> */}
-          <li>
+          {/* <li>
             <Link className="link" to={'/jadwal'} >Jadwal</Link>
+          </li> */}
+          <li>
+            <details role="list" dir="rtl">
+              <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/jadwal'} >Jadwal</Link></summary>
+              <ul role="listbox">
+                <li><Link className="link" to={'/jadwal/tif/add'} >Tambah</Link></li>
+              </ul>
+            </details>
           </li>
-        
-        {user && user.role === "admin" && (
-              
-              <li>
-              <Link className="link" to={'/users'} >User</Link>
+
+          {user && user.role === "admin" && (
+            <li>
+              <details role="list" dir="rtl">
+                <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/users'} >User</Link></summary>
+                <ul role="listbox">
+                  <li><Link className="link" to={'/users/add'} >Tambah</Link></li>
+                </ul>
+              </details>
             </li>
+
           )}
 
           {/* <li>
@@ -47,12 +60,12 @@ const Sidebar = () => {
         </Link></li> */}
         </ul>
         <ul>
-        <li><Link to={`/about`}>
-          About
-        </Link></li>
-        <li><Link onClick={logout} to={`/`}>
-          <RiLogoutBoxRLine/>
-        </Link></li>
+          <li><Link className='link' to={`/about`}>
+            About
+          </Link></li>
+          <li><Link style={{ color: "red" }} onClick={logout} to={`/`}>
+            <RiLogoutBoxRLine />
+          </Link></li>
         </ul>
       </nav>
       <br />

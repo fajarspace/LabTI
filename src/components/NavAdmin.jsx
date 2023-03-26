@@ -7,21 +7,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../utilities/authSlice";
 
 const Navbar = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { user } = useSelector((state) => state.auth);
-  
-    const logout = () => {
-      dispatch(LogOut());
-      dispatch(reset());
-      navigate("/");
-    };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+  };
   return (
     <>
-        <div className="menu">
-      <ul>
-            <li><strong><Link className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
-        {/* <li>
+      <div className="menu">
+        <ul>
+          <li><strong><Link className="link" to={'/dashboard'}>Dashboard</Link></strong></li>
+          {/* <li>
             <Link to={`/jadwal/add`}>
               <BiAddToQueue/>
             </Link>
@@ -29,21 +29,21 @@ const Navbar = () => {
           <li>
             <Link className="link" to={'/jadwal'} >Jadwal</Link>
           </li>
-        
-        {user && user.role === "admin" && (
 
-              <details>
-                <summary>Accordion 1</summary>
-                <p><Link className="link" to={"/users"}>
+          {user && user.role === "admin" && (
+
+            <details>
+              <summary>Accordion 1</summary>
+              <p><Link className="link" to={"/users"}>
                 {/* <IoPerson /> Users */} User
               </Link></p>
-              </details>
-              
-       
+            </details>
+
+
           )}
           <li><Link className="link" onClick={logout} to={`/`}>
-          <RiLogoutBoxRLine/>
-        </Link></li>
+            <RiLogoutBoxRLine />
+          </Link></li>
           {/* <li>
             <Link to={`jadwal/add`}>
               <BiAddToQueue/>

@@ -125,7 +125,7 @@ function SearchForm() {
               </select>
               <div style={{ display: "flex" }}>
                 <button type="submit">
-                  {isLoading ? "Loading.." : "Filter"}
+                  {isLoading ? <><div aria-busy="true"></div></> : "Filter"}
                 </button> &emsp;
                 <button className='red' type="reset" onClick={() => setJadwal([])}>
                   Reset
@@ -133,9 +133,10 @@ function SearchForm() {
               </div>
             </div>
             <div className='faq'>
+              <div className='dark' ></div>
               <hgroup>
                 <h1>FAQ</h1>
-                <h2 style={{ textDecoration: "underline" }}>Pertanyaan seputar praktikum</h2>
+                <mark>Pertanyaan seputar praktikum</mark>
               </hgroup>
               <details>
                 <summary>Apakah boleh kita mengikuti praktikum di kelas lain?</summary>
@@ -162,9 +163,8 @@ function SearchForm() {
                 {isLoading ? <><p>Memuat data</p><progress></progress></> : "Hasil filter :"}
               </p>
             </hgroup>
-            bagaimana cara mengatasi nya
             <div className="table-container">
-              <table className="table" role={'grid'}>
+              <table className="table">
                 <thead>
                   <tr>
                     <th>Program Studi</th>

@@ -29,60 +29,60 @@ const ListUsers = () => {
     <>
 
 
-<div className="dashboard">
-<div className="sidebar">
-      <Sidebar/>
-    </div>
-    <div className="container-fluid">
-      <hgroup>
-        <h1>Users</h1>
-        <h2>Admin dapat menambahkan user</h2>
-      </hgroup>
-      <Link to={'/users/add'} ><BiAddToQueue/></Link>
-    <div className="table-container">
-      <table role='grid'>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={user.uuid}>
-              <td>{index + 1}</td>
-              <td>{user.nama}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                  <Link
-                    to={`/users/edit/${user.uuid}`}
-                    className="button is-small is-info mr-2"
-                  >
-                    <kbd style={{"backgroundColor":'yellow', "color":"black", fontSize:"20px"}}><FiEdit/></kbd>
-                  </Link> &nbsp;
-             
-                  <Link
-                    onClick={() => {
-                      if (window.confirm("Apakah Anda yakin ingin menghapus User ini?")) {
-                        window.alert('Hapus user berhasil!')
-                        deleteUser(user.uuid);
-                      }
-                    }}
-                  >
-                    <kbd style={{ backgroundColor: "red", fontSize:"20px" }}><IoMdTrash/></kbd>
-                  </Link>
-                </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    </div>
-    </div>
+      <div className="dashboard">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="container-fluid">
+          <hgroup>
+            <h1>Users</h1>
+            <h2>Admin dapat menambahkan user</h2>
+          </hgroup>
+          {/* <Link to={'/users/add'} ><BiAddToQueue/></Link> */}
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr key={user.uuid}>
+                    <td>{index + 1}</td>
+                    <td>{user.nama}</td>
+                    <td>{user.email}</td>
+                    <td>{user.role}</td>
+                    <td>
+                      <Link
+                        to={`/users/edit/${user.uuid}`}
+                        className="button is-small is-info mr-2"
+                      >
+                        <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
+                      </Link> &nbsp;
+
+                      <Link
+                        onClick={() => {
+                          if (window.confirm("Apakah Anda yakin ingin menghapus User ini?")) {
+                            window.alert('Hapus user berhasil!')
+                            deleteUser(user.uuid);
+                          }
+                        }}
+                      >
+                        <kbd style={{ backgroundColor: "red", fontSize: "20px" }}><IoMdTrash /></kbd>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

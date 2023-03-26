@@ -31,44 +31,44 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <article>
-        <main className="container">
-          <article className="grid card">
-            <div>
-              <hgroup>
-                <h1>Log In</h1>
-                <h2>Khusus Asisten</h2>
-              </hgroup>
-              <form onSubmit={Auth} className="box">
 
-                <input
-                  type="text"
-                  className="input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                />
-                <input
-                  type="password"
-                  className="input"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password*"
-                />
+      <main className="container">
+        <article className="grid">
+          <div>
+            <hgroup>
+              <h1>Log In</h1>
+              <h2>Khusus Asisten</h2>
+            </hgroup>
+            <form onSubmit={Auth} className="box">
 
-                <button
-                  type="submit"
-                >
-                  {isLoading ? "Loading..." : "Login"}
-                </button>
-                <p>{message}</p>
-              </form>
-            </div>
-            <div>
-            </div>
-          </article>
-        </main>
-      </article>
+              <input
+                type="text"
+                className="input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+              <input
+                type="password"
+                className="input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password*"
+              />
+
+              <button
+                type="submit"
+              >
+                {isLoading ? "Loading..." : "Login"}
+              </button>
+              <p>{message}</p>
+            </form>
+          </div>
+          <div>
+          </div>
+        </article>
+      </main>
+
       <footer className="container-fluid">
         <small>Built with <a href="https://stuffcss.netlify.app" className="secondary">Stuff CSS</a></small>
       </footer>
