@@ -20,7 +20,7 @@ const Dashboard = () => {
   }, [isError, navigate]);
 
   return (
-      <DashboardPage />
+    <DashboardPage />
   );
 };
 

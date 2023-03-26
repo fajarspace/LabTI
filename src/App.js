@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
-import Login from "./pages/Login";
+import LoginPages from "./pages/Login";
 import Jadwal from "./pages/Jadwal";
 import AddJadwalInformatika from "./components/jadwal/AddJadwalInformatika";
 import EditJadwalInformatika from "./components/jadwal/EditJadwalInformatika";
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPages />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/users" element={<Users />} />
