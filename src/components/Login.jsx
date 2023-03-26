@@ -40,7 +40,7 @@ const Login = () => {
                 <h2>Khusus Asisten</h2>
               </hgroup>
               <form onSubmit={Auth} className="box">
-                {/* {isError && <p className="has-text-centered">{message}</p>} */}
+
                 <input
                   type="text"
                   className="input"
@@ -61,6 +61,7 @@ const Login = () => {
                 >
                   {isLoading ? "Loading..." : "Login"}
                 </button>
+                <p>{message}</p>
               </form>
             </div>
             <div>
