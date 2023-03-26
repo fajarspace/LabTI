@@ -11,6 +11,7 @@ const Home = () => {
         <Navbar />
         <div className='container-fluid'>
           <SearchForm />
+          <hr />
           <ListJadwalInformatika />
         </div>
       </main>

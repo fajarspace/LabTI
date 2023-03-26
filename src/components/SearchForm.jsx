@@ -53,49 +53,52 @@ function SearchForm() {
     <div>
 
       <form onSubmit={handleSubmit}>
-        <div className='card'>
-          <hgroup>
-            <h1>Bingung? 🤔 Silahkan cari kelas anda!</h1>
-          </hgroup>
-          <div className='grid'>
-            <div>
-              <label htmlFor="programStudi">Program Studi</label>
-              <select
-                id="programStudi"
-                name="programStudi"
-                value={programStudi}
-                onChange={(event) => {
-                  setProgramStudi(event.target.value);
-                  setPraktikum("");
-                  setAngkatan("");
-                }}
-              >
-                <option value="">Semua Program Studi</option>
-                <option value="Teknik Informatika">Teknik Informatika</option>
-                <option value="Teknik Industri">Teknik Industri</option>
-                <option value="Teknik Lingkungan">Teknik Lingkungan</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="angkatan">Angkatan</label>
-              <select
-                id="angkatan"
-                name="angkatan"
-                value={angkatan}
-                onChange={(event) => {
-                  setAngkatan(event.target.value);
-                  setPraktikum("");
-                }}
-                disabled={!programStudi}
-              >
-                <option value="" disabled={!programStudi}>
-                  {programStudi ? "Pilih Angkatan" : "Semua Angkatan"}
-                </option>
-                {programStudi && ["19", "20"].map((item) => <option value={item}>{item}</option>)}
-              </select>
-            </div>
+        <div className=''>
 
-            <div>
+          <div className='grid card' style={{ alignItems: "center" }}>
+            <div className=''>
+              <div>
+                <hgroup>
+                  <h1>Filter</h1>
+                  <h2>Bingung? 🤔 Silahkan cari jadwal anda!</h2>
+                </hgroup>
+                <label htmlFor="programStudi">Program Studi</label>
+                <select
+                  id="programStudi"
+                  name="programStudi"
+                  value={programStudi}
+                  onChange={(event) => {
+                    setProgramStudi(event.target.value);
+                    setPraktikum("");
+                    setAngkatan("");
+                  }}
+                >
+                  <option value="">Semua Program Studi</option>
+                  <option value="Teknik Informatika">Teknik Informatika</option>
+                  <option value="Teknik Industri">Teknik Industri</option>
+                  <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="angkatan">Angkatan</label>
+                <select
+                  id="angkatan"
+                  name="angkatan"
+                  value={angkatan}
+                  onChange={(event) => {
+                    setAngkatan(event.target.value);
+                    setPraktikum("");
+                  }}
+                  disabled={!programStudi}
+                >
+                  <option value="" disabled={!programStudi}>
+                    {programStudi ? "Pilih Angkatan" : "Semua Angkatan"}
+                  </option>
+                  {programStudi && ["19", "20"].map((item) => <option value={item}>{item}</option>)}
+                </select>
+              </div>
+
+
               <label htmlFor="praktikum">Praktikum</label>
               <select
                 id="praktikum"
@@ -120,74 +123,86 @@ function SearchForm() {
                   </>
                 )}
               </select>
+              <div style={{ display: "flex" }}>
+                <button type="submit">
+                  {isLoading ? "Loading.." : "Filter"}
+                </button> &emsp;
+                <button className='red' type="reset" onClick={() => setJadwal([])}>
+                  Reset
+                </button>
+              </div>
             </div>
-          </div>
-          <div className='flex'>
-            <div style={{ paddingRight: "15px" }}>
-              <button style={{ width: "100px" }} type="submit">
-                {isLoading ? "Loading.." : "Cari"}
-              </button>
-            </div>
-            <div>
-              <button className='red' style={{ width: "100px" }} type="reset" onClick={() => setJadwal([])}>
-                Reset
-              </button>
+            <div className='grid'>
+              <hgroup>
+                <h2 style={{ textDecoration: "underline" }}>Pertanyaan seputar praktikum</h2>
+              </hgroup>
+              <details>
+                <summary>Apakah boleh kita mengikuti praktikum di kelas lain?</summary>
+                <small>Boleh, jika pada jadwal utama praktikan berhalangan hadir</small>
+              </details>
+              <details>
+                <summary>Pada minggu pertama saya tidak hadir, untuk minggu kedua ini saya harus mengerjakan modul mana ya?</summary>
+                <small>Silahkan mengerjakan modul minggu 1 atau 2, sisanya silahkan menyusul di kelas lain</small>
+              </details>
+
             </div>
           </div>
         </div>
-      </form>
+      </form >
 
-      {jadwal.length > 0 ? (
-        <>
-          {/* <hgroup>
+      {
+        jadwal.length > 0 ? (
+          <>
+            {/* <hgroup>
             <h1></h1>
           </hgroup> */}
-          <hgroup>
-            <h1>
-              {isLoading ? "Sedang mencari.." : "Hasil pencarian :"}
-            </h1>
-          </hgroup>
-          <div className="table-container">
-            <table className="table" role={'grid'}>
-              <thead>
-                <tr>
-                  <th>Program Studi</th>
-                  <th>Kelas</th>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>Ruang</th>
-                  <th>Dosen</th>
-                  <th>Asisten 1</th>
-                  <th>Asisten 2</th>
-                  <th>Praktikum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {jadwal.map((jadwalItem) => (
-                  <tr key={jadwalItem.uuid}>
-                    <td>{jadwalItem.programStudi}</td>
-                    <td>{jadwalItem.kelas}</td>
-                    <td>{jadwalItem.hari}</td>
-                    <td>{jadwalItem.waktu}</td>
-                    <td>{jadwalItem.ruang}</td>
-                    <td>{jadwalItem.dosen}</td>
-                    <td>{jadwalItem.asisten1}</td>
-                    <td>{jadwalItem.asisten2}</td>
-                    <td>{jadwalItem.praktikum}</td>
+            <hgroup>
+              <h1>
+                {isLoading ? "Sedang memfilter.." : "Hasil filter :"}
+              </h1>
+            </hgroup>
+            <div className="table-container">
+              <table className="table" role={'grid'}>
+                <thead>
+                  <tr>
+                    <th>Program Studi</th>
+                    <th>Kelas</th>
+                    <th>Hari</th>
+                    <th>Waktu</th>
+                    <th>Ruang</th>
+                    <th>Dosen</th>
+                    <th>Asisten 1</th>
+                    <th>Asisten 2</th>
+                    <th>Praktikum</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      ) : (
-        <hgroup>
-          <h2>Tidak ada data yang tersedia.</h2>
-        </hgroup>
-      )}
+                </thead>
+                <tbody>
+                  {jadwal.map((jadwalItem) => (
+                    <tr key={jadwalItem.uuid}>
+                      <td>{jadwalItem.programStudi}</td>
+                      <td>{jadwalItem.kelas}</td>
+                      <td>{jadwalItem.hari}</td>
+                      <td>{jadwalItem.waktu}</td>
+                      <td>{jadwalItem.ruang}</td>
+                      <td>{jadwalItem.dosen}</td>
+                      <td>{jadwalItem.asisten1}</td>
+                      <td>{jadwalItem.asisten2}</td>
+                      <td>{jadwalItem.praktikum}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        ) : (
+          <hgroup>
+            <h2>Tidak ada data yang tersedia.</h2>
+          </hgroup>
+        )
+      }
 
 
-    </div>
+    </div >
   );
 }
 

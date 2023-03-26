@@ -38,7 +38,6 @@ const ListJadwalInformatika = () => {
 
   return (
     <>
-      <hr />
       <hgroup>
         <h1>Jadwal Informatika 19 & 20</h1>
         <h2>jadwal dapat berubah sewaktu waktu</h2>
