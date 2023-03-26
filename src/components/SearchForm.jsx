@@ -89,7 +89,7 @@ function SearchForm() {
                 disabled={!programStudi}
               >
                 <option value="" disabled={!programStudi}>
-                  {programStudi ? "Pilih Angkatan" : "Pilih Program Studi terlebih dahulu"}
+                  {programStudi ? "Pilih Angkatan" : "Semua Angkatan"}
                 </option>
                 {programStudi && ["19", "20"].map((item) => <option value={item}>{item}</option>)}
               </select>
@@ -105,7 +105,7 @@ function SearchForm() {
                 disabled={!angkatan}
               >
                 <option value="" disabled={!angkatan}>
-                  {angkatan ? "Pilih Praktikum" : "Pilih Angkatan terlebih dahulu"}
+                  {angkatan && programStudi ? "Pilih Praktikum" : "Semua Praktikum"}
                 </option>
                 {angkatan === "19" && programStudi === "Teknik Informatika" && (
                   <>
@@ -125,7 +125,7 @@ function SearchForm() {
           <div className='flex'>
             <div style={{ paddingRight: "15px" }}>
               <button style={{ width: "100px" }} type="submit">
-                {isLoading ? "Loading..." : "Cari"}
+                {isLoading ? "Loading.." : "Cari"}
               </button>
             </div>
             <div>
