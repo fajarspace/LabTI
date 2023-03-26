@@ -41,79 +41,89 @@ const ListJadwalInformatika = () => {
       <hr />
       <hgroup>
         <h1>Jadwal Informatika 19 & 20</h1>
-        <h2>jadwal dapat berubah sewaktu waktu, periksa secara berkala</h2>
+        <h2>jadwal dapat berubah sewaktu waktu</h2>
       </hgroup>
       {user && user.role === "admin" && (
         <Link className="outline" to={`/jadwal/tif/add`}>
           <BiAddToQueue />
         </Link>
       )}
-      <div className="table-container">
-        <table className="table" role={'grid'}>
-          <thead>
-            <tr>
-              <th scope="col">No</th>
-              <th>Program Studi</th>
-              <th>Kelas</th>
-              <th>Hari</th>
-              <th>Waktu</th>
-              <th>Ruang</th>
-              <th>Dosen</th>
-              <th>Asisten</th>
-              <th>Asisten</th>
-              <th>Praktikum</th>
-              {user && user.role === "admin" && (
-                <>
-                  <th>Created By</th>
-                  <th>Actions</th>
-                </>
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {jadwalinformatika.map((jadwalinformatika, index) => (
-              <tr key={jadwalinformatika.uuid}>
-                <td>{index + 1}</td>
-                <td>{jadwalinformatika.programStudi}</td>
-                <td>{jadwalinformatika.kelas}</td>
-                <td>{jadwalinformatika.hari}</td>
-                <td>{jadwalinformatika.waktu}</td>
-                <td>{jadwalinformatika.ruang}</td>
-                <td>{jadwalinformatika.dosen}</td>
-                <td>{jadwalinformatika.asisten1}</td>
-                <td>{jadwalinformatika.asisten2}</td>
-                <td>{jadwalinformatika.praktikum}</td>
 
-                {user && user.role === "admin" && (
-                  <>
-                    <td>{jadwalinformatika.user.nama}</td>
-                    <td>
-                      <Link
-                        to={`/jadwal/tif/edit/${jadwalinformatika.uuid}`}
-                        className="button is-small is-info mr-2"
-                      >
-                        <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
-                      </Link> &nbsp;
+      {jadwalinformatika.length > 0 ? (
+        <>
+          <div className="table-container">
+            <table className="table" role={'grid'}>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th>Program Studi</th>
+                  <th>Kelas</th>
+                  <th>Hari</th>
+                  <th>Waktu</th>
+                  <th>Ruang</th>
+                  <th>Dosen</th>
+                  <th>Asisten</th>
+                  <th>Asisten</th>
+                  <th>Praktikum</th>
+                  {user && user.role === "admin" && (
+                    <>
+                      <th>Created By</th>
+                      <th>Actions</th>
+                    </>
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {jadwalinformatika.map((jadwalinformatika, index) => (
+                  <tr key={jadwalinformatika.uuid}>
+                    <td>{index + 1}</td>
+                    <td>{jadwalinformatika.programStudi}</td>
+                    <td>{jadwalinformatika.kelas}</td>
+                    <td>{jadwalinformatika.hari}</td>
+                    <td>{jadwalinformatika.waktu}</td>
+                    <td>{jadwalinformatika.ruang}</td>
+                    <td>{jadwalinformatika.dosen}</td>
+                    <td>{jadwalinformatika.asisten1}</td>
+                    <td>{jadwalinformatika.asisten2}</td>
+                    <td>{jadwalinformatika.praktikum}</td>
 
-                      <Link
-                        onClick={() => {
-                          if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
-                            window.alert('Hapus jadwal berhasil!')
-                            deleteJadwal(jadwalinformatika.uuid);
-                          }
-                        }}
-                      >
-                        <kbd style={{ backgroundColor: "red", fontSize: "20px" }}><IoMdTrash /></kbd>
-                      </Link>
-                    </td>
-                  </>
-                )}
+                    {user && user.role === "admin" && (
+                      <>
+                        <td>{jadwalinformatika.user.nama}</td>
+                        <td>
+                          <Link
+                            to={`/jadwal/tif/edit/${jadwalinformatika.uuid}`}
+                            className="button is-small is-info mr-2"
+                          >
+                            <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
+                          </Link> &nbsp;
 
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                          <Link
+                            onClick={() => {
+                              if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
+                                window.alert('Hapus jadwal berhasil!')
+                                deleteJadwal(jadwalinformatika.uuid);
+                              }
+                            }}
+                          >
+                            <kbd style={{ backgroundColor: "red", fontSize: "20px" }}><IoMdTrash /></kbd>
+                          </Link>
+                        </td>
+                      </>
+                    )}
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <hgroup>
+          <h2>Sedang memuat data...</h2>
+        </hgroup>
+      )}
+
       <br />
     </>
   );
