@@ -296,7 +296,7 @@ const AddJadwalInformatika = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Loading..." : "Tambah"}
+                  {isLoading ? <><div aria-busy="true"></div></> : "Tambah"}
                 </button>
               </main>
             </form>

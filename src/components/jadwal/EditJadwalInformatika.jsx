@@ -312,7 +312,7 @@ const EditJadwalInformatika = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Loading..." : "Update"}
+                  {isLoading ? <><div aria-busy="true"></div></> : "Update"}
                 </button>
               </main>
             </form>

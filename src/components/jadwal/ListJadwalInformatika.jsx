@@ -51,7 +51,7 @@ const ListJadwalInformatika = () => {
       {jadwalinformatika.length > 0 ? (
         <>
           <div className="table-container">
-            <table className="table">
+            <table id="myTable" className="table">
               <thead>
                 <tr>
                   <th scope="col">No</th>
