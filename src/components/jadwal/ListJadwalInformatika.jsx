@@ -119,7 +119,8 @@ const ListJadwalInformatika = () => {
         </>
       ) : (
         <hgroup>
-          <h2>Sedang memuat data...</h2>
+          <p>Memuat data</p>
+          <progress></progress>
         </hgroup>
       )}
 

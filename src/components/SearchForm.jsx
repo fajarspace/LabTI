@@ -55,7 +55,7 @@ function SearchForm() {
       <form onSubmit={handleSubmit}>
         <div className=''>
 
-          <div className='grid card' style={{ alignItems: "center" }}>
+          <div className='grid card'>
             <div className=''>
               <div>
                 <hgroup>
@@ -132,8 +132,9 @@ function SearchForm() {
                 </button>
               </div>
             </div>
-            <div className='grid'>
+            <div className=''>
               <hgroup>
+                <h1>FAQ</h1>
                 <h2 style={{ textDecoration: "underline" }}>Pertanyaan seputar praktikum</h2>
               </hgroup>
               <details>
@@ -158,7 +159,7 @@ function SearchForm() {
           </hgroup> */}
             <hgroup>
               <h1>
-                {isLoading ? "Sedang memfilter.." : "Hasil filter :"}
+                {isLoading ? <progress></progress> : "Hasil filter :"}
               </h1>
             </hgroup>
             <div className="table-container">
