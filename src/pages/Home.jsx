@@ -2,6 +2,7 @@ import React from 'react'
 // import HomePage from "../components/HomePage";
 import Navbar from "../components/Navbar";
 import ListJadwalInformatika from "../components/jadwal/ListJadwalInformatika";
+import SearchForm from "../components/SearchForm";
 
 const Home = () => {
   return (
@@ -9,7 +10,8 @@ const Home = () => {
       <main>
         <Navbar />
         <div className='container-fluid'>
-        <ListJadwalInformatika />
+          <SearchForm />
+          <ListJadwalInformatika />
         </div>
       </main>
     </>

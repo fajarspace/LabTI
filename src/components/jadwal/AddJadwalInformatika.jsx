@@ -67,7 +67,7 @@ const AddJadwalInformatika = () => {
       {kelas}
     </option>
   ));
-  
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const saveJadwal = async (e) => {
@@ -97,7 +97,7 @@ const AddJadwalInformatika = () => {
 
   return (
     <>
-    <div className="dashboard">
+      <div className="dashboard">
         <div className="sidebar">
           <Sidebar />
         </div>
@@ -280,30 +280,29 @@ const AddJadwalInformatika = () => {
                       onChange={(e) => setPraktikum(e.target.value)}
                     >
                       <option value="">-- Pilih Praktikum --</option>
-                      <option value="Bahasa Pemrograman">
-                        Bahasa Pemrograman
-                      </option>
-                      <option value="Data Mining">Data Mining</option>
+                      <option value="Data Mining '19">Data Mining '19</option>
+                      <option value="Data Mining '20">Data Mining '20</option>
+                      <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
                     </select>
                   </div>
                 </div>
                 <p>{pesan} <br /> {msg}</p>
               </div>
               <main>
-              <button
-                style={{ width: "200px" }}
-                role={"button"}
-                type="submit"
-                disabled={isLoading}
-              >
-                {isLoading ? "Loading..." : "Tambah"}
-              </button>
+                <button
+                  style={{ width: "200px" }}
+                  role={"button"}
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Loading..." : "Tambah"}
+                </button>
               </main>
             </form>
           </section>
         </div>
       </div>
-</>
+    </>
   );
 };
 

@@ -21,9 +21,7 @@ const PatchUser = () => {
       navigate("/dashboard");
     }
   }, [isError, user, navigate]);
-  return (
-      <EditUser />
-  );
+  return <EditUser />;
 };
 
 export default PatchUser;

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 
-const ListJadwalInformatka = () => {
+const ListJadwalInformatika = () => {
   const { user } = useSelector((state) => state.auth);
 
   const [jadwalinformatika, setJadwal] = useState([]);
@@ -38,12 +38,12 @@ const ListJadwalInformatka = () => {
 
   return (
     <>
-    <h2>Jadwal Informatika 19 & 20</h2>
-    {user && user.role === "admin" && (
+      <h2>Jadwal Informatika 19 & 20</h2>
+      {user && user.role === "admin" && (
         <Link className="outline" to={`/jadwal/tif/add`}>
-          <BiAddToQueue/>
+          <BiAddToQueue />
         </Link>
-    )}
+      )}
       <div className="table-container">
         <table className="table" role={'grid'}>
           <thead>
@@ -60,9 +60,9 @@ const ListJadwalInformatka = () => {
               <th>Praktikum</th>
               {user && user.role === "admin" && (
                 <>
-              <th>Created By</th>
-              <th>Actions</th>
-              </>
+                  <th>Created By</th>
+                  <th>Actions</th>
+                </>
               )}
             </tr>
           </thead>
@@ -79,40 +79,40 @@ const ListJadwalInformatka = () => {
                 <td>{jadwalinformatika.asisten1}</td>
                 <td>{jadwalinformatika.asisten2}</td>
                 <td>{jadwalinformatika.praktikum}</td>
-                
+
                 {user && user.role === "admin" && (
                   <>
-                  <td>{jadwalinformatika.user.nama}</td>
-              <td>
-              <Link
-                to={`/jadwal/tif/edit/${jadwalinformatika.uuid}`}
-                className="button is-small is-info mr-2"
-              >
-                <kbd style={{"backgroundColor":'yellow', "color":"black", fontSize:"20px"}}><FiEdit/></kbd>
-              </Link> &nbsp;
-         
-              <Link
-                onClick={() => {
-                  if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
-                    window.alert('Hapus jadwal berhasil!')
-                    deleteJadwal(jadwalinformatika.uuid);
-                  }
-                }}
-              >
-                <kbd style={{ backgroundColor: "red", fontSize:"20px" }}><IoMdTrash/></kbd>
-              </Link>
-            </td>
-            </>
-          )}
-                
+                    <td>{jadwalinformatika.user.nama}</td>
+                    <td>
+                      <Link
+                        to={`/jadwal/tif/edit/${jadwalinformatika.uuid}`}
+                        className="button is-small is-info mr-2"
+                      >
+                        <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
+                      </Link> &nbsp;
+
+                      <Link
+                        onClick={() => {
+                          if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
+                            window.alert('Hapus jadwal berhasil!')
+                            deleteJadwal(jadwalinformatika.uuid);
+                          }
+                        }}
+                      >
+                        <kbd style={{ backgroundColor: "red", fontSize: "20px" }}><IoMdTrash /></kbd>
+                      </Link>
+                    </td>
+                  </>
+                )}
+
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <br />
-</>
+    </>
   );
 };
 
-export default ListJadwalInformatka;
+export default ListJadwalInformatika;

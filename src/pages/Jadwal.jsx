@@ -12,34 +12,31 @@ import ListJadwalInformatika from "../components/jadwal/ListJadwalInformatika";
 // import ListJadwalIndustri from "../components/jadwal/ListJadwalIndustri";
 
 const Jadwal = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { isError } = useSelector((state) => state.auth);
-  
-    useEffect(() => {
-      dispatch(getMe());
-    }, [dispatch]);
-  
-    useEffect(() => {
-      if (isError) {
-        navigate("/login");
-      }
-    }, [isError, navigate]);
-    return (
-      <>
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state) => state.auth);
 
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
 
-      <div className="dashboard">
-      <div className="sidebar">
-            <Sidebar/>
-          </div>
-          <div className="container-fluid">
-          <ListJadwalInformatika/>
-          {/* <ListJadwalIndustri/> */}
-          </div>
-          </div>
-          </>
-    );
-    
+  useEffect(() => {
+    if (isError) {
+      navigate("/login");
     }
+  }, [isError, navigate]);
+  return (
+    <>
+      <div className="dashboard">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="container-fluid">
+          <ListJadwalInformatika />
+          {/* <ListJadwalIndustri/> */}
+        </div>
+      </div>
+    </>
+  );
+};
 export default Jadwal;
