@@ -132,7 +132,7 @@ function SearchForm() {
                 </button>
               </div>
             </div>
-            <div className=''>
+            <div className='faq'>
               <hgroup>
                 <h1>FAQ</h1>
                 <h2 style={{ textDecoration: "underline" }}>Pertanyaan seputar praktikum</h2>
@@ -158,10 +158,11 @@ function SearchForm() {
             <h1></h1>
           </hgroup> */}
             <hgroup>
-              <h1>
-                {isLoading ? <progress></progress> : "Hasil filter :"}
-              </h1>
+              <p>
+                {isLoading ? <><p>Memuat data</p><progress></progress></> : "Hasil filter :"}
+              </p>
             </hgroup>
+            bagaimana cara mengatasi nya
             <div className="table-container">
               <table className="table" role={'grid'}>
                 <thead>
