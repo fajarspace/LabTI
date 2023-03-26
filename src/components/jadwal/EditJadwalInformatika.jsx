@@ -252,7 +252,7 @@ const EditJadwalInformatika = () => {
                         Lab Komputer 1, Gedung A
                       </option>
                       <option value="Lab Rekayasa Industri, Gedung A">
-                        Lab Rekayasa, Gedung A
+                        Lab Rekayasa Industri, Gedung A
                       </option>
                     </select>
                   </div>
