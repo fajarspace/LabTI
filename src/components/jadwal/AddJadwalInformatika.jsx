@@ -69,7 +69,7 @@ const AddJadwalInformatika = () => {
   ));
 
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState();
   const saveJadwal = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -90,6 +90,7 @@ const AddJadwalInformatika = () => {
       if (error.response) {
         setPesan('data tidak boleh kosong!');
         setMsg(error.response.data.msg);
+        setIsLoading(false);
       }
     }
   };

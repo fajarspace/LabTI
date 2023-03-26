@@ -94,6 +94,7 @@ const EditJadwalInformatika = () => {
       if (error.response) {
         setPesan('data tidak boleh kosong!');
         setMsg(error.response.data.msg);
+        setIsLoading(false);
       }
     }
   };
