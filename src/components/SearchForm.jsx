@@ -73,7 +73,7 @@ function SearchForm() {
                     setAngkatan("");
                   }}
                 >
-                  <option value="">Semua Program Studi</option>
+                  <option value="">Pilih Program Studi</option>
                   <option value="Teknik Informatika">Teknik Informatika</option>
                   <option value="Teknik Industri">Teknik Industri</option>
                   <option value="Teknik Lingkungan">Teknik Lingkungan</option>

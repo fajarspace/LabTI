@@ -7,7 +7,7 @@ const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 // const urlById = `${jadwalUrl}/${id}`;
 
 const AddJadwalInformatika = () => {
-  const [programStudi, setProgramStudi] = useState("Teknik Informatika");
+  const [programStudi, setProgramStudi] = useState("");
   const [kelas, setKelas] = useState("");
   const [hari, setHari] = useState("");
   const [waktu, setWaktu] = useState("");
@@ -110,14 +110,18 @@ const AddJadwalInformatika = () => {
                   <h1>Tambah jadwal Informatika</h1>
                   <h2>Tambah</h2>
                 </hgroup>
-                <div className="field">
-                  <label className="label">Program Studi</label>
-                  <input
+                <div className="control">
+                  <label htmlFor="angkatan">Program Studi</label>
+                  <select
                     type="text"
                     defaultValue={programStudi}
                     onChange={(e) => setProgramStudi(e.target.value)}
-                    disabled
-                  />
+                  >
+                    <option value="">-- Pilih Program studi --</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Teknik Industri">Teknik Industri</option>
+                    <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+                  </select>
                 </div>
 
                 <div className="grid">
@@ -283,7 +287,10 @@ const AddJadwalInformatika = () => {
                       <option value="">-- Pilih Praktikum --</option>
                       <option value="Data Mining '19">Data Mining '19</option>
                       <option value="Data Mining '20">Data Mining '20</option>
-                      <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
+                      <option value="AutoCad">AutoCad</option>
+                      <option value="Epanet">Epanet</option>
+                      <option value="SWMM">SWMM</option>
+                      <option value="Kimia Dasar">Kimia Dasar</option>
                     </select>
                   </div>
                 </div>

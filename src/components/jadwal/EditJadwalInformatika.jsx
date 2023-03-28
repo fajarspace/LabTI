@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../Menu/Sidebar";
 
 const EditJadwalInformatika = () => {
-  const [programStudi, setProgramStudi] = useState("Teknik Informatika");
+  const [programStudi, setProgramStudi] = useState("");
   const [kelas, setKelas] = useState("");
   const [hari, setHari] = useState("");
   const [waktu, setWaktu] = useState("");
@@ -126,14 +126,18 @@ const EditJadwalInformatika = () => {
                   <h1>Edit jadwal Informatika</h1>
                   <h2>edit</h2>
                 </hgroup>
-                <div className="field">
-                  <label className="label">Program Studi</label>
-                  <input
+                <div className="control">
+                  <label htmlFor="angkatan">Program Studi</label>
+                  <select
                     type="text"
                     defaultValue={programStudi}
                     onChange={(e) => setProgramStudi(e.target.value)}
-                    disabled
-                  />
+                  >
+                    <option value="">-- Pilih Program studi --</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Teknik Industri">Teknik Industri</option>
+                    <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+                  </select>
                 </div>
 
                 <div className="grid">
