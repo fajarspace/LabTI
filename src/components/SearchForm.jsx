@@ -188,10 +188,10 @@ function SearchForm() {
               <p>
                 {isLoading ? <><p>Memuat data</p><progress></progress></> : "Hasil filter :"}
                 {programStudi === "Teknik Lingkungan" && (
-                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Lingkungan").length} praktikum untuk program studi {programStudi} untuk angkatan {angkatan}</b>
+                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Lingkungan").length} praktikum {programStudi} untuk semua angkatan {angkatan}</b>
                 )}
                 {programStudi === "Teknik Informatika" && (
-                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Informatika").length} praktikum untuk program studi {programStudi} untuk angkatan {angkatan}</b>
+                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Informatika").length} praktikum {programStudi} untuk semua angkatan {angkatan}</b>
                 )}
               </p>
             </hgroup>
