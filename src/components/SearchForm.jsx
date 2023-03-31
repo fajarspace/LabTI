@@ -60,7 +60,7 @@ function SearchForm() {
             <div className=''>
               <div>
                 <hgroup>
-                  <h1>Filter</h1>
+                  <h1>Filter jadwal</h1>
                   <h2>Bingung? 🤔 Coba filter dulu!</h2>
                 </hgroup>
                 <label htmlFor="programStudi">Program Studi</label>
