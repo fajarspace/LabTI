@@ -1,7 +1,7 @@
 import React from 'react'
 // import HomePage from "../components/HomePage";
 import Navbar from "../components/Navbar";
-import ListJadwalInformatika from "../components/jadwal/ListJadwal";
+import ListJadwal from "../components/jadwal/ListJadwal";
 import SearchForm from "../components/SearchForm";
 // import Footer from "../components/Menu/Footer";
 
@@ -13,7 +13,7 @@ const Home = () => {
         <div className='container-fluid'>
           <SearchForm />
           <hr />
-          <ListJadwalInformatika />
+          <ListJadwal />
           {/* <Footer /> */}
         </div>
       </main>

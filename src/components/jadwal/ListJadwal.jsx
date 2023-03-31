@@ -39,7 +39,7 @@ const ListJadwal = () => {
   return (
     <>
       <hgroup>
-        <h1>Jadwal Informatika 19 & 20</h1>
+        <h1>Semua jadwal praktikum</h1>
         <h2>jadwal dapat berubah sewaktu waktu</h2>
       </hgroup>
       {/* {user && user.role === "admin" && (
