@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
+// import SearchForm from "../SearchForm";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 
@@ -43,9 +44,7 @@ const ListJadwal = () => {
         <h2>jadwal dapat berubah sewaktu waktu</h2>
       </hgroup>
       {/* {user && user.role === "admin" && (
-        <Link className="outline" to={`/jadwal/tif/add`}>
-          <BiAddToQueue />
-        </Link>
+        <SearchForm />
       )} */}
 
       {jadwal.length > 0 ? (
