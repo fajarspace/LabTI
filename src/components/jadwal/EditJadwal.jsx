@@ -376,6 +376,13 @@ const EditJadwalInformatika = () => {
                           <option value="Sultan Aditya">Sultan Aditya</option>
                         </>
                       )}
+                      {programStudi === "Teknik Lingkungan" && (
+                        <>
+                          <option value="Sutrisno Aji Prasetyo, S.Arsl., M.Ars.">Sutrisno Aji Prasetyo, S.Arsl., M.Ars.</option>
+                          <option value="Pandi Hardiansyah Sitorus, S.T.,">Pandi Hardiansyah Sitorus, S.T.,</option>
+                          <option value="nadia ulfanisara">nadia ulfanisara</option>
+                        </>
+                      )}
 
                     </select>
                   </div>
@@ -390,12 +397,18 @@ const EditJadwalInformatika = () => {
                       <option value="">-- Pilih Asisten 2 --</option>
                       {programStudi === "Teknik Informatika" && (
                         <>
-                          <option value="">-- Pilih Asisten 1 --</option>
                           <option value="Veno">Veno</option>
                           <option value="Fajar Agung">Fajar Agung</option>
                           <option value="Maulana Hasan">Maulana Hasan</option>
                           <option value="M. Romdhon">M. Romdhon</option>
                           <option value="Sultan Aditya">Sultan Aditya</option>
+                        </>
+                      )}
+                      {programStudi === "Teknik Lingkungan" && (
+                        <>
+                          <option value="Sutrisno Aji Prasetyo, S.Arsl., M.Ars.">Sutrisno Aji Prasetyo, S.Arsl., M.Ars.</option>
+                          <option value="Pandi Hardiansyah Sitorus, S.T.,">Pandi Hardiansyah Sitorus, S.T.,</option>
+                          <option value="nadia ulfanisara">nadia ulfanisara</option>
                         </>
                       )}
                     </select>

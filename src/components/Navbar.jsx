@@ -20,7 +20,7 @@ const Navbar = () => {
           <RiLogoutBoxRLine/>
         </Link></li> */}
           <li>
-            <Link role={'button'} to={'/login'} >Login</Link>
+            <Link style={{ backgroundColor: "#1e88e5" }} role={'button'} to={'/login'} >Login</Link>
           </li>
         </ul>
       </nav>
