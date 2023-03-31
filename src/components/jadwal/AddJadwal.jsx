@@ -450,12 +450,28 @@ const AddJadwalInformatika = () => {
                           <option value="Data Mining '20">Data Mining '20</option>
                         </>
                       )}
-                      {programStudi === "Teknik Lingkungan" && (
+                      {angkatan === "19" && programStudi === "Teknik Lingkungan" && (
                         <>
-                          <option value="AutoCad">AutoCad</option>
-                          <option value="Epanet">Epanet</option>
-                          <option value="SWMM">SWAMM</option>
-                          <option value="Kimia Dasar">Kimia Dasar</option>
+                          <option value="AutoCad '19">AutoCad '19</option>
+                          <option value="Epanet '19">Epanet '19</option>
+                          <option value="SWMM '19">SWAMM '19</option>
+                          <option value="Kimia Dasar '19">Kimia Dasar '19</option>
+                        </>
+                      )}
+                      {angkatan === "20" && programStudi === "Teknik Lingkungan" && (
+                        <>
+                          <option value="AutoCad '20">AutoCad '20</option>
+                          <option value="Epanet '20">Epanet '20</option>
+                          <option value="SWMM '20">SWAMM '20</option>
+                          <option value="Kimia Dasar '20">Kimia Dasar '20</option>
+                        </>
+                      )}
+                      {angkatan === "21" && programStudi === "Teknik Lingkungan" && (
+                        <>
+                          <option value="AutoCad '21">AutoCad '21</option>
+                          <option value="Epanet '21">Epanet '21</option>
+                          <option value="SWMM '21">SWAMM '21</option>
+                          <option value="Kimia Dasar '21">Kimia Dasar '21</option>
                         </>
                       )}
                     </select>
