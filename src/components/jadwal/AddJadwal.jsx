@@ -452,7 +452,7 @@ const AddJadwalInformatika = () => {
                         <>
                           <option value="AutoCad">AutoCad</option>
                           <option value="Epanet">Epanet</option>
-                          <option value="SWMM">SWMM</option>
+                          <option value="SWMM">SWAMM</option>
                           <option value="Kimia Dasar">Kimia Dasar</option>
                         </>
                       )}

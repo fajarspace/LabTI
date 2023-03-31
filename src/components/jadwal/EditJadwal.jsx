@@ -136,7 +136,7 @@ const EditJadwalInformatika = () => {
                         <option value="" disabled={!programStudi}>
                           {programStudi ? "Pilih Angkatan" : "Semua Angkatan"}
                         </option>
-                        {programStudi && ["19", "20", "22"].map((item) => <option value={item}>{item}</option>)}
+                        {programStudi && ["19", "20", "21"].map((item) => <option value={item}>{item}</option>)}
                       </select>
 
                       <label htmlFor="kelas">kelas</label>
@@ -191,11 +191,25 @@ const EditJadwalInformatika = () => {
                             <option value="TI.21">TI.21</option>
                           </>
                         )}
-                        {angkatan === "22" && programStudi === "Teknik Lingkungan" && (
+                        {angkatan === "19" && programStudi === "Teknik Lingkungan" && (
                           <>
-                            <option value="TI.22">TI.22</option>
-                            <option value="TI.22">TI.22</option>
-                            <option value="TI.22">TI.22</option>
+                            <option value="TL.19.F1">TL.19.F1</option>
+                            <option value="TL.19.F2">TL.19.F2</option>
+                            <option value="TL.19.F3">TL.19.F3</option>
+                          </>
+                        )}
+                        {angkatan === "20" && programStudi === "Teknik Lingkungan" && (
+                          <>
+                            <option value="TL.20.F1">TL.20.F1</option>
+                            <option value="TL.20.F2">TL.20.F2</option>
+                            <option value="TL.20.F3">TL.20.F3</option>
+                          </>
+                        )}
+                        {angkatan === "21" && programStudi === "Teknik Lingkungan" && (
+                          <>
+                            <option value="TL.21.AA.1">TL.21.AA.1</option>
+                            <option value="TL.21.B1">TL.21.B1</option>
+                            <option value="TL.21.B1">TL.21.C1</option>
                           </>
                         )}
 
@@ -300,9 +314,22 @@ const EditJadwalInformatika = () => {
                       )}
                       {programStudi === "Teknik Lingkungan" && (
                         <>
-                          <option value="Wahyu Hadikristanto, S.Kom., M.Kom.">
-                            Wahyu Hadikristanto, S.Kom., M.Kom.
-                          </option>
+                          <option value="Agus Riyadi, S.T., M.Sc.">Agus Riyadi, S.T., M.Sc.</option>
+                          <option value="Dhonny Suwazan, S.Si., M.T.">Dhonny Suwazan, S.Si., M.T.</option>
+                          <option value="Dodit Ardiatma, S.T., M.Sc.">Dodit Ardiatma, S.T., M.Sc.</option>
+                          <option value="Dr. Ir. Supriyanto., M.P.">Dr. Ir. Supriyanto., M.P.</option>
+                          <option value="Hamzah Muhammad Mardiputra, S.K.M., M.M.">Hamzah Muhammad Mardiputra, S.K.M., M.M.</option>
+                          <option value="Ir. Aris Dwi Cahyanto, M.Si.">Ir. Aris Dwi Cahyanto, M.Si.</option>
+                          <option value="Ir. Martin Darmasetiawan, M.M.">Ir. Martin Darmasetiawan, M.M.</option>
+                          <option value="Nisa Nurhidayanti, S.Pd., M.T.">Nisa Nurhidayanti, S.Pd., M.T.</option>
+                          <option value="Nur Ilman Ilyas, S.T., M.M.">Nur Ilman Ilyas, S.T., M.M.</option>
+                          <option value="Putri Anggun Sari, S.Pt., M.Si.">Putri Anggun Sari, S.Pt., M.Si.</option>
+                          <option value="Tyas Ismi Trialfhianty, S.Pi., M.Sc.">Tyas Ismi Trialfhianty, S.Pi., M.Sc.</option>
+                          <option value="Ikhsan Romli, S.Si., M.Sc.">Ikhsan Romli, S.Si., M.Sc.</option>
+                          <option value="Agung Nugroho, S.Kom., M.Kom.">Agung Nugroho, S.Kom., M.Kom.</option>
+                          <option value="Wiyanto, S.Kom., M.Kom.">Wiyanto, S.Kom., M.Kom.</option>
+                          <option value="Dr. Gina Lova Sari, S.T., M.T.">Dr. Gina Lova Sari, S.T., M.T.</option>
+                          <option value="Fetty Dwi Rahmayanti, S.P., M.Il.">Fetty Dwi Rahmayanti, S.P., M.Il.</option>
 
                         </>
                       )}
@@ -394,7 +421,7 @@ const EditJadwalInformatika = () => {
                         <>
                           <option value="AutoCad">AutoCad</option>
                           <option value="Epanet">Epanet</option>
-                          <option value="SWMM">SWMM</option>
+                          <option value="SWMM">SWAMM</option>
                           <option value="Kimia Dasar">Kimia Dasar</option>
                         </>
                       )}
