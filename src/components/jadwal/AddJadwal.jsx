@@ -345,22 +345,24 @@ const AddJadwalInformatika = () => {
                       )}
                       {programStudi === "Teknik Lingkungan" && (
                         <>
+                          <option value="Agung Nugroho, S.Kom., M.Kom.">Agung Nugroho, S.Kom., M.Kom.</option>
                           <option value="Agus Riyadi, S.T., M.Sc.">Agus Riyadi, S.T., M.Sc.</option>
                           <option value="Dhonny Suwazan, S.Si., M.T.">Dhonny Suwazan, S.Si., M.T.</option>
                           <option value="Dodit Ardiatma, S.T., M.Sc.">Dodit Ardiatma, S.T., M.Sc.</option>
+                          <option value="Dr. Gina Lova Sari, S.T., M.T.">Dr. Gina Lova Sari, S.T., M.T.</option>
                           <option value="Dr. Ir. Supriyanto., M.P.">Dr. Ir. Supriyanto., M.P.</option>
-                          <option value="Hamzah Muhammad Mardiputra, S.K.M., M.M.">Hamzah Muhammad Mardiputra, S.K.M., M.M.</option>
+                          <option value="Erwika Dhora Jati, S.Si., M.Sc.">Erwika Dhora Jati, S.Si., M.Sc.</option>
+                          <option value="Fetty Dwi Rahmayanti, S.P., M.Il.">Fetty Dwi Rahmayanti, S.P., M.Il.</option>
+                          <option value="Hamzah M. Mardi Putra, S.K.M., M.M.">Hamzah M. Mardi Putra, S.K.M., M.M.</option>
+                          <option value="Ikhsan Romli, S.Si., M.Sc.">Ikhsan Romli, S.Si., M.Sc.</option>
                           <option value="Ir. Aris Dwi Cahyanto, M.Si.">Ir. Aris Dwi Cahyanto, M.Si.</option>
                           <option value="Ir. Martin Darmasetiawan, M.M.">Ir. Martin Darmasetiawan, M.M.</option>
                           <option value="Nisa Nurhidayanti, S.Pd., M.T.">Nisa Nurhidayanti, S.Pd., M.T.</option>
+                          <option value="Noviaji Joko Priono, S.K.M., M.K.K.K.">Noviaji Joko Priono, S.K.M., M.K.K.K.</option>
                           <option value="Nur Ilman Ilyas, S.T., M.M.">Nur Ilman Ilyas, S.T., M.M.</option>
                           <option value="Putri Anggun Sari, S.Pt., M.Si.">Putri Anggun Sari, S.Pt., M.Si.</option>
                           <option value="Tyas Ismi Trialfhianty, S.Pi., M.Sc.">Tyas Ismi Trialfhianty, S.Pi., M.Sc.</option>
-                          <option value="Ikhsan Romli, S.Si., M.Sc.">Ikhsan Romli, S.Si., M.Sc.</option>
-                          <option value="Agung Nugroho, S.Kom., M.Kom.">Agung Nugroho, S.Kom., M.Kom.</option>
                           <option value="Wiyanto, S.Kom., M.Kom.">Wiyanto, S.Kom., M.Kom.</option>
-                          <option value="Dr. Gina Lova Sari, S.T., M.T.">Dr. Gina Lova Sari, S.T., M.T.</option>
-                          <option value="Fetty Dwi Rahmayanti, S.P., M.Il.">Fetty Dwi Rahmayanti, S.P., M.Il.</option>
 
                         </>
                       )}
