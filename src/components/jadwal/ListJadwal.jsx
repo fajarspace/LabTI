@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { BiAddToQueue } from 'react-icons/bi';
+// import { BiAddToQueue } from 'react-icons/bi';
 import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 
-const ListJadwalInformatika = () => {
+const ListJadwal = () => {
   const { user } = useSelector((state) => state.auth);
 
-  const [jadwalinformatika, setJadwal] = useState([]);
+  const [jadwal, setJadwal] = useState([]);
 
   useEffect(() => {
     getJadwal();
@@ -48,7 +48,7 @@ const ListJadwalInformatika = () => {
         </Link>
       )} */}
 
-      {jadwalinformatika.length > 0 ? (
+      {jadwal.length > 0 ? (
         <>
           <div className="table-container">
             <table id="myTable" className="table">
@@ -73,25 +73,25 @@ const ListJadwalInformatika = () => {
                 </tr>
               </thead>
               <tbody>
-                {jadwalinformatika.map((jadwalinformatika, index) => (
-                  <tr key={jadwalinformatika.uuid}>
+                {jadwal.map((jadwal, index) => (
+                  <tr key={jadwal.uuid}>
                     <td>{index + 1}</td>
-                    <td>{jadwalinformatika.programStudi}</td>
-                    <td>{jadwalinformatika.kelas}</td>
-                    <td>{jadwalinformatika.hari}</td>
-                    <td>{jadwalinformatika.waktu}</td>
-                    <td>{jadwalinformatika.ruang}</td>
-                    <td>{jadwalinformatika.dosen}</td>
-                    <td>{jadwalinformatika.asisten1}</td>
-                    <td>{jadwalinformatika.asisten2}</td>
-                    <td>{jadwalinformatika.praktikum}</td>
+                    <td>{jadwal.programStudi}</td>
+                    <td>{jadwal.kelas}</td>
+                    <td>{jadwal.hari}</td>
+                    <td>{jadwal.waktu}</td>
+                    <td>{jadwal.ruang}</td>
+                    <td>{jadwal.dosen}</td>
+                    <td>{jadwal.asisten1}</td>
+                    <td>{jadwal.asisten2}</td>
+                    <td>{jadwal.praktikum}</td>
 
                     {user && user.role === "admin" && (
                       <>
-                        <td>{jadwalinformatika.user.nama}</td>
+                        <td>{jadwal.user.nama}</td>
                         <td>
                           <Link
-                            to={`/jadwal/tif/edit/${jadwalinformatika.uuid}`}
+                            to={`/jadwal/edit/${jadwal.uuid}`}
                             className="button is-small is-info mr-2"
                           >
                             <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
@@ -101,7 +101,7 @@ const ListJadwalInformatika = () => {
                             onClick={() => {
                               if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
                                 window.alert('Hapus jadwal berhasil!')
-                                deleteJadwal(jadwalinformatika.uuid);
+                                deleteJadwal(jadwal.uuid);
                               }
                             }}
                           >
@@ -129,4 +129,4 @@ const ListJadwalInformatika = () => {
   );
 };
 
-export default ListJadwalInformatika;
+export default ListJadwal;

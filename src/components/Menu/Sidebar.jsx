@@ -48,7 +48,7 @@ const Sidebar = () => {
             <details role="list" dir="rtl">
               <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/jadwal'} ><GrSchedule /> Jadwal</Link></summary>
               <ul role="listbox">
-                <li><Link className="link" to={'/jadwal/tif/add'} >Tambah</Link></li>
+                <li><Link className="link" to={'/jadwal/add'} >Tambah</Link></li>
               </ul>
             </details>
           </li>

@@ -1,7 +1,7 @@
 import React from 'react'
 // import HomePage from "../components/HomePage";
 import Navbar from "../components/Navbar";
-import ListJadwalInformatika from "../components/jadwal/ListJadwalInformatika";
+import ListJadwalInformatika from "../components/jadwal/ListJadwal";
 import SearchForm from "../components/SearchForm";
 // import Footer from "../components/Menu/Footer";
 

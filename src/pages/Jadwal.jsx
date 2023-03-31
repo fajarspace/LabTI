@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../utilities/authSlice";
 import Sidebar from "../components/Menu/Sidebar";
-import ListJadwalInformatika from "../components/jadwal/ListJadwalInformatika";
+import ListJadwal from "../components/jadwal/ListJadwal";
 // import ListJadwalIndustri from "../components/jadwal/ListJadwalIndustri";
 
 const Jadwal = () => {
@@ -32,7 +32,7 @@ const Jadwal = () => {
           <Sidebar />
         </div>
         <div className="container-fluid">
-          <ListJadwalInformatika />
+          <ListJadwal />
           {/* <ListJadwalIndustri/> */}
         </div>
       </div>
