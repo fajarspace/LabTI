@@ -240,7 +240,7 @@ const AddJadwalInformatika = () => {
                           <>
                             <option value="TL.21.AA.1">TL.21.AA.1</option>
                             <option value="TL.21.B1">TL.21.B1</option>
-                            <option value="TL.21.B1">TL.21.C1</option>
+                            <option value="TL.21.C1">TL.21.C1</option>
                           </>
                         )}
 
