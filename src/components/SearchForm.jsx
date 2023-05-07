@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function SearchForm() {
-  const [programStudi, setProgramStudi] = useState('');
-  const [praktikum, setPraktikum] = useState('');
+  const [programStudi, setProgramStudi] = useState("");
+  const [praktikum, setPraktikum] = useState("");
   const [jadwal, setJadwal] = useState([]);
   const [angkatan, setAngkatan] = useState([]);
   const [isLoading, setIsLoading] = useState();
@@ -37,7 +37,9 @@ function SearchForm() {
   const handleSubmit = (event) => {
     setIsLoading(true);
     event.preventDefault();
-    fetch(`${process.env.REACT_APP_BASE_URL}/jadwal?programStudi=${programStudi}&praktikum=${praktikum}`)
+    fetch(
+      `${process.env.REACT_APP_BASE_URL}/jadwal?programStudi=${programStudi}&praktikum=${praktikum}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setJadwal(data);
@@ -52,12 +54,10 @@ function SearchForm() {
 
   return (
     <div>
-
       <form onSubmit={handleSubmit}>
-        <div className=''>
-
-          <div className='grid card'>
-            <div className=''>
+        <div className="">
+          <div className="grid card">
+            <div className="">
               <div>
                 <hgroup>
                   <h1>Filter jadwal</h1>
@@ -78,6 +78,7 @@ function SearchForm() {
                   <option value="Teknik Informatika">Teknik Informatika</option>
                   <option value="Teknik Industri">Teknik Industri</option>
                   <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+                  <option value="Teknik Sipil">Teknik Sipil</option>
                 </select>
               </div>
               <div>
@@ -95,10 +96,12 @@ function SearchForm() {
                   <option value="" disabled={!programStudi}>
                     {programStudi ? "Pilih Angkatan" : "Semua Angkatan"}
                   </option>
-                  {programStudi && ["19", "20", "21"].map((item) => <option value={item}>{item}</option>)}
+                  {programStudi &&
+                    ["19", "20", "21"].map((item) => (
+                      <option value={item}>{item}</option>
+                    ))}
                 </select>
               </div>
-
 
               <label htmlFor="praktikum">Praktikum</label>
               <select
@@ -109,18 +112,24 @@ function SearchForm() {
                 disabled={!angkatan}
               >
                 <option value="" disabled={!angkatan}>
-                  {angkatan && programStudi ? "Pilih Praktikum" : "Semua Praktikum"}
+                  {angkatan && programStudi
+                    ? "Pilih Praktikum"
+                    : "Semua Praktikum"}
                 </option>
                 {angkatan === "19" && programStudi === "Teknik Informatika" && (
                   <>
                     <option value="Data Mining '19">Data Mining '19</option>
-                    <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
+                    <option value="Bahasa Pemrograman">
+                      Bahasa Pemrograman
+                    </option>
                   </>
                 )}
                 {angkatan === "20" && programStudi === "Teknik Informatika" && (
                   <>
                     <option value="Data Mining '20">Data Mining '20</option>
-                    <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
+                    <option value="Bahasa Pemrograman">
+                      Bahasa Pemrograman
+                    </option>
                   </>
                 )}
                 {angkatan === "19" && programStudi === "Teknik Lingkungan" && (
@@ -129,7 +138,9 @@ function SearchForm() {
                     <option value="Epanet '19">Epanet '19</option>
                     <option value="SWAMM '19">SWAMM '19</option>
                     <option value="Kimia Dasar '19">Kimia Dasar '19</option>
-                  <option value="Kimia Lingkungan '19">Kimia Lingkungan '19</option>
+                    <option value="Kimia Lingkungan '19">
+                      Kimia Lingkungan '19
+                    </option>
                   </>
                 )}
                 {angkatan === "20" && programStudi === "Teknik Lingkungan" && (
@@ -138,7 +149,9 @@ function SearchForm() {
                     <option value="Epanet '20">Epanet '20</option>
                     <option value="SWAMM '20">SWAMM '20</option>
                     <option value="Kimia Dasar '20">Kimia Dasar '20</option>
-                  <option value="Kimia Lingkungan '20">Kimia Lingkungan '20</option>
+                    <option value="Kimia Lingkungan '20">
+                      Kimia Lingkungan '20
+                    </option>
                   </>
                 )}
                 {angkatan === "21" && programStudi === "Teknik Lingkungan" && (
@@ -147,99 +160,180 @@ function SearchForm() {
                     <option value="Epanet '21">Epanet '21</option>
                     <option value="SWAMM '21">SWAMM '21</option>
                     <option value="Kimia Dasar '21">Kimia Dasar '21</option>
-                  <option value="Kimia Lingkungan '21">Kimia Lingkungan '21</option>
+                    <option value="Kimia Lingkungan '21">
+                      Kimia Lingkungan '21
+                    </option>
+                  </>
+                )}
+                {angkatan === "20" && programStudi === "Teknik Sipil" && (
+                  <>
+                    <option value="Mekanika Tanah '20">
+                      Mekanika Tanah '20
+                    </option>
+                    <option value="Ilmu Ukur tanah '20">
+                      Ilmu Ukur tanah '20
+                    </option>
+                    <option value="Perancangan Perkerasan Jalan '20">
+                      Perancangan Perkerasan Jalan '20
+                    </option>
+                    <option value="Menggambar Bangunan Sipil '20">
+                      Menggambar Bangunan Sipil '20
+                    </option>
+                    <option value="Pemograman Komputer '20">
+                      Pemograman Komputer '20
+                    </option>
+                  </>
+                )}
+                {angkatan === "21" && programStudi === "Teknik Sipil" && (
+                  <>
+                    <option value="Mekanika Tanah '21">
+                      Mekanika Tanah '21
+                    </option>
+                    <option value="Ilmu Ukur tanah '21">
+                      Ilmu Ukur tanah '21
+                    </option>
+                    <option value="Perancangan Perkerasan Jalan '21">
+                      Perancangan Perkerasan Jalan '21
+                    </option>
+                    <option value="Menggambar Bangunan Sipil '21">
+                      Menggambar Bangunan Sipil '21
+                    </option>
+                    <option value="Pemograman Komputer '21">
+                      Pemograman Komputer '21
+                    </option>
                   </>
                 )}
               </select>
-              <small>*mohon masukkan data dengan benar, untuk hasil yang lebih akurat</small>
+              <small>
+                *mohon masukkan data dengan benar, untuk hasil yang lebih akurat
+              </small>
               <div style={{ display: "flex" }}>
                 <button type="submit">
-                  {isLoading ? <><div aria-busy="true"></div></> : "Filter"}
-                </button> &emsp;
-                <button className='red' type="reset" onClick={() => setJadwal([])}>
+                  {isLoading ? (
+                    <>
+                      <div aria-busy="true"></div>
+                    </>
+                  ) : (
+                    "Filter"
+                  )}
+                </button>{" "}
+                &emsp;
+                <button
+                  className="red"
+                  type="reset"
+                  onClick={() => setJadwal([])}
+                >
                   Reset
                 </button>
               </div>
             </div>
-            <div className='faq'>
-              <div className='dark' ></div>
+            <div className="faq">
+              <div className="dark"></div>
               <hgroup>
                 <h1>FAQ</h1>
                 <mark>Pertanyaan seputar praktikum</mark>
               </hgroup>
               <details>
-                <summary>Apakah boleh kita mengikuti praktikum di kelas lain?</summary>
-                <small>Boleh, jika pada jadwal utama praktikan berhalangan hadir</small>
+                <summary>
+                  Apakah boleh kita mengikuti praktikum di kelas lain?
+                </summary>
+                <small>
+                  Boleh, jika pada jadwal utama praktikan berhalangan hadir
+                </small>
               </details>
               <details>
-                <summary>Pada minggu pertama saya tidak hadir, untuk minggu kedua ini saya harus mengerjakan modul mana ya?</summary>
-                <small>Silahkan mengerjakan modul minggu 1 atau 2, sisanya silahkan menyusul di kelas lain</small>
+                <summary>
+                  Pada minggu pertama saya tidak hadir, untuk minggu kedua ini
+                  saya harus mengerjakan modul mana ya?
+                </summary>
+                <small>
+                  Silahkan mengerjakan modul minggu 1 atau 2, sisanya silahkan
+                  menyusul di kelas lain
+                </small>
               </details>
-
             </div>
           </div>
         </div>
-      </form >
+      </form>
 
-      {
-        jadwal.length > 0 ? (
-          <>
-            {/* <hgroup>
+      {jadwal.length > 0 ? (
+        <>
+          {/* <hgroup>
             <h1></h1>
           </hgroup> */}
-            <hgroup>
-              <p>
-                {isLoading ? <><p>Memuat data</p><progress></progress></> : "Hasil filter :"}
-                {programStudi === "Teknik Lingkungan" && (
-                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Lingkungan").length} praktikum {programStudi} untuk semua angkatan {angkatan}</b>
-                )}
-                {programStudi === "Teknik Informatika" && (
-                  <b>Terdapat {jadwal.filter(item => item.programStudi === "Teknik Informatika").length} praktikum {programStudi} untuk semua angkatan {angkatan}</b>
-                )}
-              </p>
-            </hgroup>
-            <div className="table-container">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Program Studi</th>
-                    <th>Kelas</th>
-                    <th>Hari</th>
-                    <th>Waktu</th>
-                    <th>Ruang</th>
-                    <th>Dosen</th>
-                    <th>Asisten 1</th>
-                    <th>Asisten 2</th>
-                    <th>Praktikum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {jadwal.map((jadwalItem) => (
-                    <tr key={jadwalItem.uuid}>
-                      <td>{jadwalItem.programStudi}</td>
-                      <td>{jadwalItem.kelas}</td>
-                      <td>{jadwalItem.hari}</td>
-                      <td>{jadwalItem.waktu}</td>
-                      <td>{jadwalItem.ruang}</td>
-                      <td>{jadwalItem.dosen}</td>
-                      <td>{jadwalItem.asisten1}</td>
-                      <td>{jadwalItem.asisten2}</td>
-                      <td>{jadwalItem.praktikum}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        ) : (
           <hgroup>
-            <h2>Tidak ada data yang tersedia.</h2>
+            <p>
+              {isLoading ? (
+                <>
+                  <p>Memuat data</p>
+                  <progress></progress>
+                </>
+              ) : (
+                "Hasil filter :"
+              )}
+              {programStudi === "Teknik Lingkungan" && (
+                <b>
+                  Terdapat{" "}
+                  {
+                    jadwal.filter(
+                      (item) => item.programStudi === "Teknik Lingkungan"
+                    ).length
+                  }{" "}
+                  praktikum {programStudi} untuk semua angkatan {angkatan}
+                </b>
+              )}
+              {programStudi === "Teknik Informatika" && (
+                <b>
+                  Terdapat{" "}
+                  {
+                    jadwal.filter(
+                      (item) => item.programStudi === "Teknik Informatika"
+                    ).length
+                  }{" "}
+                  praktikum {programStudi} untuk semua angkatan {angkatan}
+                </b>
+              )}
+            </p>
           </hgroup>
-        )
-      }
-
-
-    </div >
+          <div className="table-container">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Program Studi</th>
+                  <th>Kelas</th>
+                  <th>Hari</th>
+                  <th>Waktu</th>
+                  <th>Ruang</th>
+                  <th>Dosen</th>
+                  <th>Asisten 1</th>
+                  <th>Asisten 2</th>
+                  <th>Praktikum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {jadwal.map((jadwalItem) => (
+                  <tr key={jadwalItem.uuid}>
+                    <td>{jadwalItem.programStudi}</td>
+                    <td>{jadwalItem.kelas}</td>
+                    <td>{jadwalItem.hari}</td>
+                    <td>{jadwalItem.waktu}</td>
+                    <td>{jadwalItem.ruang}</td>
+                    <td>{jadwalItem.dosen}</td>
+                    <td>{jadwalItem.asisten1}</td>
+                    <td>{jadwalItem.asisten2}</td>
+                    <td>{jadwalItem.praktikum}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <hgroup>
+          <h2>Tidak ada data yang tersedia.</h2>
+        </hgroup>
+      )}
+    </div>
   );
 }
 
