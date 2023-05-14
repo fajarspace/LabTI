@@ -5,14 +5,29 @@ import { Link } from "react-router-dom";
 import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 // import SearchForm from "../SearchForm";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 
 const ListJadwal = () => {
   const { user } = useSelector((state) => state.auth);
-
   const [jadwal, setJadwal] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15;
+
+  // hitung total halaman
+  const pageCount = Math.ceil(jadwal.length / itemsPerPage);
+
+  // render data blog sesuai halaman yang aktif
+  const offset = currentPage * itemsPerPage;
+  const currentJadwal = jadwal.slice(offset, offset + itemsPerPage);
+
+  // callback untuk mengubah halaman aktif
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
 
   useEffect(() => {
     getJadwal();
@@ -72,7 +87,7 @@ const ListJadwal = () => {
                 </tr>
               </thead>
               <tbody>
-                {jadwal.map((jadwal, index) => (
+                {currentJadwal.map((jadwal, index) => (
                   <tr key={jadwal.uuid}>
                     <td>{index + 1}</td>
                     <td>{jadwal.programStudi}</td>
@@ -93,28 +108,57 @@ const ListJadwal = () => {
                             to={`/jadwal/edit/${jadwal.uuid}`}
                             className="button is-small is-info mr-2"
                           >
-                            <kbd style={{ "backgroundColor": 'yellow', "color": "black", fontSize: "20px" }}><FiEdit /></kbd>
-                          </Link> &nbsp;
-
+                            <kbd
+                              style={{
+                                backgroundColor: "yellow",
+                                color: "black",
+                                fontSize: "20px",
+                              }}
+                            >
+                              <FiEdit />
+                            </kbd>
+                          </Link>{" "}
+                          &nbsp;
                           <Link
                             onClick={() => {
-                              if (window.confirm("Apakah Anda yakin ingin menghapus jadwal ini?")) {
-                                window.alert('Hapus jadwal berhasil!')
+                              if (
+                                window.confirm(
+                                  "Apakah Anda yakin ingin menghapus jadwal ini?"
+                                )
+                              ) {
+                                window.alert("Hapus jadwal berhasil!");
                                 deleteJadwal(jadwal.uuid);
                               }
                             }}
                           >
-                            <kbd style={{ backgroundColor: "red", fontSize: "20px" }}><IoMdTrash /></kbd>
+                            <kbd
+                              style={{
+                                backgroundColor: "red",
+                                fontSize: "20px",
+                              }}
+                            >
+                              <IoMdTrash />
+                            </kbd>
                           </Link>
                         </td>
                       </>
                     )}
-
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            containerClassName={"pagination justify-content-center"}
+            previousLinkClassName={"page-link"}
+            nextLinkClassName={"page-link"}
+            disabledClassName={"disabled"}
+            activeClassName={"active"}
+          />
         </>
       ) : (
         <hgroup>

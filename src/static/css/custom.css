@@ -1,5 +1,5 @@
 /* Grid */
-button{
+button {
   background-color: #1e88e5 !important;
   border: none !important;
 }
@@ -8,90 +8,124 @@ button{
   border: none !important;
 }
 body > main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 7rem);
-    padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 7rem);
+  padding: 1rem 0;
+}
+
+article {
+  padding: 0;
+  overflow: hidden;
+}
+
+article div {
+  padding: 1rem;
+}
+
+@media (min-width: 576px) {
+  body > main {
+    padding: 1.25rem 0;
   }
-  
-  article {
-    padding: 0;
-    overflow: hidden;
-  }
-  
+
   article div {
-    padding: 1rem;
+    padding: 1.25rem;
   }
-  
-  @media (min-width: 576px) {
-    body > main {
-      padding: 1.25rem 0;
-    }
-  
-    article div {
-      padding: 1.25rem;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    body > main {
-      padding: 1.5rem 0;
-    }
-  
-    article div {
-      padding: 1.5rem;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    body > main {
-      padding: 1.75rem 0;
-    }
-  
-    article div {
-      padding: 1.75rem;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    body > main {
-      padding: 2rem 0;
-    }
-  
-    article div {
-      padding: 2rem;
-    }
-  }
-  
-  /* Nav */
-  summary[role="link"].secondary:is([aria-current],:hover,:active,:focus) {
-    background-color: transparent;
-    color: var(--secondary-hover);
-  }
-  
-  /* Hero Image */
-  article div:nth-of-type(2) {
-    display: none;
-    background-color: #374956;
-    background-image: url("../img/login-cover.png");
-    background-position: center;
-    background-size: cover;
-  }
-  
-  @media (min-width: 992px) {
-    .grid > div:nth-of-type(2) {
-      display: block;
-    }
-  }
-  
-  /* Footer */
-  body > footer {
-    padding: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  body > main {
+    padding: 1.5rem 0;
   }
 
+  article div {
+    padding: 1.5rem;
+  }
+}
 
-  /* .field{
+@media (min-width: 992px) {
+  body > main {
+    padding: 1.75rem 0;
+  }
+
+  article div {
+    padding: 1.75rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  body > main {
+    padding: 2rem 0;
+  }
+
+  article div {
+    padding: 2rem;
+  }
+}
+
+/* Nav */
+summary[role="link"].secondary:is([aria-current], :hover, :active, :focus) {
+  background-color: transparent;
+  color: var(--secondary-hover);
+}
+
+/* Hero Image */
+article div:nth-of-type(2) {
+  display: none;
+  background-color: #374956;
+  background-image: url("../img/login-cover.png");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 992px) {
+  .grid > div:nth-of-type(2) {
+    display: block;
+  }
+}
+
+/* Footer */
+body > footer {
+  padding: 1rem 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination li {
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li a,
+.pagination li span {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  color: #333;
+  font-weight: 500;
+}
+
+.pagination li.active a,
+.pagination li.active span {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination li.disabled a,
+.pagination li.disabled span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* .field{
     margin-left: 20px;
     margin-right: 20px;
   } */
