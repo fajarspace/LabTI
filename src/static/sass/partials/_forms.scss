@@ -1,0 +1,90 @@
+$select-bg-color: #f8f8f8;
+$select-border-color: #ccc;
+$select-hover-bg-color: #e8e8e8;
+$select-focus-bg-color: #fff;
+
+.select-wrapper {
+  position: relative;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    hgroup {
+      text-align: center;
+      margin-bottom: 20px;
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        font-size: 16px;
+        color: #666;
+      }
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $select-border-color;
+      border-radius: 4px;
+      background-color: $select-bg-color;
+      font-size: 16px;
+      font-weight: 400;
+      color: #333;
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $select-hover-bg-color;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $select-focus-bg-color;
+      }
+
+      .panah {
+        content: "\25BC";
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #333;
+        pointer-events: none;
+      }
+    }
+
+    small {
+      font-size: 12px;
+      color: #999;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button.red {
+      background-color: red;
+    }
+  }
+}

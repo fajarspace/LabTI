@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 // import HomePage from "../components/HomePage";
 import Navbar from "../components/Navbar";
-import ListJadwal from "../components/jadwal/ListJadwal";
+// import ListJadwal from "../components/jadwal/ListJadwal";
 import SearchForm from "../components/SearchForm";
 // import Footer from "../components/Menu/Footer";
 
@@ -10,15 +10,14 @@ const Home = () => {
     <>
       <main style={{ backgroundColor: "" }}>
         <Navbar />
-        <div className='container-fluid'>
+        <div className="container-fluid">
           <SearchForm />
-          <hr />
-          <ListJadwal />
+          {/* <ListJadwal /> */}
           {/* <Footer /> */}
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

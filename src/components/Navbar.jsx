@@ -18,11 +18,7 @@ const Navbar = () => {
         </ul>
         <ul>
           <li>
-            <Link
-              style={{ backgroundColor: "#1e88e5" }}
-              role={"button"}
-              to={"/login"}
-            >
+            <Link role={"button"} to={"/login"}>
               Login
             </Link>
           </li>
