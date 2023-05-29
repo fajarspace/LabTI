@@ -249,7 +249,6 @@ function SearchForm() {
                 praktikum {programStudi} untuk semua angkatan {angkatan}
               </b>
             )}
-            saya mau ketika tidak ada data maka tampilkan data tidak tersedia
           </hgroup>
           <div className="table-container">
             <table className="table">
