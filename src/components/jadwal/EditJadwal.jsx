@@ -220,9 +220,17 @@ const EditJadwalInformatika = () => {
                         {angkatan === "21" &&
                           programStudi === "Teknik Informatika" && (
                             <>
-                              <option value="TI.21">TI.21</option>
-                              <option value="TI.21">TI.21</option>
-                              <option value="TI.21">TI.21</option>
+                              <option value="TI.21.A.1">TI.21.A.1</option>
+                              <option value="TI.21.A.2">TI.21.A.2</option>
+                              <option value="TI.21.A.3">TI.21.A.3</option>
+                              <option value="TI.21.B.1">TI.21.B.1</option>
+                              <option value="TI.21.B.2">TI.21.B.2</option>
+                              <option value="TI.21.C.1">TI.21.C.1</option>
+                              <option value="TI.21.C.2">TI.21.C.2</option>
+                              <option value="TI.21.C.3">TI.21.C.3</option>
+                              <option value="TI.21.C.4">TI.21.C.4</option>
+                              <option value="TI.21.C.5">TI.21.C.5</option>
+                              <option value="TI.21.C.6">TI.21.C.6</option>
                             </>
                           )}
                         {angkatan === "19" &&
@@ -509,6 +517,7 @@ const EditJadwalInformatika = () => {
                           <option value="Maulana Hasan">Maulana Hasan</option>
                           <option value="M. Romdhon">M. Romdhon</option>
                           <option value="Sultan Aditya">Sultan Aditya</option>
+                          <option value="Nuryadi">Nuryadi</option>
                         </>
                       )}
                       {programStudi === "Teknik Lingkungan" && (
@@ -549,6 +558,7 @@ const EditJadwalInformatika = () => {
                           <option value="Maulana Hasan">Maulana Hasan</option>
                           <option value="M. Romdhon">M. Romdhon</option>
                           <option value="Sultan Aditya">Sultan Aditya</option>
+                          <option value="Nuryadi">Nuryadi</option>
                         </>
                       )}
                       {programStudi === "Teknik Lingkungan" && (

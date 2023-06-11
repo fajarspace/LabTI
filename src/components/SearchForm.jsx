@@ -105,6 +105,11 @@ function SearchForm() {
               <option value="Bahasa Pemrograman">Bahasa Pemrograman</option>
             </>
           )}
+          {angkatan === "21" && programStudi === "Teknik Informatika" && (
+            <>
+              <option value="Pemrograman Web">Pemrograman Web</option>
+            </>
+          )}
           {angkatan === "19" && programStudi === "Teknik Lingkungan" && (
             <>
               <option value="AutoCad '19">AutoCad '19</option>
@@ -250,6 +255,7 @@ function SearchForm() {
               </b>
             )}
           </hgroup>
+
           <div className="table-container">
             <table className="table">
               <thead>
