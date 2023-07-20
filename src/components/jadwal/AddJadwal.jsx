@@ -18,58 +18,25 @@ const AddJadwalInformatika = () => {
   const [praktikum, setPraktikum] = useState("");
   const [pesan, setPesan] = useState("");
   const [msg, setMsg] = useState("");
-  const [angkatan, setAngkatan] = useState(""); // state untuk menyimpan pilihan angkatan
-
-  // Daftar kelas untuk setiap angkatan
-  // const kelasByAngkatan = {
-  //   "": [], // jika angkatan belum dipilih, tidak ada kelas yang ditampilkan
-  //   "19": [
-  //     'TI.19.A.RPL-1',
-  //     'TI.19.A.RPL-2',
-  //     'TI.19.B.RPL-1',
-  //     'TI.19.B.RPL-2',
-  //     'TI.19.C.RPL-1',
-  //     'TI.19.C.RPL-2',
-  //     'TI.19.F.RPL-1',
-  //     'TI.19.D.RPL-1',
-  //     'TI.19.D.RPL-2',
-  //     'TI.19.D.RPL-3',
-  //     'TI.19.D.RPL-4',
-  //     'TI.19.D.Jaringan-1',
-  //     'TI.19.E.RPL-1',
-  //     'TI.19.E.RPL-2'
-  //   ],
-  //   "20": [
-  //     "TI.20.A.1",
-  //     "TI.20.A.2",
-  //     "TI.20.A.3",
-  //     "TI.20.B.1",
-  //     "TI.20.B.2",
-  //     "TI.20.C.1",
-  //     "TI.20.D.1",
-  //     "TI.20.D.2",
-  //     "TI.20.D.3",
-  //     "TI.20.D.4",
-  //     "TI.20.E.1",
-  //     "TI.20.F.1",
-  //   ],
-  // };
-
-  // // Handle perubahan pilihan angkatan
-  // const handleAngkatanChange = (e) => {
-  //   setAngkatan(e.target.value);
-  //   setKelas(""); // reset pilihan kelas saat angkatan berubah
-  // };
-
-  // // Tampilkan pilihan kelas sesuai dengan angkatan yang dipilih
-  // const kelasOptions = kelasByAngkatan[angkatan].map((kelas) => (
-  //   <option key={kelas} value={kelas}>
-  //     {kelas}
-  //   </option>
-  // ));
-
+  const [angkatan, setAngkatan] = useState("");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState();
+
+  useEffect(() => {
+    getP();
+  }, []);
+
+  const getP = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/kelas`
+      );
+      setKelas(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const saveJadwal = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -109,20 +76,6 @@ const AddJadwalInformatika = () => {
                   <h1>Tambah jadwal</h1>
                   <h2>Tambah</h2>
                 </hgroup>
-                {/* <div className="control">
-                  <label htmlFor="angkatan">Program Studi</label>
-                  <select
-                    type="text"
-                    defaultValue={programStudi}
-                    onChange={(e) => setProgramStudi(e.target.value)}
-                  >
-                    <option value="">-- Pilih Program studi --</option>
-                    <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Industri">Teknik Industri</option>
-                    <option value="Teknik Lingkungan">Teknik Lingkungan</option>
-                  </select>
-                  buatlah ketika di klik pilihan tersebut maka muncul angkatan dan kelas sesuai dengan program studi
-                </div> */}
                 <div className="">
                   <div>
                     <label htmlFor="programStudi">Program Studi</label>

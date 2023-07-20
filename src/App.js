@@ -9,6 +9,7 @@ import EditJadwal from "./components/jadwal/EditJadwal";
 import AddUser from "./components/AddUser";
 import PatchUser from "./pages/PatchUser";
 import About from "./components/Menu/About";
+import Add from "./components/jadwal/Add";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/jadwal" element={<Jadwal />} />
           <Route path="/jadwal/add" element={<AddJadwal />} />
           <Route path="/jadwal/edit/:id" element={<EditJadwal />} />
+          <Route path="/jadwal/test" element={<Add />} />
         </Routes>
       </BrowserRouter>
     </div>
