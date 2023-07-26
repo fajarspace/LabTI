@@ -7,7 +7,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../utilities/authSlice";
-import Sidebar from "../components/Menu/Sidebar";
 import ListJadwal from "../components/jadwal/ListJadwal";
 // import ListJadwalIndustri from "../components/jadwal/ListJadwalIndustri";
 
@@ -27,15 +26,7 @@ const Jadwal = () => {
   }, [isError, navigate]);
   return (
     <>
-      <div className="dashboard">
-        <div className="sidebar">
-          <Sidebar />
-        </div>
-        <div className="container-fluid">
-          <ListJadwal />
-          {/* <ListJadwalIndustri/> */}
-        </div>
-      </div>
+      <ListJadwal />
     </>
   );
 };

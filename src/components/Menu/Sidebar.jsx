@@ -1,80 +1,74 @@
-import React from 'react'
+// src/components/Sidebar.js
+import React from "react";
 import { Link } from "react-router-dom";
-// import { BiAddToQueue } from 'react-icons/bi';
-import { RiLogoutBoxRLine } from "react-icons/ri";
-import { FiUsers } from "react-icons/fi";
-import { GrSchedule } from "react-icons/gr";
-import { AiOutlineDashboard } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { LogOut, reset } from "../../utilities/authSlice";
+import FeatherIcon from "feather-icons-react";
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
-
-  const logout = () => {
-    dispatch(LogOut());
-    dispatch(reset());
-    navigate("/");
-  };
   return (
     <>
-      <nav className='container-fluid' style={{ 'borderBottom': '1px solid lightgrey' }}>
-        <ul>
-          <li><strong><Link style={{ color: "black" }} className="link" to={'/dashboard'}>Dashb<AiOutlineDashboard />ard</Link></strong></li>
-          {/* <li>
-            <Link to={`/jadwal/add`}>
-              <BiAddToQueue/>
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link className="link" to={'/jadwal'} >Jadwal</Link>
-          </li> */}
-
-
-          {/* <li>
-            <Link to={`jadwal/add`}>
-              <BiAddToQueue/>
-            </Link>
-          </li>
-        <li><Link to={`/`}>
-          <RiLogoutBoxRLine/>
-        </Link></li> */}
-        </ul>
-        <ul>
+      {/* Sidebar  */}
+      <nav id="sidebar">
+        <div className="sidebar-header">
+          <h3>
+            <span>LOGO UPB</span>
+          </h3>
+        </div>
+        <ul className="list-unstyled components">
           <li>
-            <details role="list" dir="rtl">
-              <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/jadwal'} ><GrSchedule /> Jadwal</Link></summary>
-              <ul role="listbox">
-                <li><Link className="link" to={'/jadwal/add'} >Tambah</Link></li>
-              </ul>
-            </details>
+            <a href="/dashboard" className="dashboard">
+              <i className="material-icons">dashboard</i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li className="">
+            <a href="/jadwal">
+              <i className="material-icons">date_range</i>
+              <span>Jadwal</span>
+            </a>
           </li>
 
-          {user && user.role === "admin" && (
-            <li>
-              <details role="list" dir="rtl">
-                <summary aria-haspopup="listbox" role="link"><Link className="link" to={'/users'} ><FiUsers /> User</Link></summary>
-                <ul role="listbox">
-                  <li><Link className="link" to={'/users/add'} >Tambah</Link></li>
-                </ul>
-              </details>
-            </li>
+          <li className="dropdown">
+            <a
+              href="#pageSubmenu3"
+              data-toggle="collapse"
+              aria-expanded="false"
+              className="dropdown-toggle"
+            >
+              <i className="material-icons">equalizer</i>
+              <span>Komponen</span>
+            </a>
+            <ul className="collapse list-unstyled menu" id="pageSubmenu3">
+              <li>
+                <a href="/kelas">Kelas</a>
+              </li>
+              <li>
+                <a href="/jam">Jam</a>
+              </li>
+              <li>
+                <a href="/dosen">Dosen</a>
+              </li>
+              <li>
+                <a href="/asisten">Asisten Lab</a>
+              </li>
+              <li>
+                <a href="/ruang">Ruang</a>
+              </li>
+              <li>
+                <a href="/praktikum">Praktikum</a>
+              </li>
+            </ul>
+          </li>
 
-          )}
-          {/* <li><Link className='link' to={`/about`}>
-            About
-          </Link></li> */}
-          <li><Link style={{ color: "red" }} onClick={logout} to={`/`}>
-            <RiLogoutBoxRLine />
-          </Link></li>
+          <li className="">
+            <a href="/users">
+              <i className="material-icons">person</i>
+              <span>Users</span>
+            </a>
+          </li>
         </ul>
       </nav>
-      <br />
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

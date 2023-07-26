@@ -13,7 +13,6 @@ const FormEditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  
   const userUrl = process.env.REACT_APP_USERS_URL;
   const urlById = `${userUrl}/${id}`;
 
@@ -52,17 +51,17 @@ const FormEditUser = () => {
   };
   return (
     <>
-    <div className="dashboard">
-<div className="sidebar">
-      <Sidebar/>
-    </div>
-    <div className="container">
-    <form onSubmit={updateUser}>
-              <div className="card" >
-                <hgroup>
-                  <h1>Edit user</h1>
-                  <h2>Edit</h2>
-                </hgroup>
+      <div className="dashboard">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="container">
+          <form onSubmit={updateUser}>
+            <div className="card">
+              <hgroup>
+                <h1>Edit user</h1>
+                <h2>Edit</h2>
+              </hgroup>
               <div className="field">
                 <label className="label">Nama</label>
                 <div className="control">
@@ -133,11 +132,11 @@ const FormEditUser = () => {
                   </button>
                 </div>
               </div>
-              </div>
-            </form>
-    </div>
-    </div>
-      </>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 

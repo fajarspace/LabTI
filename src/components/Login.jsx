@@ -5,8 +5,6 @@ import { LoginUser, reset } from "../utilities/authSlice";
 
 import "../static/css/custom.css";
 
-import Navbar from "../components/Navbar";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,49 +28,56 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
+      <section className="vh-100">
+        <div className="container-fluid h-custom">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-md-5">
+              <form onSubmit={Auth}>
+                {/* Email input */}
+                <div className="form-outline mb-4">
+                  <label className="form-label" htmlFor="form3Example3">
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    id="form3Example3"
+                    className="form-control form-control-lg"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                  />
+                </div>
+                {/* Password input */}
+                <div className="form-outline mb-3">
+                  <label className="form-label" htmlFor="form3Example4">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="form3Example4"
+                    className="form-control form-control-lg"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password*"
+                  />
+                </div>
 
-      <main className="container">
-        <article className="grid">
-          <div>
-            <hgroup>
-              <h1>Log In</h1>
-              <h2>Khusus Asisten</h2>
-            </hgroup>
-            <form onSubmit={Auth} className="box">
+                <div className="text-center text-lg-start mt-4 pt-2">
+                  <button
+                    type="submit"
+                    className="btn btn-secondary btn-lg"
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+                  >
+                    {isLoading ? "Loading..." : "Login"}
+                  </button>
 
-              <input
-                type="text"
-                className="input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-              />
-              <input
-                type="password"
-                className="input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password*"
-              />
-
-              <button
-                type="submit"
-              >
-                {isLoading ? "Loading..." : "Login"}
-              </button>
-              <p>{message}</p>
-            </form>
+                  <p className="small fw-bold mt-2 pt-1 mb-0">{message}</p>
+                </div>
+              </form>
+            </div>
           </div>
-          <div>
-          </div>
-        </article>
-      </main>
-
-      <footer className="container-fluid">
-        <small>Built with <a href="https://stuffcss.netlify.app" className="secondary">Stuff CSS</a></small>
-      </footer>
-      <br />
+        </div>
+      </section>
     </>
   );
 };

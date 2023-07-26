@@ -19,9 +19,7 @@ const Dashboard = () => {
     }
   }, [isError, navigate]);
 
-  return (
-    <DashboardPage />
-  );
+  return <DashboardPage />;
 };
 
 export default Dashboard;

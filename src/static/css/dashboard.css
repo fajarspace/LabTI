@@ -1,9 +1,0 @@
-
-.link{
-  color: black !important;
-}
-@media only screen and (max-width: 768px) {
-  .faq{
-    display: none;
-  }
-}

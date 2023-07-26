@@ -6,6 +6,9 @@ import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
+import Sidebar from "../Menu/Sidebar";
+import Navbar from "../Menu/Navbar";
+import Footer from "../Menu/Footer";
 // import SearchForm from "../SearchForm";
 
 const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
@@ -13,9 +16,10 @@ const jadwalUrl = process.env.REACT_APP_JADWAL_TIF_URL;
 const ListJadwal = () => {
   const { user } = useSelector((state) => state.auth);
   const [jadwal, setJadwal] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Tambahkan state isLoading untuk indikator loading
 
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 15;
+  const itemsPerPage = 7;
 
   // hitung total halaman
   const pageCount = Math.ceil(jadwal.length / itemsPerPage);
@@ -37,8 +41,10 @@ const ListJadwal = () => {
     try {
       const response = await axios.get(jadwalUrl);
       setJadwal(response.data);
+      setIsLoading(false); // Set isLoading menjadi false ketika data sudah diambil
     } catch (error) {
       console.log(error);
+      setIsLoading(false); // Set isLoading menjadi false ketika data sudah diambil
     }
   };
 
@@ -54,120 +60,136 @@ const ListJadwal = () => {
 
   return (
     <>
-      <hgroup>
-        <h1>Semua jadwal praktikum</h1>
-        <h2>jadwal dapat berubah sewaktu waktu</h2>
-      </hgroup>
-      {/* {user && user.role === "admin" && (
-        <SearchForm />
-      )} */}
+      <div className="wrapper">
+        <div className="body-overlay" />
+        <Sidebar />
+        {/* Page Content  */}
+        <div id="content">
+          <Navbar />
+          <div className="main-content">
+            <div className="row ">
+              <div className="col-lg-12 col-md-12">
+                <div className="card" style={{ minHeight: 485 }}>
+                  <div className="card-header card-header-text">
+                    <h3 className="card-title">Jadwal praktikum</h3>
 
-      {jadwal.length > 0 ? (
-        <>
-          <div className="table-container">
-            <table id="myTable" className="table">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th>Program Studi</th>
-                  <th>Kelas</th>
-                  <th>Hari</th>
-                  <th>Waktu</th>
-                  <th>Ruang</th>
-                  <th>Dosen</th>
-                  <th>Asisten</th>
-                  <th>Asisten</th>
-                  <th>Praktikum</th>
-                  {user && user.role === "admin" && (
-                    <>
-                      <th>Created By</th>
-                      <th>Actions</th>
-                    </>
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {currentJadwal.map((jadwal, index) => (
-                  <tr key={jadwal.uuid}>
-                    <td>{index + 1}</td>
-                    <td>{jadwal.programStudi}</td>
-                    <td>{jadwal.kelas}</td>
-                    <td>{jadwal.hari}</td>
-                    <td>{jadwal.waktu}</td>
-                    <td>{jadwal.ruang}</td>
-                    <td>{jadwal.dosen}</td>
-                    <td>{jadwal.asisten1}</td>
-                    <td>{jadwal.asisten2}</td>
-                    <td>{jadwal.praktikum}</td>
-
-                    {user && user.role === "admin" && (
+                    <a href="/jadwal/add" class="btn btn-secondary">
+                      Tambah
+                    </a>
+                  </div>
+                  <div className="card-content table-responsive">
+                    {jadwal.length > 0 ? (
                       <>
-                        <td>{jadwal.user.nama}</td>
-                        <td>
-                          <Link
-                            to={`/jadwal/edit/${jadwal.uuid}`}
-                            className="button is-small is-info mr-2"
-                          >
-                            <kbd
-                              style={{
-                                backgroundColor: "yellow",
-                                color: "black",
-                                fontSize: "20px",
-                              }}
-                            >
-                              <FiEdit />
-                            </kbd>
-                          </Link>{" "}
-                          &nbsp;
-                          <Link
-                            onClick={() => {
-                              if (
-                                window.confirm(
-                                  "Apakah Anda yakin ingin menghapus jadwal ini?"
-                                )
-                              ) {
-                                window.alert("Hapus jadwal berhasil!");
-                                deleteJadwal(jadwal.uuid);
-                              }
-                            }}
-                          >
-                            <kbd
-                              style={{
-                                backgroundColor: "red",
-                                fontSize: "20px",
-                              }}
-                            >
-                              <IoMdTrash />
-                            </kbd>
-                          </Link>
-                        </td>
-                      </>
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={handlePageClick}
-            containerClassName={"pagination justify-content-center"}
-            previousLinkClassName={"page-link"}
-            nextLinkClassName={"page-link"}
-            disabledClassName={"disabled"}
-            activeClassName={"active"}
-          />
-        </>
-      ) : (
-        <hgroup>
-          <p>Memuat data</p>
-          <progress></progress>
-        </hgroup>
-      )}
+                        <table id="myTable" className="table table-hover">
+                          <thead className="text-primary">
+                            <tr>
+                              <th scope="col">No</th>
+                              <th>Program Studi</th>
+                              <th>Kelas</th>
+                              <th>Hari</th>
+                              <th>Waktu</th>
+                              <th>Ruang</th>
+                              <th>Dosen</th>
+                              <th>Asisten</th>
+                              <th>Asisten</th>
+                              <th>Praktikum</th>
+                              {user && user.role === "admin" && (
+                                <>
+                                  <th>Created By</th>
+                                  <th>Actions</th>
+                                </>
+                              )}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {currentJadwal.map((jadwal, index) => (
+                              <tr key={jadwal.uuid}>
+                                <td>{index + 1}</td>
+                                <td>{jadwal.programStudi}</td>
+                                <td>{jadwal.kelas}</td>
+                                <td>{jadwal.hari}</td>
+                                <td>{jadwal.waktu}</td>
+                                <td>{jadwal.ruang}</td>
+                                <td>{jadwal.dosen}</td>
+                                <td>{jadwal.asisten1}</td>
+                                <td>{jadwal.asisten2}</td>
+                                <td>{jadwal.praktikum}</td>
 
-      <br />
+                                {user && user.role === "admin" && (
+                                  <>
+                                    <td>{jadwal.user.nama}</td>
+                                    <td>
+                                      <Link
+                                        to={`/jadwal/edit/${jadwal.uuid}`}
+                                        className="button is-small is-info mr-2"
+                                      >
+                                        <kbd
+                                          style={{
+                                            backgroundColor: "yellow",
+                                            color: "black",
+                                            fontSize: "20px",
+                                          }}
+                                        >
+                                          <FiEdit />
+                                        </kbd>
+                                      </Link>{" "}
+                                      &nbsp;
+                                      <Link
+                                        onClick={() => {
+                                          if (
+                                            window.confirm(
+                                              "Apakah Anda yakin ingin menghapus jadwal ini?"
+                                            )
+                                          ) {
+                                            window.alert(
+                                              "Hapus jadwal berhasil!"
+                                            );
+                                            deleteJadwal(jadwal.uuid);
+                                          }
+                                        }}
+                                      >
+                                        <kbd
+                                          style={{
+                                            backgroundColor: "red",
+                                            fontSize: "20px",
+                                          }}
+                                        >
+                                          <IoMdTrash />
+                                        </kbd>
+                                      </Link>
+                                    </td>
+                                  </>
+                                )}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </>
+                    ) : (
+                      <hgroup>
+                        <p>Tidak ada data jadwal</p>
+                      </hgroup>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ReactPaginate
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              containerClassName={"pagination justify-content-center"}
+              previousLinkClassName={"page-link"}
+              nextLinkClassName={"page-link"}
+              disabledClassName={"disabled"}
+              activeClassName={"active"}
+            />
+
+            <Footer />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
