@@ -15,7 +15,6 @@ const EditKelas = () => {
     "Teknik Lingkungan",
     "Teknik Sipil",
   ]);
-  const [angkatan, setAngkatan] = useState("");
   const [kelas, setKelas] = useState("");
   const [pesan, setPesan] = useState("");
   const [msg, setMsg] = useState("");
@@ -30,7 +29,6 @@ const EditKelas = () => {
       try {
         const response = await axios.get(urlById);
         setProgramStudi(response.data.programStudi);
-        setAngkatan(response.data.angkatan);
         setKelas(response.data.kelas);
       } catch (error) {
         if (error.response) {
@@ -53,7 +51,6 @@ const EditKelas = () => {
     try {
       await axios.patch(urlById, {
         programStudi,
-        angkatan,
         kelas,
       });
       alert("Data kelas berhasil di update!");
@@ -107,20 +104,6 @@ const EditKelas = () => {
                           </option>
                         ))}
                       </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Angkatan</div>
-                      </div>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="inlineFormInputGroup"
-                        placeholder="contoh: 19"
-                        value={angkatan}
-                        onChange={(e) => setAngkatan(e.target.value)}
-                      />
                     </div>
 
                     <div class="input-group mb-3">

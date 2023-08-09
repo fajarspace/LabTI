@@ -29,22 +29,6 @@ const DashboardPage = () => {
                 <div className="card-header card-header-text">
                   <h3 className="card-title">Halo, {user && user.nama}!</h3>
                 </div>
-                <div className="col">
-                  <button
-                    className={`accordion ${
-                      activeIndex === 0 ? "active" : ""
-                    } btn btn-secondary dropdown-toggle`}
-                    onClick={() => handleAccordionClick(0)}
-                  >
-                    API Documentation
-                  </button>
-                  <div
-                    className="panel"
-                    style={{ display: activeIndex === 0 ? "block" : "none" }}
-                  >
-                    {/* <ApiDoc /> */}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

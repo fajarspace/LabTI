@@ -9,7 +9,6 @@ const EditJadwal = () => {
   const [dataKelas, setDataKelas] = useState([]);
   const [programStudiList, setProgramStudiList] = useState([]);
   const [programStudi, setProgramStudi] = useState("");
-  const [angkatan, setAngkatan] = useState("");
   const [kelas, setKelas] = useState("");
   const [dataJam, setDataJam] = useState([]);
   const [jam, setJam] = useState("");
@@ -23,7 +22,6 @@ const EditJadwal = () => {
     "Minggu",
   ]);
   const [hari, setHari] = useState("");
-  const [waktu, setWaktu] = useState("");
   const [dataRuang, setDataRuang] = useState([]); // Tambahkan state untuk data ruang
   const [ruang, setRuang] = useState(""); // Tambahkan state untuk ruang
   const [dataDosen, setDataDosen] = useState([]);
@@ -60,7 +58,6 @@ const EditJadwal = () => {
     try {
       await axios.patch(urlById, {
         programStudi,
-        angkatan,
         kelas,
         hari,
         waktu: jam,
@@ -84,10 +81,9 @@ const EditJadwal = () => {
   const getJadwalById = async () => {
     const response = await axios.get(urlById);
     setProgramStudi(response.data.programStudi);
-    setAngkatan(response.data.angkatan);
     setKelas(response.data.kelas);
     setHari(response.data.hari);
-    setWaktu(response.data.waktu);
+    setJam(response.data.jam);
     setRuang(response.data.ruang);
     setDosen(response.data.dosen);
     setAsisten1(response.data.asisten1);
@@ -157,13 +153,8 @@ const EditJadwal = () => {
     }
   };
 
-  const filteredAngkatan = dataKelas
-    .filter((kelasItem) => kelasItem.programStudi === programStudi)
-    .map((kelasItem) => kelasItem.angkatan);
-
   const filteredKelas = dataKelas.filter(
-    (kelasItem) =>
-      kelasItem.programStudi === programStudi && kelasItem.angkatan === angkatan
+    (kelasItem) => kelasItem.programStudi === programStudi
   );
 
   return (
@@ -207,31 +198,6 @@ const EditJadwal = () => {
                         ))}
                       </select>
                     </div>
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Angkatan
-                        </label>
-                      </div>
-
-                      <select
-                        className="custom-select"
-                        id="angkatanSelect"
-                        value={angkatan}
-                        onChange={(e) => setAngkatan(e.target.value)}
-                        disabled={programStudi === ""}
-                      >
-                        <option value="">Pilih Angkatan</option>
-                        {filteredAngkatan.map((angkatanItem) => (
-                          <option key={angkatanItem} value={angkatanItem}>
-                            {angkatanItem}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
 
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -247,7 +213,7 @@ const EditJadwal = () => {
                         id="kelasSelect"
                         value={kelas}
                         onChange={(e) => setKelas(e.target.value)}
-                        disabled={programStudi === "" || angkatan === ""}
+                        disabled={programStudi === ""}
                       >
                         <option value="">Pilih Kelas</option>
                         {filteredKelas.map((kelasItem) => (
@@ -270,8 +236,8 @@ const EditJadwal = () => {
                       <select
                         className="custom-select"
                         id="jamSelect"
-                        value={waktu}
-                        onChange={(e) => setWaktu(e.target.value)}
+                        value={jam}
+                        onChange={(e) => setJam(e.target.value)}
                       >
                         <option value="">Pilih Jam</option>
                         {dataJam.map((jamItem) => (
