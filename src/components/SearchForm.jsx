@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReactPaginate from "react-paginate";
 import Footer from "./Footer";
 
 const JadwalSearch = () => {
@@ -14,28 +13,12 @@ const JadwalSearch = () => {
     "Teknik Sipil",
   ]);
   const [kelas, setKelas] = useState("");
+  const [dosenName, setDosenName] = useState(""); // New state for dosen search
+  const [dosenSearchResults, setDosenSearchResults] = useState([]); // State to store dosen search results
   const [searchResults, setSearchResults] = useState([]);
   const [showKelasWarning, setShowKelasWarning] = useState(false); // State untuk menampilkan pesan warning
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10;
-
-  // hitung total halaman
-  const pageCount = Math.ceil(searchResults.length / itemsPerPage);
-
-  // render data blog sesuai halaman yang aktif
-  const offset = currentPage * itemsPerPage;
-  const currentSearchResult = searchResults.slice(
-    offset,
-    offset + itemsPerPage
-  );
-
-  // callback untuk mengubah halaman aktif
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
-  };
 
   useEffect(() => {
     getKelas();
@@ -60,6 +43,10 @@ const JadwalSearch = () => {
     setKelas("");
   };
 
+  const handleDosenNameChange = (event) => {
+    setDosenName(event.target.value);
+  };
+
   const handleKelasChange = (event) => {
     setKelas(event.target.value);
     setShowKelasWarning(false); // Set showKelasWarning menjadi false setiap kali pilihan kelas berubah
@@ -68,25 +55,34 @@ const JadwalSearch = () => {
   const handleSearch = async () => {
     try {
       if (!kelas) {
-        setShowKelasWarning(true); // Set showKelasWarning menjadi true jika kelas belum diisi
-        return; // Berhenti eksekusi jika kelas belum diisi
+        setShowKelasWarning(true);
+        return;
       }
-
       setIsLoading(true);
+
       const response = await axios.get(baseUrl + "/jadwal/search", {
-        params: { kelas },
+        params: { programStudi, kelas },
       });
-      setSearchResults(response.data);
+      const responses = await axios.get(baseUrl + "/jadwal/search/dosen", {
+        params: { dosenName },
+      });
+      setDosenSearchResults(responses.data);
+      setSearchResults(response.data); // Ensure that response.data is an array
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
+      setSearchResults([]); // Reset searchResults to an empty array in case of an error
+      setDosenSearchResults([]);
     }
   };
 
   const handleClear = () => {
     setSearchResults([]);
+    setDosenSearchResults([]);
     setProgramStudi("");
     setKelas("");
+    setDosenName("");
     setShowKelasWarning(false); // Reset showKelasWarning saat tombol "Clear" diklik
   };
 
@@ -99,54 +95,56 @@ const JadwalSearch = () => {
             Lupa jadwal praktikum kamu? 🤔 Silahkan cek dulu!
           </p>
           <p className="mb-3">Cari kelas atau lihat semua jadwal praktikum</p>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">
-                Program Studi
-              </label>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <select
+                className="custom-select"
+                id="programStudiSelect"
+                value={programStudi}
+                onChange={handleProgramStudiChange}
+              >
+                <option value="">Pilih Program Studi</option>
+                {dataProgramStudi.map((programStudiItem) => (
+                  <option key={programStudiItem} value={programStudiItem}>
+                    {programStudiItem}
+                  </option>
+                ))}
+              </select>
             </div>
-
-            <select
-              className="custom-select"
-              id="programStudiSelect"
-              value={programStudi}
-              onChange={handleProgramStudiChange}
-            >
-              <option value="">Pilih Program Studi</option>
-              {dataProgramStudi.map((programStudiItem) => (
-                <option key={programStudiItem} value={programStudiItem}>
-                  {programStudiItem}
-                </option>
-              ))}
-            </select>
+            <div className="form-group col-md-6">
+              <select
+                className={`custom-select ${
+                  showKelasWarning ? "is-invalid" : ""
+                }`}
+                id="kelasSelect"
+                value={kelas}
+                onChange={handleKelasChange}
+                disabled={programStudi === ""}
+              >
+                <option value="">Pilih Kelas</option>
+                {filteredKelas.map((kelasItem) => (
+                  <option key={kelasItem.id} value={kelasItem.kelas}>
+                    {kelasItem.kelas}
+                  </option>
+                ))}
+              </select>
+              {showKelasWarning && (
+                <div className="invalid-feedback">Kelas belum diisi!</div>
+              )}
+            </div>
           </div>
 
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">
-                Kelas
-              </label>
-            </div>
-            <select
-              className={`custom-select ${
-                showKelasWarning ? "is-invalid" : ""
-              }`}
-              id="kelasSelect"
-              value={kelas}
-              onChange={handleKelasChange}
-              disabled={programStudi === ""}
-            >
-              <option value="">Pilih Kelas</option>
-              {filteredKelas.map((kelasItem) => (
-                <option key={kelasItem.id} value={kelasItem.kelas}>
-                  {kelasItem.kelas}
-                </option>
-              ))}
-            </select>
-            {showKelasWarning && (
-              <div className="invalid-feedback">Kelas belum diisi!</div>
-            )}
+          <div className="input-group mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="dosenNameInput"
+              placeholder="Dosen (Optional)"
+              value={dosenName}
+              onChange={handleDosenNameChange}
+            />
           </div>
+
           <div role="main" style={{ display: "flex" }}>
             <button
               style={{ width: "100%" }}
@@ -182,51 +180,73 @@ const JadwalSearch = () => {
                       <th scope="col">#</th>
                       <th scope="col">Program studi</th>
                       <th scope="col">Kelas</th>
-                      <th scope="col">Hari/jam</th>
+                      <th scope="col">Tgl mulai & jam</th>
+                      <th scope="col">Dosen</th>
                       <th scope="col">Asisten 1</th>
-                      <th scope="col">Asisten 2</th>
                       <th scope="col">Ruang</th>
                       <th scope="col">Praktikum</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {currentSearchResult.map((result, index) => (
+                    {searchResults.map((result, index) => (
                       <tr key={result.uuid}>
                         <th>{index + 1}</th>
                         <th>{result.programStudi}</th>
                         <th>{result.kelas}</th>
                         <th>
-                          {result.hari}, {result.waktu}
+                          {new Date(result.hari).toLocaleDateString("id-ID")},{" "}
+                          {result.waktu}
                         </th>
+
+                        <th>{result.dosen}</th>
                         <th>{result.asisten1}</th>
-                        <th>{result.asisten2}</th>
                         <th>{result.ruang}</th>
                         <th scope="row">{result.praktikum}</th>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-
-                {/* <ReactPaginate
-                previousLabel={"Previous"}
-                nextLabel={"Next"}
-                pageCount={pageCount}
-                onPageChange={handlePageClick}
-                containerClassName={"pagination justify-content-center"}
-                previousLinkClassName={"page-link"}
-                nextLinkClassName={"page-link"}
-                disabledClassName={"disabled"}
-                activeClassName={"active"}
-              /> */}
               </>
             ) : (
-              <>
-                <hgroup>
-                  <p>Tidak ada data jadwal</p>
-                </hgroup>
-              </>
+              <p>Tidak ada data jadwal.</p>
             )}
+
+            <div className="table-responsive">
+              {dosenSearchResults.length > 0 && (
+                <table className="table table-sm mt-3">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Program studi</th>
+                      <th scope="col">Kelas</th>
+                      <th scope="col">Hari/jam</th>
+                      <th scope="col">Dosen</th>
+                      <th scope="col">Asisten 1</th>
+                      <th scope="col">Ruang</th>
+                      <th scope="col">Praktikum</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dosenSearchResults.map((dosenResult, index) => (
+                      <tr key={index}>
+                        <th>{index + 1}</th>
+                        <th>{dosenResult.programStudi}</th>
+                        <th>{dosenResult.kelas}</th>
+                        <th>
+                          {dosenResult.hari}, {dosenResult.waktu}
+                        </th>
+                        <th>{dosenResult.dosen}</th>
+                        <th>{dosenResult.asisten1}</th>
+                        <th>{dosenResult.ruang}</th>
+                        <th scope="row">{dosenResult.praktikum}</th>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
           </div>
+
           <a style={{ textDecoration: "underline" }} href="jadwal/all">
             Lihat seluruh jadwal
           </a>

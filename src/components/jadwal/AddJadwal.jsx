@@ -201,260 +201,256 @@ const AddJadwal = () => {
           <Navbar />
           <div className="main-content">
             <div className="row">
-              <div className="col-lg-8 col-md-12">
+              <div className="col-lg-12 col-md-12">
                 <div className="card p-3" style={{ minHeight: 485 }}>
                   <h3>Tambah jadwal praktikum</h3>
                   <form onSubmit={handleSubmit}>
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Program Studi
-                        </label>
-                      </div>
-
-                      <select
-                        className="custom-select"
-                        id="programStudiSelect"
-                        value={programStudi}
-                        onChange={handleProgramStudiChange}
-                      >
-                        <option value="">Pilih Program Studi</option>
-                        {dataProgramStudi.map((programStudiItem) => (
-                          <option
-                            key={programStudiItem}
-                            value={programStudiItem}
+                    <div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
                           >
-                            {programStudiItem}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                            Program Studi
+                          </label>
+                        </div>
 
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
+                        <select
+                          className="custom-select"
+                          id="programStudiSelect"
+                          value={programStudi}
+                          onChange={handleProgramStudiChange}
                         >
-                          Kelas
-                        </label>
+                          <option value="">Pilih Program Studi</option>
+                          {dataProgramStudi.map((programStudiItem) => (
+                            <option
+                              key={programStudiItem}
+                              value={programStudiItem}
+                            >
+                              {programStudiItem}
+                            </option>
+                          ))}
+                        </select>
                       </div>
-                      <select
-                        className="custom-select"
-                        id="kelasSelect"
-                        value={kelas}
-                        onChange={handleKelasChange}
-                        disabled={programStudi === ""}
-                      >
-                        <option value="">Pilih Kelas</option>
-                        {filteredKelas.map((kelasItem) => (
-                          <option key={kelasItem.id} value={kelasItem.kelas}>
-                            {kelasItem.kelas}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
 
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Jam
-                        </label>
-                      </div>
-                      <select
-                        className="custom-select"
-                        id="jamSelect"
-                        value={jam}
-                        onChange={handleJamChange}
-                      >
-                        <option value="">Pilih Jam</option>
-                        {dataJam.map((jamItem) => (
-                          <option key={jamItem.id} value={jamItem.jam}>
-                            {jamItem.jam}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Hari
-                        </label>
-                      </div>
-                      <select
-                        className="custom-select"
-                        id="hariSelect"
-                        value={hari}
-                        onChange={handleHariChange}
-                      >
-                        <option value="">Pilih Hari</option>
-                        {dataHari.map((hariItem) => (
-                          <option key={hariItem} value={hariItem}>
-                            {hariItem}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Dosen
-                        </label>
-                      </div>
-                      <select
-                        className="custom-select"
-                        id="dosenSelect"
-                        value={dosen}
-                        onChange={handleDosenChange}
-                      >
-                        <option value="">Pilih Dosen</option>
-                        {dataDosen.map((dosenItem) => (
-                          <option key={dosenItem.id} value={dosenItem.dosen}>
-                            {dosenItem.dosen}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Asisten 1
-                        </label>
-                      </div>
-                      <select
-                        className="custom-select"
-                        id="asistenSelect"
-                        value={asisten1}
-                        onChange={handleAsistenChange}
-                      >
-                        <option value="">Pilih Asisten</option>
-                        {dataAsisten1.map((asistenItem) => (
-                          <option
-                            key={asistenItem.id}
-                            value={asistenItem.asisten}
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
                           >
-                            {asistenItem.asisten}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
+                            Kelas
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="kelasSelect"
+                          value={kelas}
+                          onChange={handleKelasChange}
+                          disabled={programStudi === ""}
                         >
-                          Asisten 2
-                        </label>
+                          <option value="">Pilih Kelas</option>
+                          {filteredKelas.map((kelasItem) => (
+                            <option key={kelasItem.id} value={kelasItem.kelas}>
+                              {kelasItem.kelas}
+                            </option>
+                          ))}
+                        </select>
                       </div>
-                      <select
-                        className="custom-select"
-                        id="asistenSelect"
-                        value={asisten2}
-                        onChange={handleAsisten2Change}
-                      >
-                        <option value="">Pilih Asisten 2</option>
-                        {dataAsisten2.map((asistenItem2) => (
-                          <option
-                            key={asistenItem2.id}
-                            value={asistenItem2.asisten}
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
                           >
-                            {asistenItem2.asisten}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
+                            Jam
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="jamSelect"
+                          value={jam}
+                          onChange={handleJamChange}
                         >
-                          Ruang
-                        </label>
+                          <option value="">Pilih Jam</option>
+                          {dataJam.map((jamItem) => (
+                            <option key={jamItem.id} value={jamItem.jam}>
+                              {jamItem.jam}
+                            </option>
+                          ))}
+                        </select>
                       </div>
-                      <select
-                        className="custom-select"
-                        id="ruangSelect"
-                        value={ruang}
-                        onChange={handleRuangChange}
-                      >
-                        <option value="">Pilih Ruang</option>
-                        {dataRuang.map((ruangItem) => (
-                          <option key={ruangItem.id} value={ruangItem.ruang}>
-                            {ruangItem.ruang}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
 
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label
-                          class="input-group-text"
-                          for="inputGroupSelect01"
-                        >
-                          Praktikum
-                        </label>
-                      </div>
-                      <select
-                        className="custom-select"
-                        id="praktikumSelect"
-                        value={praktikum}
-                        onChange={handlePraktikumChange}
-                      >
-                        <option value="">Pilih Praktikum</option>
-                        {dataPraktikum.map((praktikumItem) => (
-                          <option
-                            key={praktikumItem.id}
-                            value={praktikumItem.praktikum}
+                      <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                          <label
+                            className="input-group-text"
+                            htmlFor="inputGroupSelect01"
                           >
-                            {praktikumItem.praktikum}
-                          </option>
-                        ))}
-                      </select>
+                            Tanggal
+                          </label>
+                        </div>
+                        <input
+                          type="date"
+                          className="form-control"
+                          id="tanggalInput"
+                          value={hari}
+                          onChange={handleHariChange}
+                        />
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
+                          >
+                            Dosen
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="dosenSelect"
+                          value={dosen}
+                          onChange={handleDosenChange}
+                        >
+                          <option value="">Pilih Dosen</option>
+                          {dataDosen.map((dosenItem) => (
+                            <option key={dosenItem.id} value={dosenItem.dosen}>
+                              {dosenItem.dosen}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
+                          >
+                            Asisten 1
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="asistenSelect"
+                          value={asisten1}
+                          onChange={handleAsistenChange}
+                        >
+                          <option value="">Pilih Asisten</option>
+                          {dataAsisten1.map((asistenItem) => (
+                            <option
+                              key={asistenItem.id}
+                              value={asistenItem.asisten}
+                            >
+                              {asistenItem.asisten}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
+                          >
+                            Asisten 2
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="asistenSelect"
+                          value={asisten2}
+                          onChange={handleAsisten2Change}
+                        >
+                          <option value="">Pilih Asisten 2</option>
+                          {dataAsisten2.map((asistenItem2) => (
+                            <option
+                              key={asistenItem2.id}
+                              value={asistenItem2.asisten}
+                            >
+                              {asistenItem2.asisten}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
+                          >
+                            Ruang
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="ruangSelect"
+                          value={ruang}
+                          onChange={handleRuangChange}
+                        >
+                          <option value="">Pilih Ruang</option>
+                          {dataRuang.map((ruangItem) => (
+                            <option key={ruangItem.id} value={ruangItem.ruang}>
+                              {ruangItem.ruang}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label
+                            class="input-group-text"
+                            for="inputGroupSelect01"
+                          >
+                            Praktikum
+                          </label>
+                        </div>
+                        <select
+                          className="custom-select"
+                          id="praktikumSelect"
+                          value={praktikum}
+                          onChange={handlePraktikumChange}
+                        >
+                          <option value="">Pilih Praktikum</option>
+                          {dataPraktikum.map((praktikumItem) => (
+                            <option
+                              key={praktikumItem.id}
+                              value={praktikumItem.praktikum}
+                            >
+                              {praktikumItem.praktikum}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <p>
+                        {pesan} <br /> {msg}
+                      </p>
+
+                      <main>
+                        <button
+                          className="btn btn-secondary"
+                          role={"button"}
+                          type="submit"
+                          disabled={isLoading}
+                        >
+                          {isLoading ? (
+                            <>
+                              <div aria-busy="true">loading</div>
+                            </>
+                          ) : (
+                            "Submit"
+                          )}
+                        </button>
+                      </main>
                     </div>
-
-                    <p>
-                      {pesan} <br /> {msg}
-                    </p>
-
-                    <main>
-                      <button
-                        className="btn btn-secondary"
-                        role={"button"}
-                        type="submit"
-                        disabled={isLoading}
-                      >
-                        {isLoading ? (
-                          <>
-                            <div aria-busy="true">loading</div>
-                          </>
-                        ) : (
-                          "Submit"
-                        )}
-                      </button>
-                    </main>
                   </form>
                 </div>
               </div>

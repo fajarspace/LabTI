@@ -93,12 +93,10 @@ const ListJadwal = () => {
                               <th>Asisten</th>
                               <th>Asisten</th>
                               <th>Praktikum</th>
-                              {user && user.role === "admin" && (
-                                <>
-                                  <th>Created By</th>
-                                  <th>Actions</th>
-                                </>
-                              )}
+
+                              <>
+                                <th>Actions</th>
+                              </>
                             </tr>
                           </thead>
                           <tbody>
@@ -115,51 +113,48 @@ const ListJadwal = () => {
                                 <td>{jadwal.asisten2}</td>
                                 <td>{jadwal.praktikum}</td>
 
-                                {user && user.role === "admin" && (
-                                  <>
-                                    <td>{jadwal.user.nama}</td>
-                                    <td>
-                                      <Link
-                                        to={`/jadwal/edit/${jadwal.uuid}`}
-                                        className="button is-small is-info mr-2"
-                                      >
-                                        <kbd
-                                          style={{
-                                            backgroundColor: "yellow",
-                                            color: "black",
-                                            fontSize: "20px",
-                                          }}
-                                        >
-                                          <FiEdit />
-                                        </kbd>
-                                      </Link>{" "}
-                                      &nbsp;
-                                      <Link
-                                        onClick={() => {
-                                          if (
-                                            window.confirm(
-                                              "Apakah Anda yakin ingin menghapus jadwal ini?"
-                                            )
-                                          ) {
-                                            window.alert(
-                                              "Hapus jadwal berhasil!"
-                                            );
-                                            deleteJadwal(jadwal.uuid);
-                                          }
+                                <>
+                                  <td>
+                                    <Link
+                                      to={`/jadwal/edit/${jadwal.uuid}`}
+                                      className="button is-small is-info mr-2"
+                                    >
+                                      <kbd
+                                        style={{
+                                          backgroundColor: "yellow",
+                                          color: "black",
+                                          fontSize: "20px",
                                         }}
                                       >
-                                        <kbd
-                                          style={{
-                                            backgroundColor: "red",
-                                            fontSize: "20px",
-                                          }}
-                                        >
-                                          <IoMdTrash />
-                                        </kbd>
-                                      </Link>
-                                    </td>
-                                  </>
-                                )}
+                                        <FiEdit />
+                                      </kbd>
+                                    </Link>{" "}
+                                    &nbsp;
+                                    <Link
+                                      onClick={() => {
+                                        if (
+                                          window.confirm(
+                                            "Apakah Anda yakin ingin menghapus jadwal ini?"
+                                          )
+                                        ) {
+                                          window.alert(
+                                            "Hapus jadwal berhasil!"
+                                          );
+                                          deleteJadwal(jadwal.uuid);
+                                        }
+                                      }}
+                                    >
+                                      <kbd
+                                        style={{
+                                          backgroundColor: "red",
+                                          fontSize: "20px",
+                                        }}
+                                      >
+                                        <IoMdTrash />
+                                      </kbd>
+                                    </Link>
+                                  </td>
+                                </>
                               </tr>
                             ))}
                           </tbody>
